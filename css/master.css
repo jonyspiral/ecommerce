@@ -18,24 +18,31 @@ body  {width: 100%;
 }
 #banner {
   overflow: hidden;
+  position:relative;
 
   z-index: 0;
 
 
 }
-#banner h1{background-color: none;
+#banner h1{
+  background-color: rgba(255, 0, 0, 0.5);
+  border-radius: 10%;
+
+  color:white;
+  font-size: 2;
+
    z-index: 10;
 
-  position: relative;
-  top:50px;
-  left: 5px;
-float: left;
-}
-.container{
+  position: absolute;
+  top:50%;
+
 }
 
 
-}
+
+
+
+
 /*#grupoTarjeta{
   width: 100%;
   background-color: black;

@@ -32,11 +32,8 @@ body  {width: 100%;
 float: left;
 }
 .container{
-  margin-top: 0px;
 }
-a.nav-link{
-  cursor: copy;
-  color: red;
+
 
 }
 /*#grupoTarjeta{

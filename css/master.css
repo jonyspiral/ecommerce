@@ -1,0 +1,51 @@
+.menu{ background-color: white;
+
+}
+body  {width: 100%;
+  background-color: white;
+
+
+}
+#buttons  { width: 100%;
+  overflow: hidden;
+
+}
+#buttons  a{ width: 50%;
+
+  display: inline;
+  float: right ;
+
+}
+#banner {
+  overflow: hidden;
+
+  z-index: 0;
+
+
+}
+#banner h1{background-color: none;
+   z-index: 10;
+
+  position: relative;
+  top:50px;
+  left: 5px;
+float: left;
+}
+.container{
+  margin-top: 0px;
+}
+a.nav-link{
+  cursor: copy;
+  color: red;
+
+}
+/*#grupoTarjeta{
+  width: 100%;
+  background-color: black;
+  overflow: hidden;
+
+}
+.card{
+  float: left;
+  width: 30%
+}*/

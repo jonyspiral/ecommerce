@@ -6,16 +6,36 @@ body  {width: 100%;
 
 
 }
-#buttons  { width: 100%;
-  overflow: hidden;
+.imagen-button{
+  position: relative;
 
 }
-#buttons  a{ width: 50%;
+#buttons {
+    position: absolute;
+    bottom: 3%;
+    left: -4%;
+    width: 100%;
 
+
+}
+#buttons  a{
+  width: 15%;
+  border-radius: 20%;
   display: inline;
   float: right ;
-
+  padding: 5px 5px;
+  background-color: rgba(0,0,0,.075);
+  border-color: rgba(0, 0, 0, 0.42);
 }
+#buttons  a img{
+  width: 100%;
+ border:0;
+ }
+ .btn-{
+   background-color: blue;
+
+
+ }
 #banner {
   overflow: hidden;
   position:relative;
@@ -27,15 +47,31 @@ body  {width: 100%;
 #banner h1{
   background-color: rgba(255, 0, 0, 0.5);
   border-radius: 10%;
-
   color:white;
   font-size: 2;
-
    z-index: 10;
-
   position: absolute;
   top:50%;
+}
+.card:{position: relative;
 
+}
+.card-title {
+    font-size: 14px;
+    height: 42px;
+    line-height: 1.36;
+    font-weight: normal;
+    font-family: "Work Sans", sans-serif;
+    color: rgb(0, 0, 0);
+    text-align: center;
+    width: 205px;
+    white-space: normal;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    margin: 0px;
+    overflow: hidden;
 }
 
 

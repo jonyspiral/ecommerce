@@ -6,42 +6,47 @@ body  {width: 100%;
 
 
 }
-.imagen-button{
+.imagenBotones{
   position: relative;
-
-}
-#buttons {
-    position: absolute;
-    bottom: 3%;
-    left: -4%;
+  overflow:hidden;
+  width: 100%;
+  }
+  #imagenTarjeta{
+    position: relative;
+    float:left;
     width: 100%;
 
+  }
+  #buttons {
+      position: relative;
 
+      height: 60px;
+      width: 100%;
 }
-#buttons  a{
-  width: 15%;
-  border-radius: 20%;
-  display: inline;
-  float: right ;
-  padding: 5px 5px;
-  background-color: rgba(0,0,0,.075);
-  border-color: rgba(0, 0, 0, 0.42);
+
+#buttons a {
+    height: 50px;
+    width: 50px;
+    border-radius: 20%;
+    position: relative;
+    float: right;
+    padding: 5px 5px;
+    background-color: rgba(0,0,0,.075);
+    border-color: rgba(0, 0, 0, 0.42);}
+#buttons a img {
+    height: 30px;
+    border: 0;
 }
-#buttons  a img{
-  width: 100%;
- border:0;
- }
- .btn-{
-   background-color: blue;
-
-
- }
+#cuotas{
+  position: relative;
+  float: left;
+  height: 50px;
+  width: 50%;
+}
 #banner {
   overflow: hidden;
   position:relative;
   z-index: 0;
-
-
 }
 #banner h1{
   background-color: rgba(255, 0, 0, 0.5);
@@ -52,10 +57,19 @@ body  {width: 100%;
   position: absolute;
   top:50%;
 }
-.card:{position: relative;
+#grupoTarjeta{
 
+  overflow: hidden;
+  width: 100%;
+  position Relative;
 }
-.card-titulo {
+#Tarjeta{
+
+  float:left;
+}
+
+
+.itemTitle {
     font-size: 14px;
     height: 42px;
     line-height: 1.36;
@@ -63,7 +77,7 @@ body  {width: 100%;
     font-family: "Work Sans", sans-serif;
     color: rgb(0, 0, 0);
     text-align: center;
-    width: 205px;
+    width: auto;
     white-space: normal;
     text-overflow: ellipsis;
     display: -webkit-box;
@@ -71,20 +85,35 @@ body  {width: 100%;
     -webkit-box-orient: vertical;
     margin: 0px;
     overflow: hidden;
-}
-
-
-
-
-
-
-/*#grupoTarjeta{
-  width: 100%;
-  background-color: black;
-  overflow: hidden;
 
 }
-.card{
-  float: left;
-  width: 30%
-}*/
+
+
+.price{
+  font-family: "Work Sans", sans-serif;
+  font-size: 14px;
+  text-align: left;
+    font-size: 19px;
+    font-weight: 600;
+
+}
+
+.discount{
+  font-size: 16px;
+    font-weight: 500;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: -0.3px;
+    color: rgb(217, 49, 117);
+    margin-top: 5px;
+
+}
+.priceOld {
+    color: rgb(167, 169, 171);
+    font-weight: normal;
+    font-family: "Work Sans", sans-serif;
+    margin-right: 10px;
+    font-size: 17px;
+    text-decoration: line-through;
+}

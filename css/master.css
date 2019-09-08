@@ -39,7 +39,6 @@ body  {width: 100%;
 #banner {
   overflow: hidden;
   position:relative;
-
   z-index: 0;
 
 
@@ -56,7 +55,7 @@ body  {width: 100%;
 .card:{position: relative;
 
 }
-.card-title {
+.card-titulo {
     font-size: 14px;
     height: 42px;
     line-height: 1.36;

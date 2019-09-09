@@ -2,7 +2,7 @@
 
 }
 body  {width: 100%;
-  background-color: white;
+
 
 
 }
@@ -64,7 +64,9 @@ body  {width: 100%;
   position Relative;
 }
 #Tarjeta{
-
+width: 95%;
+margin-left:2.5%;
+margin-right:2,5%;
   float:left;
 }
 
@@ -116,4 +118,20 @@ body  {width: 100%;
     margin-right: 10px;
     font-size: 17px;
     text-decoration: line-through;
+}
+/*ipads*/
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:portrait){
+  #Tarjeta{
+  width: 45%;
+  margin-left:2.5%;
+  margin-right:2.5%;
+    float:left;
+
+
+  }
+
+
+}
+@media only screen and (min-device-width :1024px) {
+
 }

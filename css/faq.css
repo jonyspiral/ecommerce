@@ -1,0 +1,35 @@
+*{
+  box-sizing: border-box;
+  padding: 0px;
+}
+
+.cajas {
+  height: 205px;
+  width: 45%;
+  background-color: grey;
+  float: left;
+  margin: 10px;
+margin-left: 40px;
+padding: 5px;
+border-radius: 5px;
+
+}
+
+main {
+  overflow: hidden;
+}
+p {
+  font-size: 17px;
+}
+
+.cajas:hover {
+  filter: drop-shadow(16px 16px 20px black);
+}
+
+p:hover{
+  color: blue;
+}
+
+h3 {
+  text-decoration: underline;
+}

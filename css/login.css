@@ -3,6 +3,7 @@ body{
   background-color: lightblue;
 
 }
+
 form {
     width: 100%;
     display: block;
@@ -21,7 +22,7 @@ label {
 button {
     display: block;
     width: 50%;
-    margin-top: 100px;
+    margin-top: 50px;
     margin-right: auto;
     margin-left: auto;
     font-size: 3em;
@@ -40,11 +41,18 @@ button {
     width: 100%;
     margin-right: 33.33%;
     margin-left: 33.33%;
-    
+
 }
 .form-control{
   font-size: 3em;
 }
+p {
+    text-align: center;
+    margin-top: auto;
+    margin-left: auto;
+    margin-bottom: 1rem;
+    margin-right: auto;
+  }
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:portrait){
 #logo {
 

@@ -133,9 +133,12 @@ h3 {
 nav{
   display: flex;
 }
-.navbar-nav{
-  margin-left:auto;
-  margin-right: auto;
+.navbar-nav {
+  
+  margin-left: auto;
+
+}
+nav ul li {
 
 }
 .container {

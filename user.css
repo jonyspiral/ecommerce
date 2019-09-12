@@ -1,0 +1,52 @@
+
+
+.nombredelusuario {
+  float;
+  margin-left: 150px
+}
+
+
+.imagen-logo {
+    height: 20px;
+    width: 10%;
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.imagen-logo img{
+    width: 100%
+}
+
+
+.menu-usuario {
+  float: left;
+  margin-top: 40px;
+  margin-bottom: 25px;
+  width: 20%;
+}
+
+h1 {
+  text-align: center;
+  text-decoration: underline;
+}
+
+p {
+  font-size: 20px;
+  color: blue;
+  text-align: center;
+  box-shadow: black;
+}
+
+.menu {
+  width: 100%;
+  background-color: grey;
+  color: white;
+  margin: 10%;
+  margin-bottom: 25px;
+  height: 35px;
+  text-align: center;
+  padding: 5px;
+  filter: drop-shadow(16px 16px 20px grey);
+  border-radius: 5px;
+}

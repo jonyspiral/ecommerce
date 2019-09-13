@@ -134,7 +134,7 @@ nav{
   display: flex;
 }
 .navbar-nav {
-  
+
   margin-left: auto;
 
 }
@@ -142,10 +142,20 @@ nav ul li {
 
 }
 .container {
-    max-width: 100%;
+    max-width: 80%;
+    border: 2px;
   }
 footer nav ul li{
 
+}
+#comprar{
+  width: 100%;
+  font-size: 2em;
+  text-align: center;
+  background-color: blue;
+  border-radius: 2%;
+  color: white;
+  padding:2%;
 }
 /*ipads*/
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:portrait){

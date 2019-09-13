@@ -1,0 +1,65 @@
+
+
+/*.nombredelusuario {
+  float;
+  margin-left: 150px
+}
+
+
+
+
+.imagen-logo img{
+    width: 100%
+}
+
+
+.menu-usuario {
+  float: left;
+  margin-top: 40px;
+  margin-bottom: 25px;
+  width: 20%;
+}
+
+*/
+img{
+  width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+    padding: 2%;
+
+}
+.imagen-logo {
+  width: 20%;
+   margin-left: 40%;
+   margin-right: 40%;
+   padding: 2%;
+
+}
+h1 {
+  text-align: center;
+  text-decoration: underline;
+}
+.menu {
+  width: 40%;
+  background-color: grey;
+  color: white;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 10%;
+  height: 35px;
+  text-align: center;
+  padding: 5px;
+  filter: drop-shadow(16px 16px 20px grey);
+  border-radius: 5px;
+}
+p {
+  font-size: 20px;
+  color: blue;
+  text-align: center;
+  box-shadow: black;
+}
+.lista-menu{
+  width: 50%;
+  margin-left: auto;
+  margin-right: auto;
+}

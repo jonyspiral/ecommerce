@@ -52,6 +52,11 @@ p {
     margin-left: auto;
     margin-bottom: 1rem;
     margin-right: auto;
+
+  }
+  label{
+    text-align: center;
+    width: 100%;
   }
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:portrait){
 #logo {

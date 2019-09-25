@@ -13,7 +13,7 @@
 
   </head>
   <body>
-    <header>
+    <?php require_once('partials/header.php')?>
 
       <div  class="container">
 
@@ -96,5 +96,5 @@
 </div>
 </nav>
 </footer>
-  </body>
+  <?php require_once('partials/footer.php')?>
 </html>

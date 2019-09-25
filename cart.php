@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="css/productos.css">
 </head>
 <body>
-  <header>
+  <?php require_once('partials/header.php')?>
     <div  class="container" style="max-width:100%;">
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -121,7 +121,7 @@
 
     </nav>
 
-  </footer>
+  <?php require_once('partials/footer.php')?>
   </div>
   </body>
 </html>

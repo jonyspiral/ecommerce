@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="css/productos.css">
 </head>
 <body>
-  <header>
+   <?php require_once('partials/header.php') ?>
     <div  class="container">
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -49,7 +49,7 @@
 </nav>
 </div>
 
-  </header>
+  <?php require_once('partials/header.php') ?>
 <div class="container" style="margin-top:20px" >
   <div id="banner" class="" >
       <h2>Televisores!</h2>
@@ -144,6 +144,6 @@
 
     </nav>
 
-  </footer>
+  <?php require_once('partials/footer.php')?>
   </body>
 </html>

@@ -1,5 +1,5 @@
 
-}
+
 body  {
 
 }
@@ -135,15 +135,21 @@ nav{
 }
 .navbar-nav {
 
-  margin-left: auto;
+
 
 }
-nav ul li {
+nav ul {
+  margin-right: auto!important;
+    margin-left: auto!important;
 
 }
 .container {
-    max-width: 80%;
-    border: 2px;
+
+      width: 100%;
+      padding-right: 0px;
+      padding-left: 0px;
+      margin-right: auto;
+      margin-left: auto;
   }
 footer nav ul li{
 

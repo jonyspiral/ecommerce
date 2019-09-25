@@ -1,3 +1,31 @@
+<?php
+   require_once('funciones/autoload.php');
+
+    if(estaElUsuarioLogeado()){
+         header('location:miPerfil.php');
+     }
+
+    //deberia de buscar al usuario en la base de datos
+        //y si no esta lanzar un error
+
+        $email = '';
+        $password = '';
+
+        $errores = [
+            'email' => '',
+            'password' => ''
+        ];
+    if ($_POST) {
+        $email = trim($_POST['email']);
+        $errores = validarLogin($_POST);
+        if (!$errores) {
+
+            header('location:miPerfil.php');
+        }
+    }
+
+
+?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -17,20 +45,22 @@
     <a id="logo" href="home.html">
     <img src="img\logo.png" alt="go to home" class="navbar-brand" style="width:35%; border-radius: 15%;"  >
     </a>
-<form class="login" action="index.html" method="post">
-  <label for="Usuario">Usuario</label>
-  <input class="form-control" placeholder="Nombre De Usuario" type="text" name="usuario" value="">
+<form class="login" action="login.php" method="post">
+  <label for="email">Email address</label>
+  <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email"
+  value="<?= $email ?>">
+  <p> <?= (isset($errores['email']) ? $errores['email'] : '') ?></p>
     <label for="contraseña">Contraseña</label>
-  <input class="form-control" placeholder="Contraseña" type="password" name="contraseña" value="">
-  <p><a href="signup.html" style="width:100%;font-size: 2em;">(Registrese aqui si aun no lo hizo.)</a></p>
-  <div class="button">
-      <button class="btn-link"  type="button" name="button">Enviar</button>
-  </div>
+  <input class="form-control" placeholder="Enter password" type="password" name="password" value="">
+  <p><?= (isset($errores['password']) ? $errores['password'] : '') ?></p>
+  <p><a href="register.php" style="width:100%;font-size: 2em;">(Registrese aqui si aun no lo hizo.)</a></p>
+
+      <button class="btn btn-primary"  type="submit" >Enviar</button>
 
 
-  </div>
 
 </form>
+  </div>
 
   </body>
 </html>

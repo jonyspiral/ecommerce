@@ -54,8 +54,7 @@
   <input class="form-control" placeholder="Enter password" type="password" name="password" value="">
 
   <p><?= (isset($errores['password']) ? $errores['password'] : '') ?></p>
-  <!-- files -->
-  <input type="file" name="imagen" />
+  
 
   <p><a href="register.php" style="width:100%;font-size: 2em;">(Registrese aqui si aun no lo hizo.)</a></p>
 

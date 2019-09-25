@@ -45,14 +45,17 @@
     <a id="logo" href="home.html">
     <img src="img\logo.png" alt="go to home" class="navbar-brand" style="width:35%; border-radius: 15%;"  >
     </a>
-<form class="login" action="login.php" method="post">
+<form class="login" action="login.php" method="post" enctype="multipart/form-data">
   <label for="email">Email address</label>
   <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email"
   value="<?= $email ?>">
   <p> <?= (isset($errores['email']) ? $errores['email'] : '') ?></p>
     <label for="contraseña">Contraseña</label>
   <input class="form-control" placeholder="Enter password" type="password" name="password" value="">
+
   <p><?= (isset($errores['password']) ? $errores['password'] : '') ?></p>
+  
+
   <p><a href="register.php" style="width:100%;font-size: 2em;">(Registrese aqui si aun no lo hizo.)</a></p>
 <div class=""style="width:100%; margin-left: 33.33%; margin-right: 33.33%;">
 

@@ -49,7 +49,7 @@
 </nav>
 </div>
 
-  </header>
+
 <div class="container" style="margin-top:20px" >
   <div id="banner" class="" >
       <h2>Televisores!</h2>
@@ -123,7 +123,7 @@
   </div>
 
 
-  <footer>
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
           <li class="nav-item active">

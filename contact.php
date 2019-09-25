@@ -48,7 +48,7 @@
 </div>
 </nav>
 </div>
-    </header>
+   <?php require_once('partials/header.php')?>
     <div  class="container">
 <form  action="index.html" method="post">
   <label for="">Email</label>
@@ -74,7 +74,7 @@
 </form>
 
 </div>
-<footer class="container">
+
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <ul class="navbar-nav mr-auto mt-2 mt-lg-0">

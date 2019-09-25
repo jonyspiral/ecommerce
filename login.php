@@ -54,9 +54,11 @@
   <input class="form-control" placeholder="Enter password" type="password" name="password" value="">
   <p><?= (isset($errores['password']) ? $errores['password'] : '') ?></p>
   <p><a href="register.php" style="width:100%;font-size: 2em;">(Registrese aqui si aun no lo hizo.)</a></p>
+<div class=""style="width:100%; margin-left: 33.33%; margin-right: 33.33%;">
 
-      <button class="btn btn-primary"  type="submit" >Enviar</button>
 
+      <button class="btn-primary btn"  type="submit" >Enviar</button>
+</div>
 
 
 </form>

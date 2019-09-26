@@ -1,6 +1,5 @@
-<!DOCTYPE html>
-<<<<<<< HEAD
-=======
+
+
 <?php
 $usuario= '';
 $email= '';
@@ -8,9 +7,7 @@ $password= '';
 $confirmPassword = '';
  ?>
 
-
-
->>>>>>> 964c47a311e068ebd20c086f55d7621aa67686fe
+<!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -25,39 +22,15 @@ $confirmPassword = '';
   </head>
   <body>
     <div class="container">
-<<<<<<< HEAD
-<<<<<<< HEAD:register.php
+
     <a id="logo" href="home.php">
-    <img src="img\logo.png" alt="go to home" class="navbar-brand" style="width:35%; border-radius: 15%;"  >
-=======
-    <a id="logo" href="home.html">
-    <img src="img\logo.png" alt="go to home" class="navbar-brand" style="width:10%; border-radius: 15%;"  >
->>>>>>> 964c47a311e068ebd20c086f55d7621aa67686fe:misDatos.php
-    </a>
-
-<form class="login" action="index.html" method="post">
-  <img src="img\logo.png" alt="go to home" class="navbar-brand" style="width:35%; border-radius: 15%;"  >
-  </a>
-  <!-- files -->
-  <input type="file" name="imagen" />
-  <label for="Usuario">Usuario</label>
-  <input class="form-control" placeholder="Nombre De Usuario" type="text" name="usuario" value="">
-  <label for="">Email</label>
-    <input class="form-control" placeholder="Email"type="email" name="email" value="">
-    <label for="contraseña">Contraseña</label>
-  <input class="form-control" placeholder="Contraseña" type="password" name="contraseña" value="">
-
-  <div class="button">
-      <button class="btn-link"  type="button" name="button">Enviar</button>
-
-  </div>
-  >
-=======
-    <a id="logo" href="home.html">
     <img src="img\logo.png" alt="go to home" class="navbar-brand" style="width:10%; border-radius: 15%;"  >
     </a>
 
-<form class="login" action="" method="post"enctype="multipart/form-data">
+
+
+<form class="login" action="" method="post" enctype="multipart/form-data">
+<a id="logo" href="">
   <img src="img\logo.png" alt="go to home" class="navbar-brand" style="width:35%; border-radius: 15%;"  >
   </a>
   <!-- files -->
@@ -71,10 +44,10 @@ $confirmPassword = '';
     <input class="form-control" placeholder="Email"type="email" name="email" value="<?php $email ?>">
 
     <label for="contraseña">Enter Password</label>
-  <input class="form-control" id="password" placeholder="Password" name="password" value="<?php $password  ?>">
+  <input class="form-control" id="password" placeholder="Password" name="password" value="">
 
   <label for="$confirmPassword">Confirm Password</label>
-  <input type="password" class="form-control" id="confirm-password" placeholder="Password" name="confirmPassword" value=" <?php $confirmPassword ?>">
+  <input type="password" class="form-control" id="confirm-password" placeholder="Password" name="confirmPassword" value=" ">
 
   <div class="button">
       <button class="btn-link"  type="button" name="button">Send</button>

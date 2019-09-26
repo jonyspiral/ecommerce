@@ -20,8 +20,5 @@ function validarLogin($datos) {
 
 
     return $errores;
-<<<<<<< HEAD
-=======
 
->>>>>>> 964c47a311e068ebd20c086f55d7621aa67686fe
 }

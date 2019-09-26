@@ -1,37 +1,12 @@
 <?php
-<<<<<<< HEAD
-    require_once('funciones/autoload.php');
-
-    if(estaElUsuarioLogeado()){
-        header('location:miPerfil.php');
-    }
-
-    $email = '';
-    $password = '';
-
-    $errores = [
-        'email' => '',
-        'password' => ''
-    ];
-
-    if ($_POST) {
-        $email = trim($_POST['email']);
-        $errores = validarLogin($_POST);
-
-        if (!$errores) {
-=======
    require_once('funciones/autoload.php');
-
     if(estaElUsuarioLogeado()){
          header('location:miPerfil.php');
      }
-
     //deberia de buscar al usuario en la base de datos
         //y si no esta lanzar un error
-
         $email = '';
         $password = '';
-
         $errores = [
             'email' => '',
             'password' => ''
@@ -40,17 +15,9 @@
         $email = trim($_POST['email']);
         $errores = validarLogin($_POST);
         if (!$errores) {
-
->>>>>>> 964c47a311e068ebd20c086f55d7621aa67686fe
             header('location:miPerfil.php');
         }
     }
-
-<<<<<<< HEAD
-var_dump($_POST);
-=======
-
->>>>>>> 964c47a311e068ebd20c086f55d7621aa67686fe
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
@@ -68,29 +35,9 @@ var_dump($_POST);
   </head>
   <body>
     <div class="container">
-    <a id="logo" href="home.php">
+    <a id="logo" href="home.html">
     <img src="img\logo.png" alt="go to home" class="navbar-brand" style="width:35%; border-radius: 15%;"  >
     </a>
-<<<<<<< HEAD
-<form class="login" action="login.php" method="post">
-  <h2>Logueate.</h2>
-  <!--<label for="Usuario">Email</label>-->
-  <input class="form-control" placeholder="Ingrese un email" type="text" name="email" value="<?= $email ?>">
-  <?= (isset($errores['email']) ? $errores['email'] : '') ?>
-    <!--<label for="contraseña">Contraseña</label>-->
-  <input class="form-control" placeholder="ingresa Password" type="password" name="password" value="">
-  <?= (isset($errores['password']) ? $errores['password'] : '') ?>
-  <p><a href="register.php" style="width:100%;font-size: 2em;">(Registrese aqui si aun no lo hizo.)</a></p>
-  <div class="form-group form-check">
-    <input type="checkbox" class="" id="terminos">
-    <label class="form-check-label" for="terminos">Dejarme Conectado</label>
-  </div>
-  
-  <div class="button">
-
-      <button class="btn-link"  type="button" name="button">Ingresar</button>
-  </div>
-=======
 <form class="login" action="login.php" method="post" enctype="multipart/form-data">
   <label for="email">Email address</label>
   <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email"
@@ -98,10 +45,9 @@ var_dump($_POST);
   <p> <?= (isset($errores['email']) ? $errores['email'] : '') ?></p>
     <label for="contraseña">Contraseña</label>
   <input class="form-control" placeholder="Enter password" type="password" name="password" value="">
->>>>>>> 964c47a311e068ebd20c086f55d7621aa67686fe
 
   <p><?= (isset($errores['password']) ? $errores['password'] : '') ?></p>
-  
+
 
   <p><a href="register.php" style="width:100%;font-size: 2em;">(Registrese aqui si aun no lo hizo.)</a></p>
 <div class=""style="width:100%; margin-left: 33.33%; margin-right: 33.33%;">

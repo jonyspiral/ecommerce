@@ -13,7 +13,7 @@
   </head>
   <body>
     <div class="container">
-    <a id="logo" href="home.html">
+    <a id="logo" href="home.php">
     <img src="img\logo.png" alt="go to home" class="navbar-brand" style="width:35%; border-radius: 15%;"  >
     </a>
 

@@ -67,6 +67,7 @@ p {
       margin-top: 10%;
   }
 .container {
+  height: 50vh;
   width: 35%;
   padding-top: 5%;
   padding-bottom: 10%;

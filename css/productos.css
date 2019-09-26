@@ -133,9 +133,9 @@ h3 {
 nav{
   display: flex;
 }
-.navbar-nav {
+.navbar {
 
-
+text-align: center;
 
 }
 nav ul {
@@ -145,9 +145,9 @@ nav ul {
 }
 .container {
 
-      width: 100%;
-      padding-right: 0px;
-      padding-left: 0px;
+      max-width: 100%;
+      padding-right: 10px;
+      padding-left: 10px;
       margin-right: auto;
       margin-left: auto;
   }
@@ -164,7 +164,8 @@ footer nav ul li{
   padding:2%;
 }
 /*ipads*/
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:portrait){
+@media only screen and (min-device-width: 576px) and (max-device-width: 1024px) and (orientation:portrait){
+
   #Tarjeta{
   width: 45%;
   margin-left:2.5%;
@@ -176,13 +177,11 @@ footer nav ul li{
   }
 }
 @media only screen and (min-device-width :1024px) {
+  
   #Tarjeta{
   width: 30%;
-  margin-left:1.533%;
-  margin-right:1.533%;
+  margin-left:1.5166%;
+  margin-right:1.5166%;
     float:left;
-  }
-  #banner{
-    height:100%;
   }
 }

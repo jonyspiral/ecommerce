@@ -50,7 +50,7 @@
   <div class="card-body">
     <h5 class="card-title">Televisores y audio</h5>
     <p class="card-text">Los mejores televisores del mercado, al mejor precio en cuotas y envio gratis.</p>
-    <a href="teleAudio.html" class="btn btn-primary">ir a...</a>
+    <a href="teleAudio.php" class="btn btn-primary">ir a...</a>
   </div>
 </div>
 
@@ -59,7 +59,7 @@
   <div class="card-body">
     <h5 class="card-title">smartphones</h5>
     <p class="card-text">Los mejores smartphones del mercado, al mejor precio en cuotas y envio gratis.</p>
-    <a href="celulares.html" class="btn btn-primary">ir a...</a>
+    <a href="celulares.php" class="btn btn-primary">ir a...</a>
   </div>
 </div>
 
@@ -68,7 +68,7 @@
   <div class="card-body">
     <h5 class="card-title">Notebooks</h5>
     <p class="card-text">Los mejores notebooks del mercado, al mejor precio en cuotas y envio gratis.</p>
-    <a href="notebooks.html" class="btn btn-primary">ir a...</a>
+    <a href="notebooks.php" class="btn btn-primary">ir a...</a>
   </div>
 </div>
 </div>

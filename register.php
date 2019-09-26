@@ -5,6 +5,9 @@ $usuario= '';
 $email= '';
 $password= '';
 $confirmPassword = '';
+$archivo= '';
+$archivo= files_get_contents ( $_FILES( ) )
+
  ?>
 
 <!DOCTYPE html>

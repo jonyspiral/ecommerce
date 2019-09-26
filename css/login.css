@@ -19,14 +19,8 @@ label {
   font-size: 3em;
 
 }
-button {
-    display: block;
-    width: 50%;
-    margin-top: 50px;
-    margin-right: auto;
-    margin-left: auto;
-    font-size: 3em;
-}
+
+
 .container {
     height: 100vh;
     width: 80%;
@@ -45,6 +39,7 @@ button {
 }
 .form-control{
   font-size: 3em;
+  border-radius: 0.5rem;
 }
 p {
     text-align: center;
@@ -58,6 +53,26 @@ p {
     text-align: center;
     width: 100%;
   }
+  .navbar-brand {
+   display: inline-block;
+   padding-top: .3125rem;
+   padding-bottom: .3125rem;
+   margin-right: 0;
+   font-size: 1.25rem;
+   line-height: inherit;
+   white-space: nowrap;
+}
+.btn {
+
+    font-size: 2rem;
+  }
+button{
+  width:33.33%;
+  margin-left: auto;
+  margin-right: auto;
+font-size: 2rem;
+}
+
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:portrait){
 #logo {
 
@@ -92,7 +107,7 @@ p {
 @media only screen and (min-device-width :1024px) {
   .container {
 
-    width: 50%;
+    width: 30%;
     padding-top: 5%;
     padding-bottom: 10%;
     margin-left: auto;

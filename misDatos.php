@@ -1,16 +1,4 @@
 <!DOCTYPE html>
-<<<<<<< HEAD
-=======
-<?php
-$usuario= '';
-$email= '';
-$password= '';
-$confirmPassword = '';
- ?>
-
-
-
->>>>>>> 964c47a311e068ebd20c086f55d7621aa67686fe
 <html lang="en" dir="ltr">
   <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -25,7 +13,6 @@ $confirmPassword = '';
   </head>
   <body>
     <div class="container">
-<<<<<<< HEAD
 <<<<<<< HEAD:register.php
     <a id="logo" href="home.php">
     <img src="img\logo.png" alt="go to home" class="navbar-brand" style="width:35%; border-radius: 15%;"  >
@@ -52,36 +39,6 @@ $confirmPassword = '';
 
   </div>
   >
-=======
-    <a id="logo" href="home.html">
-    <img src="img\logo.png" alt="go to home" class="navbar-brand" style="width:10%; border-radius: 15%;"  >
-    </a>
-
-<form class="login" action="" method="post"enctype="multipart/form-data">
-  <img src="img\logo.png" alt="go to home" class="navbar-brand" style="width:35%; border-radius: 15%;"  >
-  </a>
-  <!-- files -->
-  <label for="avatar">Subir avatar</label>
-  <input type="file"  id="avatar" name="avatar">
-
-  <label for="Usuario">Enter User</label>
-  <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter un nombre de usuario" name="email"  value="<?php $usuario ?>">
-
-  <label for="email">Enter Email</label>
-    <input class="form-control" placeholder="Email"type="email" name="email" value="<?php $email ?>">
-
-    <label for="contraseña">Enter Password</label>
-  <input class="form-control" id="password" placeholder="Password" name="password" value="<?php $password  ?>">
-
-  <label for="$confirmPassword">Confirm Password</label>
-  <input type="password" class="form-control" id="confirm-password" placeholder="Password" name="confirmPassword" value=" <?php $confirmPassword ?>">
-
-  <div class="button">
-      <button class="btn-link"  type="button" name="button">Send</button>
-
-  </div>
-
->>>>>>> 964c47a311e068ebd20c086f55d7621aa67686fe
 
   </div>
 

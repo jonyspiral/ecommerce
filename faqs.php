@@ -14,7 +14,7 @@
 <link rel="stylesheet" href="css/faqs.css">
   </head>
   <body>
-    <header>
+    <?php require_once('partials/header.php')?>
       <div  class="container">
 
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -49,7 +49,7 @@
   </nav>
   </div>
 
-    </header>
+    <?php require_once('partials/header.php')?>
     <div class="container">
     <main>
       <div class="cajas">
@@ -105,7 +105,7 @@
       </div>
     </main>
     </div>
-    <footer class="container">
+
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -126,6 +126,6 @@
       </ul>
     </div>
   </nav>
-    </footer>
+    <?php require_once('partials/footer.php')?>
   </body>
 </html>

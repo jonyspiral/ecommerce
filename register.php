@@ -61,14 +61,15 @@ if ($_POST) {
 
 <form class="login" action="register.php" method="post" enctype="multipart/form-data">
   <!-- files -->
-  <a id="logo" href="avatar" name ="avatar">
+  <a id="logo" href="" name ="avatar">
     <img src="img\avatar\default.png" alt="Me" class="navbar-brand" style="width:35%; border-radius: 15%;"   type="file" >
     </a>
 
 
   <!--<label for="avatar">Subir avatar</label>-->
 
-  <input   'img\avatar\default.png'"type="file"  id="avatar" name="avatar" class="btn-primary btn">
+<input type="file" accept="img\avatar\default.png" name="avatar"  class="file-input" id="avatar">
+
   <p> <?= (isset($errores['avatar']) ? $errores['avatar'] : '') ?></p>
 
   <!--<label for="user">Enter user</label>-->

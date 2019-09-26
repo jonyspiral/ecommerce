@@ -35,10 +35,13 @@
   </head>
   <body>
     <div class="container">
+
     <a id="logo" href="home.html">
     <img src="img\logo.png" alt="go to home" class="navbar-brand" style="width:35%; border-radius: 15%;"  >
     </a>
+
 <form class="login" action="login.php" method="post" enctype="multipart/form-data">
+
   <label for="email">Email address</label>
   <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email"
   value="<?= $email ?>">
@@ -53,7 +56,7 @@
 <div class=""style="width:100%; margin-left: 33.33%; margin-right: 33.33%;">
 
 
-      <button class="btn-primary btn"  type="submit" >Enviar</button>
+      <button class="btn-primary btn"  type="submit" >Send</button>
 </div>
 
 

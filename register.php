@@ -1,12 +1,38 @@
-
-
 <?php
-$usuario= '';
+require_once('funciones/autoload.php');
+
+if(estaElUsuarioLogeado()){
+     header('location:miPerfil.php');
+ }
+
+$user ='';
 $email= '';
 $password= '';
 $confirmPassword = '';
-$archivo= '';
-$archivo= files_get_contents ( $_FILES( ) )
+
+
+$errores = [
+  'user' => '',
+    'email' => '',
+    'password' => '',
+    'confirmPassword' => ''
+];
+
+
+if ($_POST) {
+    $user = $_POST ['user'];
+    $email = $_POST ['email'];
+    $password = $_POST['password'];
+    $confirmPassword = $_POST['confirmPassword'];
+
+    	//verifico si el archivo se subio al temporal de php
+      $errores = validarLogin($_POST);
+
+  //verifico errores y redirijo a mi perfil
+      if (!$errores) {
+          header('location:miPerfil.php');
+    }
+}
 
  ?>
 
@@ -32,36 +58,43 @@ $archivo= files_get_contents ( $_FILES( ) )
 
 
 
-<form class="login" action="" method="post" enctype="multipart/form-data">
-<a id="logo" href="">
-  <img src="img\logo.png" alt="go to home" class="navbar-brand" style="width:35%; border-radius: 15%;"  >
-  </a>
+
+<form class="login" action="register.php" method="post" enctype="multipart/form-data">
   <!-- files -->
-  <label for="avatar">Subir avatar</label>
-  <input type="file"  id="avatar" name="avatar">
+  <a id="logo" href="avatar" name ="avatar">
+    <img src="img\avatar\default.png" alt="Me" class="navbar-brand" style="width:35%; border-radius: 15%;"   type="file" >
+    </a>
 
-  <label for="Usuario">Enter User</label>
-  <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter un nombre de usuario" name="email"  value="<?php $usuario ?>">
 
-  <label for="email">Enter Email</label>
-    <input class="form-control" placeholder="Email"type="email" name="email" value="<?php $email ?>">
+  <!--<label for="avatar">Subir avatar</label>-->
 
-    <label for="contraseña">Enter Password</label>
-  <input class="form-control" id="password" placeholder="Password" name="password" value="">
+  <input   'img\avatar\default.png'"type="file"  id="avatar" name="avatar" class="btn-primary btn">
+  <p> <?= (isset($errores['avatar']) ? $errores['avatar'] : '') ?></p>
 
-  <label for="$confirmPassword">Confirm Password</label>
-  <input type="password" class="form-control" id="confirm-password" placeholder="Password" name="confirmPassword" value=" ">
+  <!--<label for="user">Enter user</label>-->
+      <input type="text" class="form-control" id="user" placeholder="Enter user"   name="user" value="<?= $user ?>" >
+      <p> <?= (isset($errores['user']) ? $errores['user'] : '') ?></p>
+
+
+    <!--<label for="email">Enter Email</label>-->
+    <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email"  value="<?= $email ?>">
+  <p> <?= (isset($errores['email']) ? $errores['email'] : '') ?></p>
+
+
+
+    <!--<label for="contraseña">Enter Password</label>-->
+  <input class="form-control" id="password" placeholder="Enter password" name="password" value="">
+  <p> <?= (isset($errores['password']) ? $errores['password'] : '') ?></p>
+
+  <!--<label for="$confirmPassword">Confirm Password</label>-->
+  <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password" name="confirmPassword" value="">
+  <p> <?= (isset($errores['confirmPassword']) ? $errores['confirmPassword'] : '') ?></p>
 
   <div class="button">
-      <button class="btn-link"  type="button" name="button">Send</button>
-
+    <button class="btn-primary btn"  type="submit" >Send</button>
   </div>
-
->>>>>>> 964c47a311e068ebd20c086f55d7621aa67686fe
-
-  </div>
-
 </form>
+  </div>
 
   </body>
 </html>

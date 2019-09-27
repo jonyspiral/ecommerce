@@ -1,6 +1,7 @@
 <?php
    require_once('funciones/autoload.php');
     if(estaElUsuarioLogeado()){
+      
          header('location:miPerfil.php');
      }
     //deberia de buscar al usuario en la base de datos
@@ -51,7 +52,7 @@
 
   <p><?= (isset($errores['password']) ? $errores['password'] : '') ?></p>
 
-
+<input type="checkbox" id="mantener" name="mantener" value="">
   <p><a href="register.php" style="width:100%;font-size: 2em;">(Registrese aqui si aun no lo hizo.)</a></p>
 <div class=""style="width:100%; margin-left: 33.33%; margin-right: 33.33%;">
 

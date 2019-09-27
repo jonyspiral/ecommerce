@@ -1,6 +1,8 @@
 <?php
-
+session_start();
  function estaElUsuarioLogeado () {
-     //TODO de verificar si el usuario esta logeado en el sitio
+     if (isset($_SESSION['email'])){
+       return true;
+     }
      return false;
  }

@@ -43,10 +43,12 @@ if ($_POST) {
       //deberia hacerse solo si no hay errores
 
       $usuario = [
+        'user'=> $user,
         'email' => $email,
         'password' => password_hash($password, PASSWORD_DEFAULT),
         'avatar' => $nombreArchivo,
       ];
+      	//me traigo el archivo entero
 
       if (!file_exists('database')) {
         mkdir('database');
@@ -64,16 +66,18 @@ if ($_POST) {
 
   		file_put_contents('database/usuarios.json', $usuariosJson);
 
-  		header('location:login.php');
-  	}
-
       $errores = validarLogin($_POST);
 
-  //verifico errores y redirijo a mi perfil
+/*verifico errores y redirijo a mi perfil*/
       if (!$errores) {
           header('location:miPerfil.php');
     }
-}
+
+  	/*	header('location:login.php');*/
+  	}
+
+
+
 
  ?>
 
@@ -109,11 +113,6 @@ if ($_POST) {
       <input type="file" accept="img\avatar\default.png" name="avatar"  class="file-input" id="avatar">
       <p> <?= (isset($errores['avatar']) ? $errores['avatar'] : '') ?></p>
   </div>
-
-
-
-
-
 
   <!--<label for="user">Enter user</label>-->
       <input type="text" class="form-control" id="user" placeholder="Enter user"   name="user" value="<?= $user ?>" >

@@ -1,4 +1,5 @@
 body{
+  margin:2%;
 
 
 
@@ -14,6 +15,13 @@ form {
     align-items: center;
     ​
 }
+.form-control {
+    font-size: 2.0em;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 0.5rem;
+  }
 label {
   float: left;
   font-size: 3em;
@@ -22,34 +30,36 @@ label {
 
 
 .container {
-  width: 350px;
+  width: 100%;
     background-color: lightblue;
     border: solid 2px #007bff;
     border-radius: 4%;
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 1%;
+    padding-bottom: 2%;
     margin-left: auto;
     margin-right: auto;
-
-}
-#logo {
-
     width: 100%;
-    margin-right: 33.33%;
-    margin-left: 33.33%;
+    height: 100vh;
+    background-color: lightblue;
+    border: solid 2px #007bff;
+    border-radius: 4%;
+    padding-top: 8%;
+    padding-bottom: 2%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.dentro {
 
 }
-.form-control{
-  font-size: 3em;
-  border-radius: 0.5rem;
-}
+
+
 p {
     text-align: center;
     margin-top: auto;
     margin-left: auto;
     margin-bottom: 1rem;
     margin-right: auto;
-
+    font-size: 2em;
   }
   label{
     text-align: center;
@@ -69,35 +79,42 @@ p {
     font-size: 2rem;
   }
 button{
+  margin-top: 5%;
   width:33.33%;
   margin-left: auto;
   margin-right: auto;
 font-size: 2rem;
 }
 .file-input {
-  visibility:hidden;
-  width: 100%;
+  padding: 1%;
+  display: block;
+  visibility: hidden;
+  width: 90%;
   position: relative;
+  margin-left: auto;
+  margin-right: auto;
 }
+
 .file-input::before {
   content: 'Select your avatar';
-  color: #fff;
+    color: #fff;
     background-color: #007bff;
     border-color: #007bff;
-  display: inline-block;
-
-
-  border-radius: 3px;
-  padding: 5px 8px;
-  outline: none;
-  white-space: nowrap;
-  -webkit-user-select: none;
-  cursor: pointer;
-
-  font-weight: 700;
-  font-size: 10pt;
-  visibility: visible;
-  position: absolute;
+    display: block;
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 18pt;
+    visibility: visible;
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    text-align: center;
 }
 .file-input:hover::before {
   border-color: black;
@@ -105,30 +122,43 @@ font-size: 2rem;
 .file-input:active::before {
   background: grey;
 }
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:portrait){
-#logo {
-
-      width: 100%;
-      margin-right: 33.33%;
-      margin-left: 33.33%;
-      margin-top: 10%;
-  }
+.center{
+  display:block;
+  margin-right: auto;
+  margin-left: auto;
+}
+.logo{
+  border-radius: 10%;
+}
+@media (min-width: 768px){
 .container {
+    max-width: 100%;
+}
+}
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation:portrait){
+
+  body {
+      margin: 5%;
+  }
+  .container {
   width: 400px;
       background-color: lightblue;
       border: solid 2px #007bff;
-      border-radius: 4%;
-      padding-top: 0%;
-      padding-bottom: 0%;
+      border-radius: 3%;
+      padding-top: 2%;
+      padding-bottom: 2%;
       margin-left: auto;
       margin-right: auto;
 
 
   }
-  .form-control{
-    font-size: 2em;
-    width: 100%;
-  }
+  .form-control {
+      font-size: 1.5em;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
   form {
     width: 100%;
     display: block;
@@ -137,25 +167,30 @@ font-size: 2rem;
     margin-top: 5%;
     justify-content: center;
     align-items: center;
+}
 
 }
-}
 @media only screen and (min-device-width :1024px) {
+  body {
+      margin: 5%;
+  }
   .container {
-    width: 400px;
-        background-color: lightblue;
-        border: solid 2px #007bff;
-        border-radius: 4%;
-        padding-top: 0%;
-        padding-bottom: 0%;
+   width: 400px;
+   background-color: lightblue;
+   border: solid 2px #007bff;
+   border-radius: 4%;
+   padding-top: 1%;
+   padding-bottom: 2%;
+   margin-left: auto;
+   margin-right: auto;
+    }
+
+    .form-control {
+        font-size: 1.25em;
+        width: 90%;
         margin-left: auto;
         margin-right: auto;
-    }
-}
-    .form-control{
-      font-size: 2em;
-      width: 100%;
-    }
+      }
 
     form {
       width: 100%;

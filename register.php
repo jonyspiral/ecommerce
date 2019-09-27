@@ -47,13 +47,13 @@ if ($_POST) {
 
     <link rel="stylesheet" href="css/login.css">
     <meta charset="utf-8">
-    <title><registrese</title>
+    <title><Registrese</title>
   </head>
   <body>
     <div class="container">
 
     <a id="logo" href="home.php">
-    <img src="img\logo.png" alt="go to home" class="navbar-brand" style="width:10%; border-radius: 15%;"  >
+    <img src="img\logo.png" alt="go to home" class="center logo" style="width:20%;"  >
     </a>
 
 
@@ -61,16 +61,18 @@ if ($_POST) {
 
 <form class="login" action="register.php" method="post" enctype="multipart/form-data">
   <!-- files -->
-  <a id="logo" href="" name ="avatar">
-    <img src="img\avatar\default.png" alt="Me" class="navbar-brand" style="width:35%; border-radius: 15%;"   type="file" >
-    </a>
+
+  <div class="dentro">
+    <img src="img\avatar\default.png" alt="Me" class="center logo" style="width:40%; " >
+
+      <input type="file" accept="img\avatar\default.png" name="avatar"  class="file-input" id="avatar">
+      <p> <?= (isset($errores['avatar']) ? $errores['avatar'] : '') ?></p>
+  </div>
 
 
-  <!--<label for="avatar">Subir avatar</label>-->
 
-<input type="file" accept="img\avatar\default.png" name="avatar"  class="file-input" id="avatar">
 
-  <p> <?= (isset($errores['avatar']) ? $errores['avatar'] : '') ?></p>
+
 
   <!--<label for="user">Enter user</label>-->
       <input type="text" class="form-control" id="user" placeholder="Enter user"   name="user" value="<?= $user ?>" >
@@ -92,7 +94,7 @@ if ($_POST) {
   <p> <?= (isset($errores['confirmPassword']) ? $errores['confirmPassword'] : '') ?></p>
 
   <div class="button">
-    <button class="btn-primary btn"  type="submit" >Send</button>
+    <button class="center btn-primary btn"  type="submit" >Send</button>
   </div>
 </form>
   </div>

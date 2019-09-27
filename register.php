@@ -4,6 +4,7 @@ require_once('funciones/autoload.php');
 if(estaElUsuarioLogeado()){
      header('location:miPerfil.php');
  }
+$errorArchivo = '';
 
 $user ='';
 $email= '';
@@ -23,9 +24,49 @@ if ($_POST) {
     $user = $_POST ['user'];
     $email = $_POST ['email'];
     $password = $_POST['password'];
-    $confirmPassword = $_POST['confirmPassword'];
-
+      $confirmPassword = $_POST['confirmPassword'];
+      $nombreArchivo = '';
     	//verifico si el archivo se subio al temporal de php
+
+      if ($_FILES['avatar']['error'] === 0) {
+
+        $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+
+        if ($ext != 'png' && $ext != 'jpg' && $ext != 'jpeg') {
+          $errorArchivo = 'Formato de archivo invalido';
+        } else {
+          $nombreArchivo = subirAvatar($_FILES['avatar'], $email);
+        }
+      }
+
+
+      //deberia hacerse solo si no hay errores
+
+      $usuario = [
+        'email' => $email,
+        'password' => password_hash($password, PASSWORD_DEFAULT),
+        'avatar' => $nombreArchivo,
+      ];
+
+      if (!file_exists('database')) {
+        mkdir('database');
+      }
+
+
+      //me traigo el archivo entero
+  		$archivo = file_get_contents('database/usuarios.json');
+
+  		$usuarios = json_decode($archivo, true);
+
+  		$usuarios[] = $usuario;
+
+  		$usuariosJson = json_encode($usuarios);
+
+  		file_put_contents('database/usuarios.json', $usuariosJson);
+
+  		header('location:login.php');
+  	}
+
       $errores = validarLogin($_POST);
 
   //verifico errores y redirijo a mi perfil

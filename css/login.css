@@ -1,8 +1,6 @@
+@media (min-width: 0px) and  (max-device-width: 576px){
 body{
   margin:2%;
-
-
-
 }
 
 form {
@@ -130,6 +128,7 @@ font-size: 2rem;
 .logo{
   border-radius: 10%;
 }
+}
 @media (min-width: 768px){
 .container {
     max-width: 100%;
@@ -159,16 +158,13 @@ font-size: 2rem;
       margin-right: auto;
     }
 
-  form {
-    width: 100%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 5%;
-    justify-content: center;
-    align-items: center;
+    form {
+      width: 100%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 10%;
 }
-
 }
 @media only screen and (min-device-width :1024px) {
   body {
@@ -202,4 +198,136 @@ font-size: 2rem;
       align-items: center;
 
   }
+}*/
+/*
+@media (min-width: 576px) {
+body {
+    margin: 5%;
+}
+.container {
+max-width: 100%;
+    background-color: lightblue;
+    border: solid 2px #007bff;
+    border-radius: 3%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-left: auto;
+    margin-right: auto;
+
+
+}
+.form-control {
+    font-size: 1.5em;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  form {
+    width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+}
+}
+
+ /*Medium devices (tablets, 768px and up)
+@media (min-device-width: 576)and (max-device-width: 768px) {
+body {
+    margin: 5%;
+}
+.container {
+max-width: 100%;
+    background-color: lightblue;
+    border: solid 2px #007bff;
+    border-radius: 3%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-left: auto;
+    margin-right: auto;
+
+
+}
+.form-control {
+    font-size: 1.5em;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  form {
+    width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+}
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 768) and (max-device-width: 992)  {
+body {
+    margin: 5%;
+}
+.container {
+width: 400px;
+    background-color: lightblue;
+    border: solid 2px #007bff;
+    border-radius: 3%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-left: auto;
+    margin-right: auto;
+
+
+}
+.form-control {
+    font-size: 1.5em;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  form {
+    width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+}
+}
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 992PX) {
+    body {
+
+      margin: 5%;
+  }
+  .container {
+  width: 400px;
+      background-color: lightblue;
+      border: solid 2px #007bff;
+      border-radius: 3%;
+      padding-top: 2%;
+      padding-bottom: 2%;
+      margin-left: auto;
+      margin-right: auto;
+
+
+  }
+  .form-control {
+      font-size: 1.5em;
+      width: 90%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    form {
+      width: 100%;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 10%;
+}
+}
 }

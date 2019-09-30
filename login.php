@@ -3,7 +3,7 @@
     require_once('funciones/autoload.php');
 
     if (isset($_COOKIE['mantener'])) {
-        $_SESSION['email'] = $_COOKIE['recuerdame'];
+        $_SESSION['email'] = $_COOKIE['mantener'];
         $_SESSION['avatar'] = '';
     }
     if(estaElUsuarioLogeado()){
@@ -43,8 +43,8 @@ if ($_POST) {
                         setcookie('mantener', $email, time() + 60*60*24*7 );
                     }
                     //luego redirijo a miPerfil
-                    var_dump($_SESSION);
-                    //header('location:miPerfil.php');
+
+                    header('location:miPerfil.php');
                 }
               }
     //deberia de buscar al usuario en la base de datos
@@ -70,18 +70,18 @@ if ($_POST) {
   </head>
   <body>
     <div class="container">
-
-    <a id="logo" href="home.html">
-    <img src="img\logo.png" alt="go to home" class="navbar-brand" style="width:35%; border-radius: 15%;"  >
-    </a>
-
+      <div class="containerExt logo">
+        <a id="logo" href="home.php">
+          <img src="img\logo.png" alt="go to home" class="containerDentro logo"  >
+        </a>
+      </div>
 <form class="login" action="login.php" method="post" enctype="multipart/form-data">
 
-  <label for="email">Email address</label>
+  <label class="containerDentro"for="email">Email address</label>
   <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email"
   value="<?= $email ?>">
   <p> <?= (isset($errores['email']) ? $errores['email'] : '') ?></p>
-    <label for="contraseña">Contraseña</label>
+    <label class="containerDentro" for="contraseña">Contraseña</label>
   <input class="form-control" placeholder="Enter password" type="password" name="password" value="">
 
   <p><?= (isset($errores['password']) ? $errores['password'] : '') ?></p>

@@ -2,15 +2,20 @@
 require_once 'funciones\autoload.php';
 
 
-
 if(estaElUsuarioLogeado()){
   $log= 'logout.php';
   $logTittle='Log out';
   }else{
-  $_log= login.php;
-  $logTittle='Log out';
+  $log= 'login.php';
+  $logTittle='Log in';
 }
+ 
+
  ?>
+ <!DOCTYPE html>
+ <html lang="en" dir="ltr">
+
+
 <header>
   <div  class="container">
 
@@ -38,6 +43,7 @@ if(estaElUsuarioLogeado()){
     </li>
   </ul>
   <a class="navbar-brand" target="_blank" href="<?=$log?>"><?=$logTittle ?></a>
+
   <form class="form-inline my-2 my-lg-0">
     <input class="form-control mr-sm-2" type="search" placeholder="Search">
     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
@@ -47,3 +53,4 @@ if(estaElUsuarioLogeado()){
 </div>
 
 </header>
+  </html>

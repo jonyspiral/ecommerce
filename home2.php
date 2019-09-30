@@ -1,6 +1,5 @@
-<?php
-  require_once('funciones/autoload.php');
-  ?>
+?php
+ ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>

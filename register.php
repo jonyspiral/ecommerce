@@ -109,7 +109,8 @@ foreach ($usuarios as $usuario) {
                     setcookie('mantener', $email, time() + 60*60*24*7 );
                 }
                 //luego redirijo a miPerfil
-                header('location:miPerfil.php');
+                      //var_dump($_SESSION['avatar']);"<br>";
+          header('location:miPerfil.php');
             }
           }
 //deberia de buscar al usuario en la base de datos
@@ -137,7 +138,7 @@ foreach ($usuarios as $usuario) {
     <title><Registrese</title>
   </head>
   <body>
-    <div class="container">
+    <div class="container maxViewport">
 
     <a id="logo" href="home.php">
     <img src="img\logo.png" alt="go to home" class="center logo" style="width:20%;"  >
@@ -163,16 +164,16 @@ foreach ($usuarios as $usuario) {
       <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email"  value="<?= $email ?>" required>
       <p> <?= (isset($errores['email']) ? $errores['email'] : '' ) ?></p>
 
-      <input type="text" class="form-control" id="name" placeholder="Enter name"   name="name" value="<?= $name ?>" >
+      <input type="text" class="form-control" id="name" placeholder="Enter name"   name="name" value="<?= $name ?>" required >
       <p></p>
 
-      <input type="text" class="form-control" id="lastName" placeholder="Enter lastName"   name="lastName" value="<?= $lastName ?>" >
+      <input type="text" class="form-control" id="lastName" placeholder="Enter lastName"   name="lastName" value="<?= $lastName ?>" required>
       <p></p>
 
-      <input class="form-control" id="password" placeholder="Enter password" name="password" value="">
+      <input class="form-control" id="password" placeholder="Enter password" name="password" value="" required>
       <p> <?= (isset($errores['password']) ? $errores['password'] : '') ?></p>
 
-      <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password" name="confirmPassword" value="">
+      <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password" name="confirmPassword" value="" required>
       <p> <?= (isset($errores['confirmPassword']) ? $errores['confirmPassword'] : '') ?></p>
 
   <div class="button">

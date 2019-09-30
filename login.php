@@ -1,24 +1,58 @@
 <?php
-   require_once('funciones/autoload.php');
+
+    require_once('funciones/autoload.php');
+
+    if (isset($_COOKIE['mantener'])) {
+        $_SESSION['email'] = $_COOKIE['recuerdame'];
+        $_SESSION['avatar'] = '';
+    }
     if(estaElUsuarioLogeado()){
-      
-         header('location:miPerfil.php');
-     }
+        header('location:miPerfil.php');
+    }
+
+    //VALIDO el correo.
+
+    $email = '';
+    $password = '';
+    $errores = [
+        'email' => '',
+        'password' => ''
+    ];
+if ($_POST) {
+    $email = trim($_POST['email']);
+    $password = $_POST['password'];
+    $errores = validarLogin($_POST);
+
+    if (!$errores) {
+
+          $archivo = file_get_contents('database/usuarios.json');
+
+          $usuarios = json_decode($archivo, true);
+
+    foreach ($usuarios as $usuario) {
+                if (($usuario['email'] == $email )&& password_verify($password, $usuario['password'])) {
+                    //aqui es donde encontré al usuario y lo logeo
+                    $_SESSION['email'] = $email;
+                    $_SESSION['name'] = $usuario['name'];
+                    $_SESSION['lastName'] = $usuario['lastName'];
+                    $_SESSION['avatar'] = $usuario['avatar'];
+                    $_SESSION['user']= $usuario['user'];
+                    //si checkaron el recuerdame
+                    if (isset($_POST['mantener'])) {
+                        //guardo la cookie del email
+                        setcookie('mantener', $email, time() + 60*60*24*7 );
+                    }
+                    //luego redirijo a miPerfil
+                    var_dump($_SESSION);
+                    //header('location:miPerfil.php');
+                }
+              }
     //deberia de buscar al usuario en la base de datos
         //y si no esta lanzar un error
-        $email = '';
-        $password = '';
-        $errores = [
-            'email' => '',
-            'password' => ''
-        ];
-    if ($_POST) {
-        $email = trim($_POST['email']);
-        $errores = validarLogin($_POST);
-        if (!$errores) {
-            header('location:miPerfil.php');
+        $errores['email'] = 'Usuario o clave incorrectos';
+
         }
-    }
+  }
 ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">

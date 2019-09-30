@@ -1,3 +1,21 @@
+<?php
+require_once 'funciones\autoload.php';
+
+    $name= $_SESSION['name'];
+    $lastName= $_SESSION['lastName'];
+    $user= $_SESSION['user'];
+    $email = $_SESSION['email'];
+    $avatar =($_SESSION['avatar'] = null) ?$_SESSION['avatar'] : 'default.png' ;
+
+
+
+
+//var_dump($_COOKIE);"<br>";
+
+
+ ?>
+
+
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -20,11 +38,11 @@
     <div class="container">
 
       <div class="imagen-logo" >
-      <img src="https://img.icons8.com/ios-filled/50/000000/name.png" alt="Usuario">
+      <img src="img\avatar\<?=$avatar?>" alt="Yo">
       </div>
       <div class="container" >
         <h1>Bienvenido!</h1>
-          <p>Usuario: Mariano Rodriguez </p>
+          <p><?=($name.' '.$lastName) ?></p>
       </div>
       <div class="container">
 

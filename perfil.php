@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    echo $_SESSION['name'];
+ ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -11,49 +15,10 @@
     <!---->
     <link rel="stylesheet" href="css/user.css">
     <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-<<<<<<< HEAD:perfil.php
-    <header>
-      <div  class="container">
+    <title> Mi perfil</title>
 
-      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-
-        <a  href="home.html">
-            <img src="img\logo.png" alt="" class="navbar-brand" style="width:50px; border-radius:15%"   >
-        </a>
-        <a  href="cart.html">
-              <img src="img\icons8-shopaholic-50.png" alt="" class="navbar-brand" style="width:50px; border-radius:15%"  >
-        </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-      <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-        <li class="nav-item active">
-          <a class="nav-link" href="teleAudio.html">Televisores y audio</a>
-        </li>
-      <li class="nav-item active">
-          <a class="nav-link" href="celulares.html">Celulares</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="notebooks.html" >Notebooks</a>
-        </li>
-      </ul>
-      <a class="navbar-brand" target="_blank" href="login.html">Login</a>
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
-    </div>
-  </nav>
-  </div>
-
-    </header>
-=======
     <?php require_once('partials/header.php') ?>
->>>>>>> 964c47a311e068ebd20c086f55d7621aa67686fe:miPerfil.php
+
     <div class="container">
 
       <div class="imagen-logo" >
@@ -91,35 +56,6 @@
 
         </div>
       </div>
-<<<<<<< HEAD:perfil.php
-      <footer class="container">
-=======
-    
->>>>>>> 964c47a311e068ebd20c086f55d7621aa67686fe:miPerfil.php
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-          <li class="nav-item active">
-            <a class="nav-link" href="contact.html">Contacto</a>
-          </li>
-        <li class="nav-item active">
-            <a class="nav-link" href="faqs.html">FAqs</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="user.html" >Mi Cuenta</a>
-          </li>
-          <li class="nav-item active">
-          <img src="https://img.icons8.com/cute-clipart/64/000000/instagram-new.png">  </li>
-          <li class="nav-item active">
-          <img src="https://img.icons8.com/cute-clipart/64/000000/facebook.png">
-        </li>
-        </ul>
-
-    </nav>
-<<<<<<< HEAD:perfil.php
-      </footer>
-=======
         <?php require_once('partials/footer.php')?>
->>>>>>> 964c47a311e068ebd20c086f55d7621aa67686fe:miPerfil.php
   </body>
 </html>

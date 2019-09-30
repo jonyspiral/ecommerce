@@ -5,13 +5,45 @@ require_once 'funciones\autoload.php';
     $lastName= $_SESSION['lastName'];
     $user= $_SESSION['user'];
     $email = $_SESSION['email'];
+    $nombreArchivo = '';
+
   if ($_SESSION['avatar']) {
-      $avatar =  $_SESSION['avatar']  ;
+      $avatar =  $_SESSION['avatar'] ;
 
     }else{
     $avatar = 'default.png';
+}
 
-    }
+
+    if ($_FILES['avatar']['error'] === 0) {
+
+      $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+
+      if ($ext != 'png' && $ext != 'jpg' && $ext != 'jpeg') {
+        $errorArchivo = 'Formato de archivo invalido';
+      } else {
+        $nombreArchivo = subirAvatar($_FILES['avatar'], $email);
+
+
+      }
+        //aca meter todolo del if error=== 0
+        $archivo = file_get_contents('database/usuarios.json');
+        $usuarios = json_decode($archivo, true);
+
+        var_dump($email);
+        foreach ($usuarios as $key => $usuario) {
+
+                  if (($usuario['email'] == $email ) {
+//aca quiero poner en el array el avatar . me da error.
+               //aqui es donde encontré al usuario
+              //  $usuario['avatar'] =$nombreArchivo;
+              //file_put_contents('database/usuarios.json', $usuariosJson);
+            }
+
+        }//aca termina el foreach
+}
+
+
  ?>
 
 
@@ -32,24 +64,34 @@ require_once 'funciones\autoload.php';
     <meta charset="utf-8">
     <title></title>
   </head>
-  <body>
+  <body >
+<div  class=" containerExt">
+
 
     <?php require_once('partials/header.php') ?>
 
-    <div class="containerExt styleLogin">
+    <div class="containerExt maxViewport styleLogin">
 
 
       <div class="containerExt">
-        <img class="containerDentro logo"src="img\avatar\<?=$avatar?>" alt="Yo">
-      <input type="file" accept="img\avatar\default.png" name="avatar"  class="file-input" id="avatar">
+        <img class="containerDentro logo"src="img\avatar\<?=$avatar?>" alt="Yo"s style="width: 30%;">
+
+
+        <form class="" action="miPerfil.php" method="post" enctype="multipart/form-data">
+      <input type="file" accept="img\avatar\<?=$avatar?>" name="avatar"  class="file-input" id="avatar">
+
       <p> <?= (isset($errores['avatar']) ? $errores['avatar'] : '') ?></p>
+      <input class="center btn-primary btn" type="submit" value="Enviar datos" >
+      <?php var_dump($_FILES); ?>
+
+    </form>
       </div>
       <div class="containerExt" >
 
         <h1 class="" >Bienvenido! <?=($name.' '.$lastName) ?></h1>
 
       </div>
-      <div class="containerExt">
+      <div class="containerExt center">
 
 
 
@@ -79,5 +121,6 @@ require_once 'funciones\autoload.php';
       </div>
 
         <?php require_once('partials/footer.php')?>
+        </div>
   </body>
 </html>

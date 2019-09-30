@@ -1,5 +1,5 @@
 <?php  ?>
-<footer class="container">
+<footer class="container" style="position:absolute;">
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <ul class="navbar-nav mr-auto mt-2 mt-lg-0">

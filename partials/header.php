@@ -9,7 +9,7 @@ if(estaElUsuarioLogeado()){
   $log= 'login.php';
   $logTittle='Log in';
 }
- 
+
 
  ?>
  <!DOCTYPE html>
@@ -17,7 +17,7 @@ if(estaElUsuarioLogeado()){
 
 
 <header>
-  <div  class="container">
+  <div  class="container mobileMenu">
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 

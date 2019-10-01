@@ -88,7 +88,7 @@ margin-top: 5px;
     white-space: nowrap;
     visibility: visible;
     position: relative;
-    width: 90%;
+    width: 300px;
     text-align: center;
     font-size: 15pt;
     border-radius: 15px 15px 15px 15px;
@@ -108,7 +108,7 @@ font-size: 2rem;
     padding: 1px 0px;
     white-space: nowrap;
     position: relative;
-    width: 70%;
+    width: 230px;
     text-align: center;
     font-size: 12pt;
   font-weight: 600;
@@ -119,7 +119,7 @@ font-size: 2rem;
     padding: 1% 0%;
     display: block;
     visibility: hidden;
-    width: 100%;
+    width: 230px;
     position: relative;
     margin-left: auto;
     margin-right: auto;
@@ -144,11 +144,10 @@ font-size: 2rem;
     position: relative;
     margin-left: auto;
     margin-right: auto;
-    width: 70%;
+    width: 230px;
     text-align: center;
 }
-*, ::after, ::before {
-}
+
 .file-input:hover::before {
   border-color: black;
 }
@@ -163,15 +162,15 @@ font-size: 2rem;
       margin-right: auto;
       margin-left: auto;
   }
-}
 
-}
+
+
 .borderRadiusUp{
   border-radius: 0px 0px 15px 15px ;
 }
 .borderRadiusDown{
   border-radius: 15px 15px 0px 0px;
-
+}
 /*.mobileMenu{
 position: fixed;
     bottom: 150px;

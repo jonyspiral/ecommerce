@@ -119,9 +119,6 @@ foreach ($usuarios as $usuario) {
     }
 	}
 
-
-
-
  ?>
 
 <!DOCTYPE html>
@@ -138,20 +135,19 @@ foreach ($usuarios as $usuario) {
     <title><Registrese</title>
   </head>
   <body>
-    <div class="container maxViewport">
-
-    <a id="logo" href="home.php">
+    <div class="containerExt maxViewport styleLogin">
+<div class="containerDentro">
+    <a class="" id="logo" href="Index.php">
     <img src="img\logo.png" alt="go to home" class="center logo" style="width:20%;"  >
     </a>
-
 
 
 
 <form class="login" action="register.php" method="post" enctype="multipart/form-data">
   <!-- files -->
 
-  <div class="dentro">
-    <img src="img\avatar\default.png" alt="Me" class="center logo" style="width:40%; " >
+  <div class="containerDentro" >
+    <img src="img\avatar\default.png" alt="Me" class="center logo" style="height:150px; " >
 
       <input type="file" accept="img\avatar\default.png" name="avatar"  class="file-input" id="avatar">
       <p> <?= (isset($errores['avatar']) ? $errores['avatar'] : '') ?></p>
@@ -177,9 +173,10 @@ foreach ($usuarios as $usuario) {
       <p> <?= (isset($errores['confirmPassword']) ? $errores['confirmPassword'] : '') ?></p>
 
   <div class="button">
-    <input type="checkbox" id="mantener" name="mantener" value="">
-    <button class="center btn-primary btn"  type="submit" >Send</button>
+    <input type="checkbox" id="mantener" name="mantener" value="" style=" display:block;">
+    <button class="center btn-primary btn"  type="submit" style="width:300px;">Send</button>
   </div>
+    </div>
 </form>
   </div>
 

@@ -1,6 +1,8 @@
 <?php
 require_once 'funciones\autoload.php';
-
+if(!estaElUsuarioLogeado()){
+    header('location:login.php');
+}
     $name= $_SESSION['name'];
     $lastName= $_SESSION['lastName'];
     $user= $_SESSION['user'];
@@ -22,26 +24,27 @@ require_once 'funciones\autoload.php';
         $errorArchivo = 'Formato de archivo invalido';
       } else {
         $nombreArchivo = subirAvatar($_FILES['avatar'], $email);
+        $_SESSION['avatar']=$nombreArchivo;
       }
         //aca meter todolo del if error=== 0
         $archivo = file_get_contents('database/usuarios.json');
         $usuarios = json_decode($archivo, true);
-
+//var_dump($usuarios);
       foreach ($usuarios as $key => $usuario) {
 //aqui es donde encontré al usuario
                   if ($usuario['email'] == $email ) {
-                    $usuarios[$key]['avatar'] = $nombreArchivo;
-
-
+                  $usuarios[$key]['avatar'] = $nombreArchivo;
               //  $usuario['avatar'] =$nombreArchivo;
+
             $usuariosJson= json_encode($usuarios);
               file_put_contents('database/usuarios.json', $usuariosJson);
+
             }
 
         }//aca termina el foreach
 }else {
   //aca declaro $errores
-  $errores ='Hay un error al subir el archivo '.$_FILES['avatar']['error'];
+  $errores ='Hay un error' .$_FILES['avatar']['error'].'al subir el archivo ';
 }
 
 
@@ -73,32 +76,32 @@ require_once 'funciones\autoload.php';
 
           <div class="containerDentro ">
             <h1 class="styleTitle center" >Bienvenido! <?=($name.' '.$lastName) ?></h1>
-            <img class="containerDentro  "src="img\avatar\<?=$avatar?>" alt="Yo"s style="width:100% height:100px border-radius: 15px 15px 15px 15px;">
+            <img class="containerDentro  "src="img\avatar\<?=$avatar?>" alt="Yo"style="height:150px; border-radius: 15px 15px 15px 15px;">
           </div>
 
-      <form class="" action="miPerfil.php" method="post" enctype="multipart/form-data" style="border-radius: 15px 15px 15px 15px;";>
-          <input type="file" accept="img\avatar\<?=$avatar?>" name="avatar"  class=" borderRadiusUP file-input" id="avatar">
+      <form class="" action="miPerfil.php" method="post" enctype="multipart/form-data" >
+          <input type="file" accept="img\avatar\<?=$avatar?>" name="avatar"  class=" borderRadiusUp file-input" id="avatar"style="width:100%;">
           <p> <?= (isset($errores) ? $errores : '') ?></p>
-          <input class="center btn-primary borderRadiusUP btnHalf" type="submit" value="2- Enviar imagen" style="margin-bottom: 14px;">
+          <input class="center btn-primary borderRadiusDown btnHalf" type="submit" value="2- Enviar imagen" style="width:200px; margin-bottom: 14px;">
 
 
         <ul class="center">
-          <li class="center btn-primary btn">
+          <li class="center btn-primary btn" style="width:300px;">
             Mis Compras
           </li>
-          <li class="center btn-primary btn">
+          <li class="center btn-primary btn" style="width:300px;">
             Favoritos
           </li>
-          <li class="center btn-primary btn">
+          <li class="center btn-primary btn" style="width:300px;">
             Presupuestos
           </li>
-          <li class="center btn-primary btn">
+          <li class="center btn-primary btn" style="width:300px;">
             Envios
           </li>
-          <li class="center btn-primary btn">
+          <li class="center btn-primary btn" style="width:300px;">
             Mis Datos
           </li>
-          <li class="center btn-primary btn">
+          <li class="center btn-primary btn" style="width:300px;">
             Seguridad
           </li>
         </ul>

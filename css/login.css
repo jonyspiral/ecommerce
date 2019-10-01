@@ -27,7 +27,7 @@ ul{
 }
 .form-control {
     font-size: 1.5em;
-    width: 90%;
+    width: 300px;
     margin-left: auto;
     margin-right: auto;
     border-radius: 0.5rem;
@@ -41,9 +41,10 @@ ul{
   display: block;
    margin-left: auto;
    margin-right: auto;
-
+  margin-bottom: 20px;
 }
 .containerExt{
+
 
   overflow: hidden;
   max-width: 98%;
@@ -82,7 +83,7 @@ p {
    white-space: nowrap;
 }
 .btn {
-margin-top: 5px;
+    margin-top: 5px;
     padding: 1px 6px;
     outline: none;
     white-space: nowrap;
@@ -144,11 +145,10 @@ font-size: 2rem;
     position: relative;
     margin-left: auto;
     margin-right: auto;
-    width: 70%;
+    width: 200px;
     text-align: center;
 }
-*, ::after, ::before {
-}
+
 .file-input:hover::before {
   border-color: black;
 }
@@ -163,15 +163,15 @@ font-size: 2rem;
       margin-right: auto;
       margin-left: auto;
   }
-}
 
-}
+
+
 .borderRadiusUp{
   border-radius: 0px 0px 15px 15px ;
 }
 .borderRadiusDown{
-  border-radius: 15px 15px 0px 0px;
-
+  border-radius: 0px 0px 15px 15px;
+}
 /*.mobileMenu{
 position: fixed;
     bottom: 150px;

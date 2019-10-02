@@ -69,15 +69,15 @@ if ($_POST) {
     <title>Login</title>
   </head>
   <body>
-    <div class="containerExt">
+    <div class="containerExt styleLogin">
 
-      <div class="containerDentro logo">
+      <div class="containerDentro">
         <a id="logo" href="home.php">
-          <img src="img\logo.png" alt="go to home" class="logo" >
+          <img src="img\logo.png" alt="go to home" class="logo" style="width:85px" >
         </a>
       </div>
-<div class="containerExt styleLogin">
-  <form class="containerExt" action="login.php" method="post" enctype="multipart/form-data">
+<div class="containerExt ">
+  <form class="" action="login.php" method="post" enctype="multipart/form-data">
 
   <!--<label class="containerDentro"for="email">Email address</label>-->
   <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email" value="<?= $email ?>">

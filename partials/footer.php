@@ -13,9 +13,9 @@
       <a class="nav-link" href="user.php" >Mi Cuenta</a>
     </li>
     <li class="nav-item active">
-    <img src="https://img.icons8.com/cute-clipart/64/000000/instagram-new.png">      </li>
+    <img src="img\f_logo_RGB-White_72.png">      </li>
     <li class="nav-item active">
-    <img src="https://img.icons8.com/cute-clipart/64/000000/facebook.png">
+    <img src="img\instagram-xxl.png">
   </li>
   </ul>
 </div>

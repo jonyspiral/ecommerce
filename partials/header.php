@@ -1,5 +1,5 @@
 <?php
-require_once 'funciones\autoload.php';
+require_once 'funciones/autoload.php';
 
 
 if(estaElUsuarioLogeado()){

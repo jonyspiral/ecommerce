@@ -1,5 +1,5 @@
 <?php
-require_once 'funciones\autoload.php';
+require_once 'funciones/autoload.php';
 if(!estaElUsuarioLogeado()){
     header('location:login.php');
 }
@@ -15,6 +15,9 @@ if(!estaElUsuarioLogeado()){
     $avatar = 'default.png';
 }
 
+  //var_dump( $_POST);
+//var_dump( $_SESSION['avatar']);
+if ($_POST){
 
     if ($_FILES['avatar']['error'] === 0) {
 
@@ -45,8 +48,9 @@ if(!estaElUsuarioLogeado()){
 }else {
   //aca declaro $errores
   $errores ='Hay un error' .$_FILES['avatar']['error'].'al subir el archivo ';
-}
+}// aca termina el if de $_FILES
 
+}
 
  ?>
  <!DOCTYPE html>
@@ -82,7 +86,9 @@ if(!estaElUsuarioLogeado()){
       <form class="" action="miPerfil.php" method="post" enctype="multipart/form-data" >
           <input type="file" accept="img\avatar\<?=$avatar?>" name="avatar"  class=" borderRadiusUp file-input" id="avatar"style="width:100%;">
           <p> <?= (isset($errores) ? $errores : '') ?></p>
-          <input class="center btn-primary borderRadiusDown btnHalf" type="submit" value="2- Enviar imagen" style="width:200px; margin-bottom: 14px;">
+          <!--<input class="center btn-primary borderRadiusDown btnHalf" type="submit" value="2- Enviar imagen" style="width:200px; margin-bottom: 14px;">-->
+          <button class="center btn-primary borderRadiusDown btnHalf" type="submit" value="2- Enviar imagen" style="width:200px; margin-bottom: 14px;"name="button">"2- Enviar imagen" </button>
+      </form>
 
 
         <ul class="center">
@@ -106,7 +112,6 @@ if(!estaElUsuarioLogeado()){
           </li>
         </ul>
 
-      </form>
 
       </div>
 

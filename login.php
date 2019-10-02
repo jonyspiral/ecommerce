@@ -87,7 +87,7 @@ if ($_POST) {
 
   <p><?= (isset($errores['password']) ? $errores['password'] : '') ?></p>
 
-  <input type="checkbox" id="mantener" name="mantener" value="">
+  <input type="checkbox" id="mantener" name="mantener" value="">Mantener logueado.
   <p><a href="register.php" style="font-size: 2em;">(Registrese aqui si aun no lo hizo.)</a></p>
 
   <div class="center">

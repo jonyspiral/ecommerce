@@ -1,5 +1,5 @@
 <?php
-require_once 'funciones\autoload.php';
+require_once 'funciones/autoload.php';
 
 
 if(estaElUsuarioLogeado()){
@@ -17,7 +17,7 @@ if(estaElUsuarioLogeado()){
 
 
 <header>
-  <div  class="container mobileMenu">
+  <div  class="containerExt mobileMenu">
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 

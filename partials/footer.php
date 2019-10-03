@@ -1,5 +1,5 @@
 <?php  ?>
-<footer class="container" >
+<footer class="containerExt" >
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
@@ -13,9 +13,9 @@
       <a class="nav-link" href="user.php" >Mi Cuenta</a>
     </li>
     <li class="nav-item active">
-    <img src="https://img.icons8.com/cute-clipart/64/000000/instagram-new.png">      </li>
+    <img src="img\f_logo_RGB-White_72.png" style="width: 50px">      </li>
     <li class="nav-item active">
-    <img src="https://img.icons8.com/cute-clipart/64/000000/facebook.png">
+    <img src="img\instagram-xxl.png" style="width: 50px">
   </li>
   </ul>
 </div>

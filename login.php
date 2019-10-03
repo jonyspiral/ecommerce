@@ -69,31 +69,31 @@ if ($_POST) {
     <title>Login</title>
   </head>
   <body>
-    <div class="container">
-      <div class="containerExt logo">
+    <div class="containerExt styleLogin">
+
+      <div class="containerDentro">
         <a id="logo" href="home.php">
-          <img src="img\logo.png" alt="go to home" class="containerDentro logo"  >
+          <img src="img\logo.png" alt="go to home" class="logo" style="width:85px" >
         </a>
       </div>
-<form class="login" action="login.php" method="post" enctype="multipart/form-data">
+<div class="containerExt ">
+  <form class="" action="login.php" method="post" enctype="multipart/form-data">
 
-  <label class="containerDentro"for="email">Email address</label>
-  <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email"
-  value="<?= $email ?>">
+  <!--<label class="containerDentro"for="email">Email address</label>-->
+  <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email" value="<?= $email ?>">
   <p> <?= (isset($errores['email']) ? $errores['email'] : '') ?></p>
-    <label class="containerDentro" for="contraseña">Contraseña</label>
+  <!--<label class="containerDentro" for="contraseña">Contraseña</label>-->
   <input class="form-control" placeholder="Enter password" type="password" name="password" value="">
 
   <p><?= (isset($errores['password']) ? $errores['password'] : '') ?></p>
 
-<input type="checkbox" id="mantener" name="mantener" value="">
-  <p><a href="register.php" style="width:100%;font-size: 2em;">(Registrese aqui si aun no lo hizo.)</a></p>
-<div class=""style="width:100%; margin-left: 33.33%; margin-right: 33.33%;">
+  <input type="checkbox" id="mantener" name="mantener" value="">Mantener logueado.
+  <p><a href="register.php" style="font-size: 2em;">(Registrese aqui si aun no lo hizo.)</a></p>
 
-
-      <button class="btn-primary btn"  type="submit" >Send</button>
+  <div class="center">
+      <button class=" btn-primary btn"  type="submit" >Send</button>
+  </div>
 </div>
-
 
 </form>
   </div>

@@ -25,8 +25,6 @@ function validarLogin($datos) {
     }else if (isset($datos['confirmPassword']) && $datos['confirmPassword'] != $password){
       $errores ['confirmPassword']='Password y confirmacion no son identicos';
     }
-
-
     //deberia de buscar al usuario en la base de datos
         //y si no esta lanzar un error
 

@@ -27,7 +27,7 @@ ul{
 }
 .form-control {
     font-size: 1.5em;
-    width: 90%;
+    width: 300px;
     margin-left: auto;
     margin-right: auto;
     border-radius: 0.5rem;
@@ -41,9 +41,10 @@ ul{
   display: block;
    margin-left: auto;
    margin-right: auto;
-
+  margin-bottom: 20px;
 }
 .containerExt{
+
 
   overflow: hidden;
   max-width: 98%;
@@ -82,7 +83,7 @@ p {
    white-space: nowrap;
 }
 .btn {
-margin-top: 5px;
+    margin-top: 5px;
     padding: 1px 6px;
     outline: none;
     white-space: nowrap;
@@ -144,7 +145,11 @@ font-size: 2rem;
     position: relative;
     margin-left: auto;
     margin-right: auto;
+<<<<<<< HEAD
     width: 230px;
+=======
+    width: 200px;
+>>>>>>> bc219320d699cb68c2a0f51a96dc188fdeecd3c8
     text-align: center;
 }
 
@@ -169,7 +174,11 @@ font-size: 2rem;
   border-radius: 0px 0px 15px 15px ;
 }
 .borderRadiusDown{
+<<<<<<< HEAD
   border-radius: 15px 15px 0px 0px;
+=======
+  border-radius: 0px 0px 15px 15px;
+>>>>>>> bc219320d699cb68c2a0f51a96dc188fdeecd3c8
 }
 /*.mobileMenu{
 position: fixed;

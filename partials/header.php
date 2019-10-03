@@ -17,7 +17,7 @@ if(estaElUsuarioLogeado()){
 
 
 <header>
-  <div  class="containerExt borderRadiusUp ">
+  <div  class="containerExt  ">
 
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 

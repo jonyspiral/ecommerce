@@ -1,6 +1,6 @@
 
 body{
-  
+
 
 }
 .container {
@@ -36,4 +36,18 @@ body{
       margin-right: auto;
       margin-left: auto;
       text-align: center;
+  }
+  .containerAbsolute{
+    position: absolute;
+    width: 100%;
+
+  }
+  .containerRelFloatLeft{
+    position: relative;
+    float: left;
+    width: 100%;
+
+  }
+  .padd2 {
+    padding:2%
   }

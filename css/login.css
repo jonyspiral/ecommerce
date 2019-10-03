@@ -37,11 +37,11 @@ ul{
   height: 100vh;
 }
 .containerDentro {
-    margin-top: 15px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 15px;
+
+  display: block;
+   margin-left: auto;
+   margin-right: auto;
+  margin-bottom: 20px;
 }
 .containerExt{
 
@@ -89,7 +89,7 @@ p {
     white-space: nowrap;
     visibility: visible;
     position: relative;
-    width: 300px;
+    width: 90%;
     text-align: center;
     font-size: 15pt;
     border-radius: 15px 15px 15px 15px;
@@ -97,19 +97,12 @@ p {
     -webkit-border-radius: 15px 15px 15px 15px;
   }
 
-/*button{
-  margin-top: 5%;
-  width:33.33%;
-  margin-left: auto;
-  margin-right: auto;
-font-size: 2rem;
-}*/
 .btnHalf{
   margin-bottom: 2px;
     padding: 1px 0px;
     white-space: nowrap;
     position: relative;
-    width: 230px;
+    width: 70%;
     text-align: center;
     font-size: 12pt;
   font-weight: 600;
@@ -120,7 +113,7 @@ font-size: 2rem;
     padding: 1% 0%;
     display: block;
     visibility: hidden;
-    width: 200px;
+    width: 100%;
     position: relative;
     margin-left: auto;
     margin-right: auto;
@@ -129,7 +122,7 @@ font-size: 2rem;
 .file-input::before {
   margin-top: 11px;
     content: '1-Select your avatar';
-
+    border-radius: 15px 15px 0px 0px;
     color: #fff;
     background-color: #007bff;
     border-color: #007bff;
@@ -146,7 +139,6 @@ font-size: 2rem;
     margin-left: auto;
     margin-right: auto;
     width: 200px;
-
     text-align: center;
 }
 
@@ -167,13 +159,11 @@ font-size: 2rem;
 
 
 
-.borderRadiusDown{
+.borderRadiusUp{
   border-radius: 0px 0px 15px 15px ;
 }
-.borderRadiusUp{
-
-  border-radius: 15px 15px 0px 0px;
-
+.borderRadiusDown{
+  border-radius: 0px 0px 15px 15px;
 }
 /*.mobileMenu{
 position: fixed;

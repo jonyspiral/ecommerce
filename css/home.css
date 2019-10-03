@@ -2,17 +2,8 @@
   height: 100%;
 
 }
-nav{
 
-}
-.navbar-nav{
-
-}
-
-.container {
-    max-width: 100%;
-  }
-  .imagenBotones{
+.imagenBotones{
     position: relative;
     overflow:hidden;
     width: 100%;
@@ -45,23 +36,23 @@ nav{
       height: 30px;
       border: 0;
   }
-  .card{
+.card{
     float: left;
     width: 33.33%;
   }
-  .card-img-top {
+.card-img-top {
     padding: 6%;
     width: 50%;
     margin-left: auto;
     margin-right: auto;
   }
-  #grupoTarjeta{
+#grupoTarjeta{
 
     overflow: hidden;
     width: 100%;
     position Relative;
   }
-  #Tarjeta{
+#Tarjeta{
   width: 95%;
   margin-left:2.5%;
   margin-right:2,5%;
@@ -69,7 +60,7 @@ nav{
   }
 
 
-  .itemTitle {
+.itemTitle {
       font-size: 14px;
       height: 42px;
       line-height: 1.36;
@@ -89,7 +80,7 @@ nav{
   }
 
 
-  .price{
+.price{
     font-family: "Work Sans", sans-serif;
     font-size: 14px;
     text-align: left;
@@ -98,7 +89,7 @@ nav{
 
   }
 
-  .discount{
+.discount{
     font-size: 16px;
       font-weight: 500;
       font-style: normal;
@@ -109,7 +100,7 @@ nav{
       margin-top: 5px;
 
   }
-  .priceOld {
+.priceOld {
       color: rgb(167, 169, 171);
       font-weight: normal;
       font-family: "Work Sans", sans-serif;
@@ -117,12 +108,12 @@ nav{
       font-size: 17px;
       text-decoration: line-through;
   }
-  .navbar-nav {
+.navbar-nav {
     display: block;
     margin-left: auto;
 
   }
-  nav ul li {
+nav ul li {
     float: left;
   width: 85px;
   text-align: center;

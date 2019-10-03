@@ -1,8 +1,6 @@
 
 
-body  {
 
-}
 
 .imagenBotones{
   position: relative;
@@ -143,17 +141,8 @@ nav ul {
     margin-left: auto!important;
 
 }
-.container {
 
-      max-width: 100%;
-      padding-right: 10px;
-      padding-left: 10px;
-      margin-right: auto;
-      margin-left: auto;
-  }
-footer nav ul li{
 
-}
 #comprar{
   width: 100%;
   font-size: 2em;
@@ -163,8 +152,8 @@ footer nav ul li{
   color: white;
   padding:2%;
 }
-/*ipads*/
-@media only screen and (min-device-width: 576px) and (max-device-width: 1024px) and (orientation:portrait){
+/*ipads
+@media only screen and (min-device-width: 576px)  and (orientation:portrait){
 
   #Tarjeta{
   width: 45%;
@@ -177,7 +166,7 @@ footer nav ul li{
   }
 }
 @media only screen and (min-device-width :1024px) {
-  
+
   #Tarjeta{
   width: 30%;
   margin-left:1.5166%;

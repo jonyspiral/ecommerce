@@ -65,6 +65,7 @@ if ($_POST) {
 
 
     <link rel="stylesheet" href="css/login.css">
+    <link rel="stylesheet" href="css/master.css">
     <meta charset="utf-8">
     <title>Login</title>
   </head>

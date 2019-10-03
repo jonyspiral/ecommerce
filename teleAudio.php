@@ -1,3 +1,6 @@
+<?php
+  require_once('funciones/autoload.php');
+  ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
@@ -13,8 +16,7 @@
 
 
 <link rel="stylesheet" href="css/productos.css">
-<link rel="stylesheet" href="css/home.css">
-
+<link rel="stylesheet" href="css/master.css">
 </head>
 <body>
   <!-- cabecera -->

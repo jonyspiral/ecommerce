@@ -76,7 +76,7 @@ if ($_POST) {
           <img src="img\logo.png" alt="go to home" class="logo" style="width:85px" >
         </a>
       </div>
-<div class="containerExt ">
+<div class="containerDentro ">
   <form class="" action="login.php" method="post" enctype="multipart/form-data">
 
   <!--<label class="containerDentro"for="email">Email address</label>-->
@@ -90,7 +90,7 @@ if ($_POST) {
   <input type="checkbox" id="mantener" name="mantener" value="">Mantener logueado.
   <p><a href="register.php" style="font-size: 2em;">(Registrese aqui si aun no lo hizo.)</a></p>
 
-  <div class="center">
+  <div class="containerDentro">
       <button class=" btn-primary btn"  type="submit" >Send</button>
   </div>
 </div>

@@ -37,11 +37,11 @@ ul{
   height: 100vh;
 }
 .containerDentro {
-
-  display: block;
-   margin-left: auto;
-   margin-right: auto;
-  margin-bottom: 20px;
+    margin-top: 15px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 15px;
 }
 .containerExt{
 
@@ -120,7 +120,7 @@ font-size: 2rem;
     padding: 1% 0%;
     display: block;
     visibility: hidden;
-    width: 230px;
+    width: 200px;
     position: relative;
     margin-left: auto;
     margin-right: auto;
@@ -129,7 +129,7 @@ font-size: 2rem;
 .file-input::before {
   margin-top: 11px;
     content: '1-Select your avatar';
-    border-radius: 15px 15px 0px 0px;
+
     color: #fff;
     background-color: #007bff;
     border-color: #007bff;
@@ -145,11 +145,8 @@ font-size: 2rem;
     position: relative;
     margin-left: auto;
     margin-right: auto;
-<<<<<<< HEAD
-    width: 230px;
-=======
     width: 200px;
->>>>>>> bc219320d699cb68c2a0f51a96dc188fdeecd3c8
+
     text-align: center;
 }
 
@@ -170,15 +167,13 @@ font-size: 2rem;
 
 
 
-.borderRadiusUp{
+.borderRadiusDown{
   border-radius: 0px 0px 15px 15px ;
 }
-.borderRadiusDown{
-<<<<<<< HEAD
+.borderRadiusUp{
+
   border-radius: 15px 15px 0px 0px;
-=======
-  border-radius: 0px 0px 15px 15px;
->>>>>>> bc219320d699cb68c2a0f51a96dc188fdeecd3c8
+
 }
 /*.mobileMenu{
 position: fixed;

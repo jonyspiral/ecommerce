@@ -2,45 +2,40 @@
 
 
 
-.imagenBotones{
-  position: relative;
-  overflow:hidden;
-  width: 100%;
-  }
+
   #imagenTarjeta{
     position: relative;
     float:left;
     width: 100%;
 
   }
-  #buttons {
-      position: relative;
 
-      height: 60px;
-      width: 100%;
-}
 
-#buttons a {
-    height: 50px;
-    width: 50px;
-    border-radius: 20%;
+
+#buttonCard1 {
+  height: 15%;
+    width: 15%;
+    border-radius: 15%;
     position: relative;
     float: right;
     padding: 5px 5px;
     background-color: rgba(0,0,0,.075);
-    border-color: rgba(0, 0, 0, 0.42);
+    border-color: #0062cc;
+    bottom: 98px;
+    right: 8px;
     margin-right: 4px;
   }
 
-#buttons a img {
-    height: 30px;
-    border: 0;
-}
+
+
+
+
 #cuotas{
   position: relative;
-  float: left;
-  height: 50px;
-  width: 50%;
+    float: left;
+    width: 28%;
+    bottom: 85px;
+    left: 8px
 }
 #banner {
 
@@ -63,12 +58,8 @@ background-color: #cf34af;
   margin: 2px;
 
 }
-#grupoTarjeta{
 
-  overflow: hidden;
-  width: 100%;
-  position Relative;
-}
+
 /*#Tarjeta{
 width: 95%;
 margin-left:2.5%;

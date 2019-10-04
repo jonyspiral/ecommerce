@@ -1,16 +1,9 @@
 
-
-
-
-
   #imagenTarjeta{
     position: relative;
     float:left;
     width: 100%;
-
   }
-
-
 
 #buttonCard1 {
   height: 15%;
@@ -26,10 +19,6 @@
     margin-right: 4px;
   }
 
-
-
-
-
 #cuotas{
   position: relative;
     float: left;
@@ -37,13 +26,14 @@
     bottom: 85px;
     left: 8px
 }
-#banner {
 
+#banner {
   overflow: hidden;
   position:relative;
   z-index: 0;
   height: 0px;
 }
+
 #banner h2{
  width: 200px;
  text-align: center;
@@ -56,7 +46,6 @@ background-color: #cf34af;
   top:0%;
   left: 5px;
   margin: 2px;
-
 }
 
 
@@ -108,6 +97,14 @@ margin-right:2,5%;
     margin-top: 5px;
 
 }
+p{
+  margin-right: auto;
+    margin-left: auto;
+    position: relative;
+    bottom: 62px;
+    padding: 2%;
+    width: 50%;
+}
 .priceOld {
     color: rgb(167, 169, 171);
     font-weight: normal;
@@ -115,7 +112,7 @@ margin-right:2,5%;
     margin-right: 10px;
     font-size: 17px;
     text-decoration: line-through;
-}
+}/*
 h3 {
   float:left
 }
@@ -131,7 +128,7 @@ nav ul {
   margin-right: auto!important;
     margin-left: auto!important;
 
-}
+}*/
 
 
 #comprar{

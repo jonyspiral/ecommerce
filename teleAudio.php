@@ -25,28 +25,25 @@
 <main class="containerExt" style="" >
   <div id="banner" class="" >
       <h2>Televisores!</h2>
-      <img style="margin:auto;cursor: zoom-in; width:100%;" src="https://images.fravega.com/f300/88a4c956ea4c5be6c54a39b168a55d64.png"  >
+      <img style="margin:auto; cursor: zoom-in; width:100%;" src="https://images.fravega.com/f300/88a4c956ea4c5be6c54a39b168a55d64.png"  >
   </div>
     <section  class="containerExt"><!--grupoTarjeta-->
 
-      <article  id="Tarjeta"class="containerRelFloatLeft styleLogin "style=" padding: 2%;">
+      <article  id="Tarjeta"class="containerRelFloatLeft styleLogin" style=" padding: 2%;">
           <h6 class="center" style=" margin-top: 5%; position: absolute; z-index: 2; width: 100%;">Smart TV 50” 4K Ultra HD TCL L50P65</h6>
           <div class="containerRelFloatLeft"style=" padding: 2%;">
                 <img id="imagenTarjeta" src="https://images.fravega.com/s500/d8b3078dcc3eedcb4547b50ba1dc3a8f.jpg" class="" style=" width: 100%;"alt="...">
 
-
-
-                  <a id= 'buttonCard1' href="cart.html" class=" btn btn-primary buttonCard btn-lg active " role="button" aria-pressed="true"  ><img style="width:80%" src="https://img.icons8.com/ios-filled/50/000000/add-shopping-cart.png"></a>
-                  <a id= 'buttonCard1' href="details.html" target="_blank" class=" btn btn-primary btn-lg active" role="button" aria-pressed="true" background-image:><img style="width:80%" src="https://img.icons8.com/ios-filled/50/000000/zoom-to-extents.png"></a>
+                  <a id= 'buttonCard1' href="cart.html" class=" btn btn-primary buttonCard btn-lg active " role="button" aria-pressed="true"  ><img style="width:80%;" src="https://img.icons8.com/ios-filled/50/000000/add-shopping-cart.png"></a>
+                  <a id= 'buttonCard1' href="details.html" target="_blank" class=" btn btn-primary btn-lg active" role="button" aria-pressed="true"  style="cursor: zoom-in" ><img style="width:80%;" src="https://img.icons8.com/ios-filled/50/000000/zoom-to-extents.png"></a>
                   <img id="cuotas" src=img/12cuotas.png alt="12-cuotas-sin-interes" style="" >
-
-
-
+          </div>
+          <div class="">
+            <p class="price"><span class="priceOld">$ 39.999</span>$ 32.999</p>
+            <p class="discount"><span >17</span>% Off</p>
           </div>
 
-                <p class="price"><span class="priceOld">$ 39.999</span>$ 32.999</p>
-                <p class="discount"><span >17</span>% Off</p>
-        
+
                 <p class="card-text">Este tele se la rebanca.!!!</p>
 
   </article><!--termina Tarjeta-->

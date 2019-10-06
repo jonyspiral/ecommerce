@@ -31,7 +31,7 @@ if(estaElUsuarioLogeado()){
         <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-  <ul class="navbar-nav mr-auto mt-2 mt-lg-0" style="width: 270px;">
+  <ul id="headerMenuLi" class="navbar-nav mr-auto mt-2 mt-lg-0" style="">
     <li class="nav-item active">
       <a class="nav-link" href="teleAudio.php">Televisores y audio</a>
     </li>
@@ -44,7 +44,7 @@ if(estaElUsuarioLogeado()){
   </ul>
   <a class=" center navbar-brand" style="width: 100px; "  target="_blank" href="<?=$log?>"><?=$logTittle ?></a>
 
-  <form class=" center form-inline my-2 my-lg-0" style="width: 300px;">
+  <form class=" form-inline my-2 my-lg-0" style="">
     <input class="form-control mr-sm-2" type="search" placeholder="Search">
     <button class="center btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
   </form>

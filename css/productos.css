@@ -1,11 +1,29 @@
 
-  #imagenTarjeta{
-    position: relative;
-    float:left;
+  #imagenCard{
+    padding: 1%;
     width: 100%;
+    /*position: relative;
+    float:left;
+      width: 100%;
+    height: 40vh;
+    border-radius: 15px;*/
+
+  }
+#containerButton{
+    position: relative;
+    bottom:80px;
+  }
+  #containerPrice{
+    position: relative;
+    display: inline-block;
+    width: 70%;
+   margin-left: 15%;
+    margin-right: 15%;
+    bottom: 35px;
   }
 
 #buttonCard1 {
+
   height: 15%;
     width: 15%;
     border-radius: 15%;
@@ -14,17 +32,29 @@
     padding: 5px 5px;
     background-color: rgba(0,0,0,.075);
     border-color: #0062cc;
-    bottom: 98px;
     right: 8px;
     margin-right: 4px;
+  }
+  #buttonCard1 img{
+    width:80%;
+
   }
 
 #cuotas{
   position: relative;
     float: left;
     width: 28%;
-    bottom: 85px;
-    left: 8px
+    left: 8px;
+    top: 5px;
+}
+#containerDescript{
+  bottom: 20px;
+  border-radius: 15px;
+  background-color: white;
+  padding: 0px 5px;
+  position: relative;
+  display: inline-block;
+   width: 98%;
 }
 
 #banner {
@@ -46,6 +76,14 @@ background-color: #cf34af;
   top:0%;
   left: 5px;
   margin: 2px;
+}
+h6{
+  padding: 2px;
+  left: 0;
+  margin-top: 2%;
+  position: absolute;
+  z-index: 2;
+  width: 100%;
 }
 
 
@@ -97,14 +135,7 @@ margin-right:2,5%;
     margin-top: 5px;
 
 }
-p{
-  margin-right: auto;
-    margin-left: auto;
-    position: relative;
-    bottom: 62px;
-    padding: 2%;
-    width: 50%;
-}
+
 .priceOld {
     color: rgb(167, 169, 171);
     font-weight: normal;
@@ -112,34 +143,8 @@ p{
     margin-right: 10px;
     font-size: 17px;
     text-decoration: line-through;
-}/*
-h3 {
-  float:left
 }
-nav{
-  display: flex;
-}
-.navbar {
 
-text-align: center;
-
-}
-nav ul {
-  margin-right: auto!important;
-    margin-left: auto!important;
-
-}*/
-
-
-#comprar{
-  width: 100%;
-  font-size: 2em;
-  text-align: center;
-  background-color: blue;
-  border-radius: 2%;
-  color: white;
-  padding:2%;
-}
 /*ipads
 @media only screen and (min-device-width: 576px)  and (orientation:portrait){
 

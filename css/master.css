@@ -1,16 +1,4 @@
 
-body{
-
-
-}
-.container {
-
-      max-width: 100%;
-      padding-right: 10px;
-      padding-left: 10px;
-      margin-right: auto;
-      margin-left: auto;
-  }
 
 .containerDentro {
     display: block;
@@ -50,4 +38,122 @@ body{
   }
   .padd2 {
     padding:2%
+  }
+  #headerMenuLi {
+      overflow: hidden;
+      width: 100%;
+      display: block;
+    }
+  #headerMenuLi li {
+    float: left;
+    width: 30%;
+    text-align: center;
+    display: inline;
+
+  }#footerMenuLi {
+      overflow: hidden;
+      width: 98%;
+      display: block;
+    }
+ #footerMenuLi  li {
+    float: left;
+    width: 20%;
+    text-align: center;
+    display: inline;
+  }
+  .card{
+      float: left;
+      width: 100%;
+    }
+
+  .card-img-top {
+        padding: 6%;
+        width: 50%;
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+  @media only screen and ( min-width :376px) {
+
+#containerButton {
+
+    bottom: 60px;
+}
+#buttonCard1 {
+    width: 18%;
+    border-radius: 10px;
+    right: 5px;
+    }
+  #buttonCard1 img{
+    width:85%;
+
+  }
+  }
+  @media only screen and (min-width:768px) {
+
+    .card{
+      width: 49%;
+    margin: 0.5%;
+      }
+      #containerButton {
+        bottom: 65px;
+      }
+
+    }
+    section{
+
+        justify-content: center;
+      text-align: center;
+        overflow: hidden;
+        width: 100%;
+        position: Relative;
+      }
+
+  @media only screen and (min-width:1024px) {
+    .card{
+        width: 32.33%;
+      }
+    #headerMenuLi {
+        width: 50%;
+  }
+  #containerButton {
+    bottom: 75px;
+  }
+  h6 {
+    padding: 8px;
+  }
+  section{
+    display: flex;
+      justify-content: center;
+    text-align: center;
+      overflow: hidden;
+      width: 100%;
+      position: Relative;
+    }
+
+  }
+  @media only screen and (min-width:1280px) {
+    .card{
+        width: 24%;
+      }
+    #headerMenuLi {
+        width: 50%;
+  }
+  #containerButton {
+    bottom: 70px;
+  }
+  h6 {
+    padding: 8px;
+  }
+  section{
+    display: flex;
+      justify-content: center;
+    text-align: center;
+      overflow: hidden;
+      width: 100%;
+      position: Relative;
+    }
+
   }

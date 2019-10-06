@@ -15,8 +15,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
   <!-- <link rel="stylesheet" href="css/login.css"> -->
 <link rel="stylesheet" href="css/styles.css">
-<link rel="stylesheet" href="css/home.css">
 <link rel="stylesheet" href="css/master.css">
+<link rel="stylesheet" href="css/home.css">
 </head>
 <body>
   <!-- cabecera -->
@@ -46,36 +46,36 @@
   </a>
 </div>
 <!--comienzan los cards -->
-<div id="grupoTarjeta" class="containerExt">
+<section id="grupoTarjeta" class="containerExt">
 
 
-<div class="card" >
+<article class="card" >
   <img src="https://img.icons8.com/ios-filled/50/000000/retro-tv.png" class="card-img-top">
   <div class="card-body">
     <h5 class="card-title">Televisores y audio</h5>
     <p class="card-text">Los mejores televisores del mercado, al mejor precio en cuotas y envio gratis.</p>
     <a href="teleAudio.php" class="btn btn-primary">ir a...</a>
   </div>
-</div>
+</article>
 
-<div class="card" >
+<article class="card" >
   <img src="img\icons8-varios-smartphones-50.png" class="card-img-top">
   <div class="card-body">
     <h5 class="card-title">smartphones</h5>
     <p class="card-text">Los mejores smartphones del mercado, al mejor precio en cuotas y envio gratis.</p>
     <a href="celulares.php" class="btn btn-primary">ir a...</a>
   </div>
-</div>
+</article>
 
-<div class="card" >
+<article class="card" >
   <img src="img\icons8-aplicación-para-laptop-50.png" class="card-img-top">
   <div class="card-body">
     <h5 class="card-title">Notebooks</h5>
     <p class="card-text">Los mejores notebooks del mercado, al mejor precio en cuotas y envio gratis.</p>
     <a href="notebooks.php" class="btn btn-primary">ir a...</a>
   </div>
-</div>
-</div>
+</article>
+</section>
 </main>
   <!-- FOOTER -->
         <?php require_once('partials/footer.php')?>

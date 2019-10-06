@@ -1,19 +1,51 @@
+#containerLogo{
+  width: 100%;
+margin:8%;
+  display: flex;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  justify-content: center
+
+}
+#logo img{
+width: 150px;
+
+
+}
+#padre{
+  width:100%;
+
+  margin: 2%;
+}
+#main{
+  width:100%;
+  margin: 2%;
+}
+.form-check {
+    margin:5%;
+    position: relative;
+    display: block;
+    padding-left: 1.25rem;
+}
+#toRegister{
+  font-size: 1em;
+  text-align: center;
+}
+label{
+
+   font-size: 1em;
+  text-align: center;
+
+}
 
 body{
-  margin:2%;
-
+  height: -webkit-fill-available;
+    display: flex;
+    align-content: stretch;
 }
-.styleLogin{
-  border-radius: 20px 20px 20px 20px;
--moz-border-radius: 20px 20px 20px 20px;
--webkit-border-radius: 20px 20px 20px 20px;
 
-  border: solid 2px #007bff;
-
-  background-color: rgba(0, 0, 0, 0.1);
-
-}
 .styleTitle {
+  padding: 1%;
     margin: 4px 6px 10px 2px;
     border-top: solid 1px darkgray;
     border-bottom: solid 1px darkgrey;
@@ -25,38 +57,28 @@ ul{
   margin-top: 1rem;
     margin-bottom: 1rem;
 }
-.form-control {
+.formControl {
     font-size: 1.5em;
     width: 300px;
-    margin-left: auto;
-    margin-right: auto;
     border-radius: 0.5rem;
-  }
+    background-color: white;
 
-.maxViewport{
-  height: 100vh;
+    display: block;
+    width: 100%;
+    height: calc(1.5em + .75rem + 2px);
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #495057;
+    background-color: #fff;
+
+    border: 1px solid #ced4da;
+
+
 }
-.containerDentro {
-
-  display: block;
-   margin-left: auto;
-   margin-right: auto;
-  margin-bottom: 20px;
-}
-.containerExt{
-
-
-  overflow: hidden;
-  max-width: 98%;
-  padding-top: 1%;
-  padding-bottom: 1%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-
 p {
-  width: 100%;
+
    font-size: 1em;
    color: #007bff;
    text-decoration: none;
@@ -67,12 +89,7 @@ p {
    margin-right: auto;
 
   }
-  label{
 
-     font-size: 2em;
-    text-align: center;
-
-  }
   .navbar-brand {
    display: inline-block;
    padding-top: .3125rem;
@@ -148,23 +165,11 @@ p {
 .file-input:active::before {
   background: grey;
 }
-.center{
-
-      padding-right: 0;
-      padding-left: 0;
-      display: block;
-      margin-right: auto;
-      margin-left: auto;
-  }
 
 
 
-.borderRadiusUp{
-  border-radius: 0px 0px 15px 15px ;
-}
-.borderRadiusDown{
-  border-radius: 0px 0px 15px 15px;
-}
+
+
 /*.mobileMenu{
 position: fixed;
     bottom: 150px;

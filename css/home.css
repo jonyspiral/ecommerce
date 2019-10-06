@@ -1,7 +1,41 @@
+#carouselExampleControls{
+  display: none;
+}
+
 .carousel-item{
   height: 100%;
 
 }
 .card {
-    width: 32.33%;
+  text-align: center;carouselExampleControls{
+  }
+    width: 100%;
 }
+article img {
+  position: absolute;
+    bottom: 9px;
+    right: 15px;
+}
+
+
+.card-img-top {
+    padding: 2%;
+    width: 19%;
+  }@media only screen and (min-width:600px) {
+    .card {
+        width: 32.33%;
+      }
+    article img {
+      position: initial;
+
+    }
+    .card-img-top {
+        padding: 6%;
+        width: 50%;
+      }
+      #carouselExampleControls{
+        display:block;
+      }
+
+
+  }

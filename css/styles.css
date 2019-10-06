@@ -24,3 +24,11 @@ border: solid 2px #007bff85;
 .borderRadiusUp{
     border-radius: 15px 15px 0px 0px;
   }
+  .logo{  border-radius: 20px 20px 20px 20px;
+  -moz-border-radius: 20px 20px 20px 20px;
+  -webkit-border-radius: 20px 20px 20px 20px;
+  margin-bottom: 1%;
+  border: solid 2px #007bff85;
+    background-color: #b3d7ff5c;
+
+  }

@@ -1,12 +1,17 @@
-
-
 .containerDentro {
     display: block;
      margin-left: auto;
      margin-right: auto;
     margin-bottom: 20px;
   }
+.contPadreFlex{
+  display: flex;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  justify-content: center;
+  align-items: stretch;
 
+}
 .containerExt{
     overflow: hidden;
     max-width: 98%;
@@ -25,6 +30,18 @@
       margin-left: auto;
       text-align: center;
   }
+  .flexCenterH{
+    display: flex;
+    display: -ms-flexbox;
+    display: -webkit-flex;
+      justify-content: center;
+
+    }
+.contentsCenterH{
+    justify-content: center;
+    align-items: center;
+    display: contents;
+}
   .containerAbsolute{
     position: absolute;
     width: 100%;
@@ -79,7 +96,7 @@
 
 #containerButton {
 
-    bottom: 60px;
+    bottom: 100px;
 }
 #buttonCard1 {
     width: 18%;
@@ -101,7 +118,7 @@
         bottom: 65px;
       }
 
-    }
+
     section{
 
         justify-content: center;

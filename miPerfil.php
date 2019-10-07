@@ -3,6 +3,7 @@ require_once 'funciones/autoload.php';
 if(!estaElUsuarioLogeado()){
     header('location:login.php');
 }
+
     $name= $_SESSION['name'];
     $lastName= $_SESSION['lastName'];
     $user= $_SESSION['user'];
@@ -75,15 +76,15 @@ if ($_POST){
 
   <body style="height: -webkit-fill-available;   display: block;  align-content: center;">
 <?php require_once('partials/header.php') ?>
-<div id="padre"  class="contPadreFlex" style="width: 96%;     margin: 2%;" overflow:hidden >
-    <div id="main" class=" styleLogin" style="width: 96%;  padding: 5%;  margin: 2%;" >
+<div id="padre"  class="contPadreFlex" style="width: 96%; margin: 2%; overflow:hidden;" >
+    <div id="main" class=" styleLogin" style=" padding: 5%;  margin: 2%;" >
 
 
       <div class="containerExt">
+  <h1 class="styleTitle center" >Bienvenido! <?=($name.' '.$lastName) ?></h1>
+          <div id="containerLogo">
 
-          <div class="containerDentro ">
-            <h1 class="styleTitle center" >Bienvenido! <?=($name.' '.$lastName) ?></h1>
-            <img class="containerDentro  "src="img\avatar\<?=$avatar?>" alt="Yo"style="width: -webkit-fill-available; border-radius: 15px 15px 15px 15px;">
+            <img class=""src="img\avatar\<?=$avatar?>" alt="Yo"style=" ">
           </div>
 
       <form class="" action="miPerfil.php" method="post" enctype="multipart/form-data" >

@@ -1,7 +1,12 @@
 #containerLogo{
-  width: 100%;
-margin:8%;
   display: flex;
+    border-radius: 15px;
+    width: 200px;
+    overflow: hidden;
+    margin-right: auto;
+      margin-left: auto;
+
+
   display: -ms-flexbox;
   display: -webkit-flex;
   justify-content: center
@@ -18,8 +23,9 @@ width: 150px;
   margin: 2%;
 }
 #main{
-  width:100%;
+width: fit-content;
   margin: 2%;
+
 }
 .form-check {
     margin:5%;
@@ -106,7 +112,7 @@ p {
     white-space: nowrap;
     visibility: visible;
     position: relative;
-    width: 90%;
+    width: 70%;
     text-align: center;
     font-size: 15pt;
     border-radius: 15px 15px 15px 15px;

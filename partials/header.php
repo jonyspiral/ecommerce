@@ -42,11 +42,11 @@ if(estaElUsuarioLogeado()){
       <a class="nav-link" href="notebooks.php" >Notebooks</a>
     </li>
   </ul>
-  <a class=" center navbar-brand" style="width: 100px; "  target="_blank" href="<?=$log?>"><?=$logTittle ?></a>
+  <a class="navbar-brand" style="width: 100px; "  target="_blank" href="<?=$log?>"><?=$logTittle ?></a>
 
-  <form class=" form-inline my-2 my-lg-0" style="">
+  <form class="center  form-inline my-2 my-lg-0" style="">
     <input class="form-control mr-sm-2" type="search" placeholder="Search">
-    <button class="center btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    <button class=" btn btn-outline-success my-2 my-sm-0" type="submit"style=" width:100px">Search</button>
   </form>
 </div>
 </nav>

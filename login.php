@@ -4,7 +4,8 @@
 
     if (isset($_COOKIE['mantener'])) {
         $_SESSION['email'] = $_COOKIE['mantener'];
-        $_SESSION['avatar'] = '';
+        $_SESSION['avatar'] = $_COOKIE['avatar'];
+
     }
     if(estaElUsuarioLogeado()){
         header('location:miPerfil.php');
@@ -40,7 +41,9 @@ if ($_POST) {
                     //si checkaron el recuerdame
                     if (isset($_POST['mantener'])) {
                         //guardo la cookie del email
-                        setcookie('mantener', $email, time() + 60*60*24*7 );
+
+                        setcookie('mantener',  $email, time() + 60*60*24*7 );
+                        setcookie('mantenerAv',  $usuario['avatar'], time() + 60*60*24*7 );
                     }
                     //luego redirijo a miPerfil
 
@@ -78,7 +81,7 @@ if ($_POST) {
     <div id="padre" class="contPadreFlex">
 
 
-  <div id="main" class="flexCenterH styleLogin" style="flex-wrap: wrap; align-content: center;  padding: 10%;">
+  <div id="main" class="flexCenterH styleLogin" style=" flex-wrap: wrap; align-content: center;  padding: 10%;">
 
 
           <div id="containerLogo"class=" flexCenterH">
@@ -107,7 +110,7 @@ if ($_POST) {
           </div>
 
           <div class="">
-              <button class=" center btn-primary btn"  type="submit" >Send</button>
+              <button class="center btn-primary btn"  type="submit" >Send</button>
           </div>
         </div>
 

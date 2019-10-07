@@ -8,6 +8,7 @@ if(!estaElUsuarioLogeado()){
     $lastName= $_SESSION['lastName'];
     $user= $_SESSION['user'];
     $email = $_SESSION['email'];
+    $avatar= $_SESSION['avatar'] ;
     $nombreArchivo = '';
 
   if ($_SESSION['avatar']) {

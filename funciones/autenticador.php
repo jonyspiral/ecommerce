@@ -7,3 +7,31 @@ session_start();
      }
      return false;
  }
+
+ function logear($email) {
+     //deberia de buscar al usuario en la BD
+     $usuario = buscarUsuarioEmail($email);
+
+     if ($usuario) {
+      //si existe lo logeo
+         $_SESSION['email'] = $email;
+         $_SESSION['avatar'] = $usuario['avatar'];
+        $_SESSION['name'] =$usuario['name'];
+        $_SESSION['lastName'] =$usuario['lastName'];
+        $_SESSION['user'] =$usuario['user'];
+
+     } else {
+         destruirRecuerdame();
+         //sino lo redirijo a login
+         header('location:login.php');
+     }
+ }
+ function destruirRecuerdame() {
+     setcookie('recuerdame', '', time() - 1);
+ }
+
+
+ function deslogear() {
+     session_destroy();
+     destruirRecuerdame();
+ }

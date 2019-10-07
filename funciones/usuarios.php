@@ -1,6 +1,6 @@
 <?php
 
-function buscarUsuarioEmail($email) {
+/*function buscarUsuarioEmail($email) {
 
     $usuario = [];
 
@@ -13,6 +13,19 @@ function buscarUsuarioEmail($email) {
         : [];
 
     return $usuario;
+}*/
+function buscarUsuarioEmail(string $email) {
+
+    $archivo = file_get_contents('database/usuarios.json');
+    $usuarios = json_decode($archivo, true);
+
+    foreach ($usuarios as $usuario) {
+        if ($usuario['email'] == $email) {
+            return $usuario;
+        }
+    }
+
+    return [];
 }
 
 function subirAvatar($archivo, $nombre) {

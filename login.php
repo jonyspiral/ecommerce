@@ -3,8 +3,7 @@
     require_once('funciones/autoload.php');
 
     if (isset($_COOKIE['mantener'])) {
-        $_SESSION['email'] = $_COOKIE['mantener'];
-        $_SESSION['avatar'] = $_COOKIE['avatar'];
+        logear($_COOKIE['mantener']);
 
     }
     if(estaElUsuarioLogeado()){
@@ -43,7 +42,7 @@ if ($_POST) {
                         //guardo la cookie del email
 
                         setcookie('mantener',  $email, time() + 60*60*24*7 );
-                        setcookie('mantenerAv',  $usuario['avatar'], time() + 60*60*24*7 );
+                        setcookie('avatar',  $usuario['avatar'], time() + 60*60*24*7 );
                     }
                     //luego redirijo a miPerfil
 

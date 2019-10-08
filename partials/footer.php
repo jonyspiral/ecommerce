@@ -1,5 +1,5 @@
 <?php  ?>
-<footer class="containerExt"style="width: 98%;  height: 10vh;" >
+<footer class="containerExt"style="width: 98%;" >
 
 <nav class=" center navbar navbar-expand-lg navbar-dark bg-dark">
   <ul id="footerMenuLi" class="center navbar-nav mr-auto mt-2 mt-lg-0">

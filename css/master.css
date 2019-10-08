@@ -35,7 +35,7 @@
     display: -ms-flexbox;
     display: -webkit-flex;
       justify-content: center;
-
+ align-items: center;
     }
 .contentsCenterH{
     justify-content: center;

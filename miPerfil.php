@@ -43,7 +43,7 @@ if ($_POST){
 
             $usuariosJson= json_encode($usuarios);
               file_put_contents('database/usuarios.json', $usuariosJson);
-
+          $_SESSION['avatar']=$nombreArchivo;
             }
 
         }//aca termina el foreach
@@ -75,14 +75,20 @@ if ($_POST){
   <link rel="stylesheet" href="css/login.css">
  </head>
 
-  <body style="height: -webkit-fill-available;   display: block;  align-content: center;">
+  <body style="  display: block;  align-content: center;">
 <?php require_once('partials/header.php') ?>
 <div id="padre"  class="contPadreFlex" style="width: 96%; margin: 2%; overflow:hidden;" >
-    <div id="main" class=" styleLogin" style=" padding: 5%;  margin: 2%;" >
+    <div id="main" class=" styleLogin" style="  margin: 2%;" >
 
 
-      <div class="containerExt">
-  <h1 class="styleTitle center" >Bienvenido! <?=($name.' '.$lastName) ?></h1>
+      <div class="containerExt" style="
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+">
+  <h1 class="styleTitle center" >Bienvenido!</br> <?=($name.' '.$lastName) ?></h1>
+
           <div id="containerLogo">
 
             <img class=""src="img\avatar\<?=$avatar?>" alt="Yo"style=" ">
@@ -92,7 +98,7 @@ if ($_POST){
           <input type="file" accept="img\avatar\<?=$avatar?>" name="avatar"  class=" borderRadiusUp file-input" id="avatar"style="width:100%;">
           <p> <?= (isset($errores) ? $errores : '') ?></p>
           <!--<input class="center btn-primary borderRadiusDown btnHalf" type="submit" value="2- Enviar imagen" style="width:200px; margin-bottom: 14px;">-->
-          <button class="center btn-primary borderRadiusDown btnHalf" type="submit" value="2- Enviar imagen" style="width:200px; margin-bottom: 14px;"name="button">"2- Enviar imagen" </button>
+          <button class="center btn-primary borderRadiusDown btnHalf" type="submit" value="2- Enviar imagen" style="width:200px; margin-bottom: 14px;"name="button">2- Enviar imagen </button>
       </form>
 
 
@@ -103,18 +109,13 @@ if ($_POST){
           <li class=" btn-primary btn" >
             Favoritos
           </li>
-          <li class=" btn-primary btn" >
-            Presupuestos
-          </li>
-          <li class=" btn-primary btn" >
+            <li class=" btn-primary btn" href="misDatos.php" >
             Envios
           </li>
           <li class=" btn-primary btn" >
             Mis Datos
           </li>
-          <li class=" btn-primary btn" >
-            Seguridad
-          </li>
+
         </ul>
 
 

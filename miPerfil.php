@@ -10,6 +10,7 @@ if(!estaElUsuarioLogeado()){
     $email = $_SESSION['email'];
     $avatar= $_SESSION['avatar'] ;
     $nombreArchivo = '';
+      $errores=[];
 
   if ($_SESSION['avatar']) {
       $avatar =  $_SESSION['avatar'] ;
@@ -20,97 +21,72 @@ if(!estaElUsuarioLogeado()){
 
 //var_dump( $_SESSION['avatar']);
 if ($_POST){
+  $email=trim( $_POST['email']);
+  //$password=$_POST['password'];
+  $user= $_POST['user'];
+  $name=$_POST['name'];
+  $lastName=$_POST['lastName'];
+  $resultado="";
 
-    if ($_FILES['avatar']['error'] === 0) {
+        if ($_FILES['avatar']['error'] === 0) {
 
-      $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+            $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
 
-      if ($ext != 'png' && $ext != 'jpg' && $ext != 'jpeg') {
-        $errorArchivo = 'Formato de archivo invalido';
-      } else {
-        $nombreArchivo = subirAvatar($_FILES['avatar'], $email);
-        $_SESSION['avatar']=$nombreArchivo;
-      }
-        //aca meter todolo del if error=== 0
-        $archivo = file_get_contents('database/usuarios.json');
-        $usuarios = json_decode($archivo, true);
-//var_dump($usuarios);
-      foreach ($usuarios as $key => $usuario) {
-//aqui es donde encontré al usuario
-                  if ($usuario['email'] == $email ) {
-                  $usuarios[$key]['avatar'] = $nombreArchivo;
-              //  $usuario['avatar'] =$nombreArchivo;
+              if ($ext != 'png' && $ext != 'jpg' && $ext != 'jpeg') {
+                  $errorArchivo = 'Formato de archivo invalido';
+                } else {
+                  $nombreArchivo = subirAvatar($_FILES['avatar'], $email);
+                  $_SESSION['avatar']=$nombreArchivo;
 
-            $usuariosJson= json_encode($usuarios);
-              file_put_contents('database/usuarios.json', $usuariosJson);
-          $_SESSION['avatar']=$nombreArchivo;
-            header('location:miPerfil.php');
+                }
+              }
+
+
+              if (strlen($user) === 0) {
+             $errores['user'] = 'Escribe un usuario';
+              }
+
+
+            if (strlen($email) === 0) {
+                  $errores['email'] = 'Escribe el email';
+              } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                  $errores['email'] = 'El email tiene formato errado';
             }
 
-        }//aca termina el foreach
-}else {
-  //aca declaro $errores
-  $errores ='Hay un error' .$_FILES['avatar']['error'].'al subir el archivo ';
-}// aca termina el if de $_FILES
 
-//var_dump($usuario);
+            if (!$errores) {
 
-$email=trim( $_POST ['email']);
-$password=$_POST['password'];
-$user= $_POST ['user'];
-
-  //aca empieza la validacion
-    //$errores = validarLogin($_POST);
-  //$errores = [];
-
-    //valido los campos de login y register
-
-    if (isset($user)){
-
-        if (strlen($user) === 0) {
-           $errores['user'] = 'Escribe un usuario';
-      }
-    }
-
-    if (strlen($email) === 0) {
-          $errores['email'] = 'Escribe el email';
-      } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-          $errores['email'] = 'El email tiene formato errado';
-    }
+              $archivo = file_get_contents('database/usuarios.json');
+              $usuarios = json_decode($archivo, true);
 
 
-  if (!$errores) {
-
-    $archivo = file_get_contents('database/usuarios.json');
-    $usuarios = json_decode($archivo, true);
-    foreach ($usuarios as $usuario) {
-                if ($usuario['email'] == $email ){
-
-                  $usuario ['user']= $user;
+                foreach ($usuarios as $key => $usuario){
+                  $nombreArchivo=$avatar;
+                  if ($usuario['email'] == $email ){
+                    $usuario ['user']= $user;
                     $usuario ['name']= $name;
-              $usuario ['lastName']= $lastName;
+                    $usuario ['lastName']= $lastName;
+                    $usuario ['avatar']=$avatar;
+                    $usuarios[$key] = $usuario;
+                    $_SESSION['name']=$name;
+                    $_SESSION['lastName']=$lastName;
+                    $_SESSION['user']=$user;
+                    $_SESSION['email']=$email;
+                    $_SESSION['avatar']=$avatar;
 
-
-}
+                  }
+                }
 
                   $usuariosJson = json_encode($usuarios);
 
+
                   file_put_contents('database/usuarios.json', $usuariosJson);
                   //luego redirijo a miPerfil
-                        //var_dump($_SESSION['avatar']);"<br>";
+                      $resultado ="los cambios fueron ok";
+                      //var_dump($_SESSION['avatar']);"<br>";
 
-            echo "los cambios fueron ok";
-
-
-
-            //deberia de buscar al usuario en la base de datos
-      //y si no esta lanzar un error
-
-  }
-    //  aca termina
-}
-}
-
+                }
+  }// termina el if de $_POST
  ?>
  <!DOCTYPE html>
  <html lang="en" dir="ltr">
@@ -155,7 +131,7 @@ $user= $_POST ['user'];
 
       <form class="" action="miPerfil.php" method="post" enctype="multipart/form-data" >
           <input type="file" accept="img\avatar\<?=$avatar?>" name="avatar"  class=" borderRadiusUp file-input" id="avatar"style="width:100%;">
-          <p> <?= (isset($errores) ? $errores : '') ?></p>
+          <p> <?php /*(isset($errores) ? $errores : '') */?></p>
           <!--<input class="center btn-primary borderRadiusDown btnHalf" type="submit" value="2- Enviar imagen" style="width:200px; margin-bottom: 14px;">-->
     <!--  <button class="center btn-primary borderRadiusDown btnHalf" type="submit" value="2- Enviar imagen" style="width:200px; margin-bottom: 14px;"name="button">2- Enviar imagen </button>
   </form>

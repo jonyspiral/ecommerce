@@ -1,5 +1,5 @@
 <?php
-function loguea($email,$password)
+function loguea($email,$password){
 $archivo = file_get_contents('database/usuarios.json');
 
 $usuarios = json_decode($archivo, true);
@@ -24,3 +24,4 @@ foreach ($usuarios as $usuario) {
           header('location:miPerfil.php');
       }
     }
+  }

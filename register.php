@@ -1,10 +1,11 @@
 <?php
 require_once('funciones/autoload.php');
 
-if(estaElUsuarioLogeado()){
 
+if(estaElUsuarioLogeado()){
      header('location:miPerfil.php');
  }
+
 $errorArchivo = '';
 
 $user ='';
@@ -32,6 +33,7 @@ if ($_POST) {
         $password = $_POST['password'];
       $confirmPassword = $_POST['confirmPassword'];
       $nombreArchivo = '';
+      $avatar="";
     	//verifico si el archivo se subio al temporal de php
 
       if ($_FILES['avatar']['error'] === 0) {
@@ -106,7 +108,10 @@ foreach ($usuarios as $usuario) {
                 //si checkaron el recuerdame
                 if (isset($_POST['mantener'])) {
                     //guardo la cookie del email
-                    setcookie('mantener', $email, time() + 60*60*24*7 );
+
+                  setearCookie($email);
+                    //setcookie('mantener', $email, time() + 60*60*24*7 );
+                    //setcookie('avatar',  $usuario['avatar'], time() + 60*60*24*7 );
                 }
                 //luego redirijo a miPerfil
                       //var_dump($_SESSION['avatar']);"<br>";
@@ -145,13 +150,16 @@ foreach ($usuarios as $usuario) {
     <title><Registrese</title>
   </head>
   <body>
-    <div class="containerExt maxViewport styleLogin">
-<div class="containerDentro">
+    <div class="containerExt maxViewport padd2 ">
+<div class=" styleLogin padd2">
+  <div class="containerLogo">
+
+
     <a class="" id="logo" href="Index.php">
     <img src="img\logo.png" alt="go to home" class="center logo" style="width:20%;"  >
     </a>
 
-
+  </div>
 
 <form class="login" action="register.php" method="post" enctype="multipart/form-data">
   <!-- files -->
@@ -162,6 +170,8 @@ foreach ($usuarios as $usuario) {
       <input type="file" accept="img\avatar\default.png" name="avatar"  class="file-input" id="avatar">
       <p> <?= (isset($errores['avatar']) ? $errores['avatar'] : '') ?></p>
   </div>
+
+<div class="">
 
 
       <input type="text" class="form-control" id="user" placeholder="Enter user"   name="user" value="<?= $user ?>" required >
@@ -182,13 +192,19 @@ foreach ($usuarios as $usuario) {
       <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password" name="confirmPassword" value="" required>
       <p> <?= (isset($errores['confirmPassword']) ? $errores['confirmPassword'] : '') ?></p>
 
-  <div class="button">
-    <input type="checkbox" id="mantener" name="mantener" value="" style=" display:block;">
-    <button class="center btn-primary btn"  type="submit" style="width:300px;">Send</button>
-  </div>
-    </div>
+
+</div>
+      <div class="form-group form-check">
+            <input type="checkbox" name="mantener" class="form-check-input" id="mantener">
+            <label class="form-check-label" for="mantener">Dejarme Conectado</label>
+      </div>
+      <div class="">
+
+        <button class="center btn-primary btn"  type="submit" style="width:300px;">Send</button>
+      </div>
+
 </form>
   </div>
-
+  </div>
   </body>
 </html>

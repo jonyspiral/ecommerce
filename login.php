@@ -89,7 +89,7 @@ if ($_POST) {
             </a>
           </div>
           <div class="flexCenterH ">
-          <form class="" action="login.php" method="post" enctype="multipart/form-data">
+          <form class="" action="login.php" method="post" >
 
           <!--<label class="containerDentro"for="email">Email address</label>-->
           <input type="text" class="formControl" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email" value="<?= $email ?>">

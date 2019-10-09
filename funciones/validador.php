@@ -32,3 +32,11 @@ function validarLogin($datos) {
     return $errores;
 
 }
+/*function validarEmail($email){
+
+  if (strlen($email) === 0) {
+        $errores['email'] = 'Escribe el email';
+    } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errores['email'] = 'El email tiene formato errado';
+  }
+}*/

@@ -17,7 +17,7 @@ if(!estaElUsuarioLogeado()){
     $avatar = 'default.png';
 }
 
-  //var_dump( $_POST);
+
 //var_dump( $_SESSION['avatar']);
 if ($_POST){
 
@@ -44,6 +44,7 @@ if ($_POST){
             $usuariosJson= json_encode($usuarios);
               file_put_contents('database/usuarios.json', $usuariosJson);
           $_SESSION['avatar']=$nombreArchivo;
+            header('location:miPerfil.php');
             }
 
         }//aca termina el foreach
@@ -52,6 +53,62 @@ if ($_POST){
   $errores ='Hay un error' .$_FILES['avatar']['error'].'al subir el archivo ';
 }// aca termina el if de $_FILES
 
+//var_dump($usuario);
+
+$email=trim( $_POST ['email']);
+$password=$_POST['password'];
+$user= $_POST ['user'];
+
+  //aca empieza la validacion
+    //$errores = validarLogin($_POST);
+  //$errores = [];
+
+    //valido los campos de login y register
+
+    if (isset($user)){
+
+        if (strlen($user) === 0) {
+           $errores['user'] = 'Escribe un usuario';
+      }
+    }
+
+    if (strlen($email) === 0) {
+          $errores['email'] = 'Escribe el email';
+      } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+          $errores['email'] = 'El email tiene formato errado';
+    }
+
+
+  if (!$errores) {
+
+    $archivo = file_get_contents('database/usuarios.json');
+    $usuarios = json_decode($archivo, true);
+    foreach ($usuarios as $usuario) {
+                if ($usuario['email'] == $email ){
+
+                  $usuario ['user']= $user;
+                    $usuario ['name']= $name;
+              $usuario ['lastName']= $lastName;
+
+
+}
+
+                  $usuariosJson = json_encode($usuarios);
+
+                  file_put_contents('database/usuarios.json', $usuariosJson);
+                  //luego redirijo a miPerfil
+                        //var_dump($_SESSION['avatar']);"<br>";
+
+            echo "los cambios fueron ok";
+
+
+
+            //deberia de buscar al usuario en la base de datos
+      //y si no esta lanzar un error
+
+  }
+    //  aca termina
+}
 }
 
  ?>
@@ -78,7 +135,7 @@ if ($_POST){
   <body style="  display: block;  align-content: center;">
 <?php require_once('partials/header.php') ?>
 <div id="padre"  class="contPadreFlex" style="width: 96%; margin: 2%; overflow:hidden;" >
-    <div id="main" class=" styleLogin" style="  margin: 2%;" >
+    <div id="main" class=" styleLogin padd2" style="  margin: 2%;" >
 
 
       <div class="containerExt" style="
@@ -93,13 +150,49 @@ if ($_POST){
 
             <img class=""src="img\avatar\<?=$avatar?>" alt="Yo"style=" ">
           </div>
+<div class="">
+
 
       <form class="" action="miPerfil.php" method="post" enctype="multipart/form-data" >
           <input type="file" accept="img\avatar\<?=$avatar?>" name="avatar"  class=" borderRadiusUp file-input" id="avatar"style="width:100%;">
           <p> <?= (isset($errores) ? $errores : '') ?></p>
           <!--<input class="center btn-primary borderRadiusDown btnHalf" type="submit" value="2- Enviar imagen" style="width:200px; margin-bottom: 14px;">-->
-          <button class="center btn-primary borderRadiusDown btnHalf" type="submit" value="2- Enviar imagen" style="width:200px; margin-bottom: 14px;"name="button">2- Enviar imagen </button>
-      </form>
+    <!--  <button class="center btn-primary borderRadiusDown btnHalf" type="submit" value="2- Enviar imagen" style="width:200px; margin-bottom: 14px;"name="button">2- Enviar imagen </button>
+  </form>
+    </div>
+    <div class="">
+
+
+<form class="" action="miPerfil.php" method="post" >-->
+
+        <input type="text" class="form-control" id="user" placeholder="Enter user"   name="user" value="<?= $user ?>" required >
+        <p> <?= (isset($errores['user']) ? $errores['user'] : '') ?></p>
+
+        <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email"  value="<?= $email ?>" required>
+        <p> <?= (isset($errores['email']) ? $errores['email'] : '' ) ?></p>
+
+        <input type="text" class="form-control" id="name" placeholder="Enter name"   name="name" value="<?= $name ?>" required >
+        <p></p>
+
+        <input type="text" class="form-control" id="lastName" placeholder="Enter lastName"   name="lastName" value="<?= $lastName ?>" required>
+        <p></p>
+
+        <input class="form-control" id="password" placeholder="Enter password" name="password" value="" >
+        <p> <?= (isset($errores['password']) ? $errores['password'] : '') ?></p>
+
+        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password" name="confirmPassword" value="" >
+        <p> <?= (isset($errores['confirmPassword']) ? $errores['confirmPassword'] : '') ?></p>
+
+    <div class="button">
+
+      <button class="center btn-primary btn"  type="submit" style="width:300px;">Send</button>
+    </div>
+
+
+  </form>
+</div>
+
+  <div class="">
 
 
         <ul class="center" style="padding-inline-start: 0px;">
@@ -109,12 +202,10 @@ if ($_POST){
           <li class=" btn-primary btn" >
             Favoritos
           </li>
-            <li class=" btn-primary btn" href="misDatos.php" >
+            <li class=" btn-primary btn" >
             Envios
           </li>
-          <li class=" btn-primary btn" >
-            Mis Datos
-          </li>
+
 
         </ul>
 
@@ -122,6 +213,7 @@ if ($_POST){
       </div>
 
       </div>
+</div>
 </div>
         <?php require_once('partials/footer.php')?>
 

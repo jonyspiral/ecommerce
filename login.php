@@ -77,13 +77,13 @@ if ($_POST) {
     <title>Login</title>
   </head>
   <body>
-    <div id="padre" class="contPadreFlex">
+    <div id="padre" class="contPadreFlex" style="    height: fit-content;">
 
 
-  <div id="main" class="flexCenterH styleLogin" style=" flex-wrap: wrap; align-content: center;  padding: 10%;">
+  <div id="main" class="flexCenterH styleLogin" style=" flex-direction: column; flex-wrap: wrap; align-content: center;  padding: 3%;">
 
 
-          <div id="containerLogo"class=" flexCenterH">
+          <div id="containerLogo"class=" flexCenterH" style="    margin-bottom: 5%;">
             <a class="" id="logo" href="index.php">
               <img src="img\logo.png" alt="go to home" class="logo"  >
             </a>

@@ -159,7 +159,7 @@ if ($_POST){
         <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password" name="confirmPassword" value="" >
         <p> <?= (isset($errores['confirmPassword']) ? $errores['confirmPassword'] : '') ?></p>
 
-    <div class="button">
+    <div class="button" style="margin:3%">
 
       <button class="center btn-primary btn"  type="submit" style="width:300px;">Send</button>
     </div>

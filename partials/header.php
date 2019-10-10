@@ -46,7 +46,8 @@ if(estaElUsuarioLogeado()){
 
   <form class="center  form-inline my-2 my-lg-0" style="">
     <input class="form-control mr-sm-2" type="search" placeholder="Search">
-    <button class=" btn btn-outline-success my-2 my-sm-0" type="submit"style=" width:100px">Search</button>
+    <button class="  btn-primary btn" type="submit"style=" width:100px">Search</button>
+    <!-- <button class=" btn btn-outline-success my-2 my-sm-0" type="submit"style=" width:100px">Search</button> -->
   </form>
 </div>
 </nav>

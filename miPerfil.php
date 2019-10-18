@@ -20,14 +20,35 @@ if(!estaElUsuarioLogeado()){
 if ($_POST){
   //$email=trim( $_POST['email']);
   //$password=$_POST['password'];
-  $user= $_POST['user'];
-  $name=$_POST['name'];
-  $lastName=$_POST['lastName'];
-  $resultado="";
-  $avatar="";
+  if (isset($_POST['user'])){
+    $user= $_POST['user'];
+  }else{
+  $user=$_SESSION['user'];
+  }
+  if (isset($_POST['name'])){
+    $name= $_POST['name'];
+  }else{
+  $name= $_SESSION['name'];
+  }
+  if (isset($_POST['lastName'])){
+    $lastName= $_POST['lastName'];
+  }else{
+  $lastName=$_SESSION['lastName'];
+  }
+  if (isset($_POST['newPass'])){
+    $newPass= $_POST['newPass'];
+  }else{
+  $newPass=$_SESSION['newPass'];
+  }
 
+
+
+  $resultado="";
+
+if (isset($_FILES)){
         if ($_FILES['avatar']['error'] === 0) {
             $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+
               if ($ext != 'png' && $ext != 'jpg' && $ext != 'jpeg') {
 
                   $errorArchivo = 'Formato de archivo invalido';
@@ -38,7 +59,9 @@ if ($_POST){
                   $_SESSION['avatar']=$avatar;
                 }
               }
-
+              }else{
+  $avatar= $_SESSION['avatar'];
+              }
               if (strlen($user) === 0) {
              $errores['user'] = 'Escribe un usuario';
               }
@@ -48,7 +71,18 @@ if ($_POST){
               if (strlen($lastName) === 0) {
              $errores['lastname'] = 'Escribe un Apellido';
               }
+              if (isset($_POST['newPass'])){
+                $usuario= buscarUsuarioEmail( $email);
+                $pass = $usuario['password'];
 
+              if (password_verify($_POST['password']) == $pass){
+                  if ($_POST['newPass']==$_POST['confirmPass']){ //aca lo dejo
+               $errores['password'] = '';
+             }else{
+                $errores['password'] = 'Passwords do not match';
+              }
+              else {$errores['password'] = 'Wrong password entered'; }
+              }
             if (!$errores) {
               $usuarioPost=  buscarUsuarioEmail( $email);//aca trae el usuario
 
@@ -56,33 +90,20 @@ if ($_POST){
                 $usuarioPost ['name']= $name;
                 $usuarioPost ['lastName']= $lastName;
                 $usuarioPost ['avatar']=$avatar;
+                $usuarioPost['password']=$_POST['newPass'];
 
                 guardarUsuarioPorEmail($email,$usuarioPost);// aca lo guarda
                 //y defino las nuevas $_SESSION
                  $_SESSION['name']=   $name;
-                 $_SESSION['lastName']=  $lastName;
-                 $_SESSION['user']=  $user;
-                $_SESSION['avatar'] =  $avatar ;
-
+                 $_SESSION['lastName']=  $usuarioPost ['lastName'];
+                 $_SESSION['user']=  $usuarioPost ['user']= $user;
+                 $_SESSION['avatar'] =  $usuarioPost ['avatar'] ;
+                $avatar=  $usuarioPost ['avatar'] ;
                 $resultado ="los cambios fueron ok";
-                  }//aca termina si hay errores
+                }//aca termina si hay errores
           }// termina el if de $_POST
 
-  if (isset($_POST['newpw'])){
-    $usuario= buscarUsuarioEmail( $email);
-    //  $pw=$dbc->query("select passwort from kundenaccount where accname= '" . $_SESSION['accname'] . "';")
-                //  $row = $pw->fetch_object()
-                  $pawo = $usuario['password'];
 
-          if (password_verify($_POST['oldpw']) == $pawo){
-          if ($_POST['newpw']==$_POST['conpw']){
-            $usuario['password']=newpw;
-
-                      }
-                           else { echo "Passwords do not match"; }
-          }
-      else { echo "Wrong password entered";}
-      }
 
  ?>
  <!DOCTYPE html>
@@ -105,7 +126,7 @@ if ($_POST){
   <link rel="stylesheet" href="css/login.css">
  </head>
 
-  <body style="  display: block;  align-content: center;">
+  <body style=" display: block;  align-content: center;">
 <?php require_once('partials/header.php') ?>
 <div id="padre"  class="contPadreFlex" style="width: 96%; margin: 2%; overflow:hidden;" >
     <div id="main" class=" styleLogin padd2" style="  margin: 2%;" >
@@ -143,11 +164,6 @@ if ($_POST){
         <input type="text" class="form-control" id="lastName" placeholder="Enter lastName"   name="lastName" value="<?= $lastName ?>" required>
         <p></p>
 
-        <input class="form-control" id="password" placeholder="Enter password" name="password" value="" >
-        <p> <?= (isset($errores['password']) ? $errores['password'] : '') ?></p>
-
-        <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password" name="confirmPassword" value="" >
-        <p> <?= (isset($errores['confirmPassword']) ? $errores['confirmPassword'] : '') ?></p>
 
     <div class="button" style="margin:3%">
 
@@ -155,28 +171,36 @@ if ($_POST){
     </div>
 
 
+    <!-- <input class="form-control" id="password"  name="password" value="" >
+    <p> <?= (isset($errores['password']) ? $errores['password'] : '') ?></p>
+
+    <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password" name="confirmPassword" value="" >
+    <p> <?= (isset($errores['confirmPassword']) ? $errores['confirmPassword'] : '') ?></p> -->
+
+
   </form>
 </div>
 <div class="">
   <form method='post' >
-                    <td>Old Password:</td>
-                    <td><input class="form-control" name='oldpw' type='password' required='required'/></td>
+
+                <!-- <td>Old Password:</td> -->
+                    <td><input class="form-control" name='password' type='password' required='required' placeholder="Enter password"/></td>
+
                 <tr>
-                    <td>New Password:</td>
-                    <td><input class="form-control" name='newpw' type='password' required = 'required' /></td>
-                <tr>
-                    <td>Confirm Password:</td>
-                    <td><input class="form-control" name='conpw' type='password' required = 'required' /></td>
-                    <td>
-                    <input class="center btn-primary btn" type='submit' value='Change Password' />
-                    </td>
+
+                    <!-- <td>New Password:</td> -->
+                    <td><input class="form-control" name='newPass' type='password' required = 'required'  placeholder="Enter new password"/></td>
+                      <p> <?= (isset($errores['password']) ? $errores['password'] : '') ?></p>
+
+
+                    <td><input class="form-control" name='confirmPass' type='password' required = 'required' placeholder="Confirm new password"/></td>
+                    <p> <?= (isset($errores['confirmPassword']) ? $errores['confirmPassword'] : '') ?></p>
+                    <td> <input class="center btn-primary btn" type='submit' value='Change Password'style="width:300px;" /></td>
                 </tr>
                  </form>
 </div>
 
   <div class="">
-
-
         <ul class="center" style="padding-inline-start: 0px;">
           <li class=" btn-primary btn">
             Mis Compras
@@ -187,10 +211,7 @@ if ($_POST){
             <li class=" btn-primary btn" >
             Envios
           </li>
-
-
         </ul>
-
 
       </div>
 

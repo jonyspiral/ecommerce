@@ -18,6 +18,7 @@ function validarLogin($datos) {
         $errores['email'] = 'El email tiene formato errado';
   }
 
+
     $password = $datos['password'];
 
     if (strlen($password) < 6) {

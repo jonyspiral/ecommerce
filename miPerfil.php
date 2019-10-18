@@ -50,17 +50,23 @@ if ($_POST){
               }
 
             if (!$errores) {
-              $usuarioPost=  buscarUsuarioEmail( $email);
+              $usuarioPost=  buscarUsuarioEmail( $email);//aca trae el usuario
 
-                    $usuarioPost ['user']= $user;
-                  $usuarioPost ['name']= $name;
+                $usuarioPost ['user']= $user;
+                $usuarioPost ['name']= $name;
                 $usuarioPost ['lastName']= $lastName;
                 $usuarioPost ['avatar']=$avatar;
 
-                    guardarUsuarioPorEmail($email,$usuarioPost);
+                guardarUsuarioPorEmail($email,$usuarioPost);// aca lo guarda
+                //y defino las nuevas $_SESSION
+                 $_SESSION['name']=   $name;
+                 $_SESSION['lastName']=  $lastName;
+                 $_SESSION['user']=  $user;
+                $_SESSION['avatar'] =  $avatar ;
+
+                $resultado ="los cambios fueron ok";
                   }//aca termina si hay errores
-        $resultado ="los cambios fueron ok";
-  }// termina el if de $_POST
+          }// termina el if de $_POST
 
   if (isset($_POST['newpw'])){
     $usuario= buscarUsuarioEmail( $email);

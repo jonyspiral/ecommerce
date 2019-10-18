@@ -20,11 +20,11 @@ function traerUsuariosJson() {
 return $usuarios;
 }
 
-function guardarUsuarioPorEmail($email,$usuario) {
+function guardarUsuarioPorEmail($email,$usuarioPost) {
   $usuarios=traerUsuariosJson();
   foreach ($usuarios as $key => $usuario){
     if ($usuario['email'] == $email ){
-    $usuarios[$key]=$usuario;
+    $usuarios[$key]=$usuarioPost;
     subirArchivoJson($usuarios);
       }
     }

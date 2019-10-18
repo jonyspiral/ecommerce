@@ -14,10 +14,33 @@
 
     return $usuario;
 }*/
-function buscarUsuarioEmail(string $email) {
+function traerUsuariosJson() {
+  $archivo = file_get_contents('database/usuarios.json');
+  $usuarios = json_decode($archivo, true);
+return $usuarios;
+}
 
-    $archivo = file_get_contents('database/usuarios.json');
-    $usuarios = json_decode($archivo, true);
+function guardarUsuarioPorEmail($email,$usuario) {
+  $usuarios=traerUsuariosJson();
+  foreach ($usuarios as $key => $usuario){
+    if ($usuario['email'] == $email ){
+    $usuarios[$key]=$usuario;
+    subirArchivoJson($usuarios);
+      }
+    }
+}
+
+
+
+function subirArchivoJson($archivo) {
+$usuariosJson = json_encode($archivo);
+
+file_put_contents('database/usuarios.json', $usuariosJson);
+}
+
+
+function buscarUsuarioEmail(string $email) {
+$usuarios = traerUsuariosJson();
 
     foreach ($usuarios as $usuario) {
         if ($usuario['email'] == $email) {
@@ -27,6 +50,21 @@ function buscarUsuarioEmail(string $email) {
 
     return [];
 }
+
+function subirUsuarioEmail(string $email) {
+$usuarioSubir =buscarUsuarioEmail( $email);
+$usuarios =traerUsuariosJson();
+//$archivo = file_get_contents('database/usuarios.json');
+//$usuarios = json_decode($archivo, true);
+foreach ($usuarios as $usuario) {
+    if ($usuario['email'] == $email) {
+      $usuarios[]=$usuarioSubir;
+  subirArchivoJson($usuarios);
+    }
+}
+
+}
+
 
 function subirAvatar($archivo, $nombre) {
 
@@ -42,11 +80,3 @@ function subirAvatar($archivo, $nombre) {
 
     return $nombreArchivo;
 }
-
-
-
-
-
-
-
-//

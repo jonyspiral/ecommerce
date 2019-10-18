@@ -11,82 +11,73 @@ if(!estaElUsuarioLogeado()){
     $avatar= $_SESSION['avatar'] ;
     $nombreArchivo = '';
       $errores=[];
-
   if ($_SESSION['avatar']) {
       $avatar =  $_SESSION['avatar'] ;
     }else{
     $avatar = 'default.png';
 }
 
-
-//var_dump( $_SESSION['avatar']);
 if ($_POST){
-  $email=trim( $_POST['email']);
+  //$email=trim( $_POST['email']);
   //$password=$_POST['password'];
   $user= $_POST['user'];
   $name=$_POST['name'];
   $lastName=$_POST['lastName'];
   $resultado="";
+  $avatar="";
 
         if ($_FILES['avatar']['error'] === 0) {
-
             $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-
               if ($ext != 'png' && $ext != 'jpg' && $ext != 'jpeg') {
-                  $errorArchivo = 'Formato de archivo invalido';
-                } else {
-                  $nombreArchivo = subirAvatar($_FILES['avatar'], $email);
-                  $_SESSION['avatar']=$nombreArchivo;
 
+                  $errorArchivo = 'Formato de archivo invalido';
+                  echo $errorArchivo;
+                } else {
+                  $avatar = subirAvatar($_FILES['avatar'], $email);
+
+                  $_SESSION['avatar']=$avatar;
                 }
               }
-
 
               if (strlen($user) === 0) {
              $errores['user'] = 'Escribe un usuario';
               }
-
-
-            if (strlen($email) === 0) {
-                  $errores['email'] = 'Escribe el email';
-              } else if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                  $errores['email'] = 'El email tiene formato errado';
-            }
-
+              if (strlen($name) === 0) {
+             $errores['name'] = 'Escribe un nombre';
+              }
+              if (strlen($lastName) === 0) {
+             $errores['lastname'] = 'Escribe un Apellido';
+              }
 
             if (!$errores) {
+              $usuarioPost=  buscarUsuarioEmail( $email);
 
-              $archivo = file_get_contents('database/usuarios.json');
-              $usuarios = json_decode($archivo, true);
+                    $usuarioPost ['user']= $user;
+                  $usuarioPost ['name']= $name;
+                $usuarioPost ['lastName']= $lastName;
+                $usuarioPost ['avatar']=$avatar;
 
-
-                foreach ($usuarios as $key => $usuario){
-                  $nombreArchivo=$avatar;
-                  if ($usuario['email'] == $email ){
-                    $usuario ['user']= $user;
-                    $usuario ['name']= $name;
-                    $usuario ['lastName']= $lastName;
-                    $usuario ['avatar']=$avatar;
-                    $usuarios[$key] = $usuario;
-                    $_SESSION['name']=$name;
-                    $_SESSION['lastName']=$lastName;
-                    $_SESSION['user']=$user;
-                    $_SESSION['email']=$email;
-                    $_SESSION['avatar']=$avatar;
-
-                  }
-                }
-
-                  $usuariosJson = json_encode($usuarios);
-
-
-                  file_put_contents('database/usuarios.json', $usuariosJson);
-                  //luego redirijo a miPerfil
-                      $resultado ="los cambios fueron ok";
-                      //var_dump($_SESSION['avatar']);"<br>";
-
-                }
+                    guardarUsuarioPorEmail($email,$usuarioPost);
+                  }//aca termina si hay errores
+        $resultado ="los cambios fueron ok";
   }// termina el if de $_POST
+
+  if (isset($_POST['newpw'])){
+    $usuario= buscarUsuarioEmail( $email);
+    //  $pw=$dbc->query("select passwort from kundenaccount where accname= '" . $_SESSION['accname'] . "';")
+                //  $row = $pw->fetch_object()
+                  $pawo = $usuario['password'];
+
+          if (password_verify($_POST['oldpw']) == $pawo){
+          if ($_POST['newpw']==$_POST['conpw']){
+            $usuario['password']=newpw;
+
+                      }
+                           else { echo "Passwords do not match"; }
+          }
+      else { echo "Wrong password entered";}
+      }
+
  ?>
  <!DOCTYPE html>
  <html lang="en" dir="ltr">
@@ -132,19 +123,12 @@ if ($_POST){
       <form class="" action="miPerfil.php" method="post" enctype="multipart/form-data" >
           <input type="file" accept="img\avatar\<?=$avatar?>" name="avatar"  class=" borderRadiusUp file-input" id="avatar"style="width:100%;">
           <p> <?php /*(isset($errores) ? $errores : '') */?></p>
-          <!--<input class="center btn-primary borderRadiusDown btnHalf" type="submit" value="2- Enviar imagen" style="width:200px; margin-bottom: 14px;">-->
-    <!--  <button class="center btn-primary borderRadiusDown btnHalf" type="submit" value="2- Enviar imagen" style="width:200px; margin-bottom: 14px;"name="button">2- Enviar imagen </button>
-  </form>
-    </div>
-    <div class="">
 
-
-<form class="" action="miPerfil.php" method="post" >-->
 
         <input type="text" class="form-control" id="user" placeholder="Enter user"   name="user" value="<?= $user ?>" required >
         <p> <?= (isset($errores['user']) ? $errores['user'] : '') ?></p>
 
-        <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email"  value="<?= $email ?>" required>
+        <label  class="center" name="email"  ><strong> <?= $email ?></strong> </label>
         <p> <?= (isset($errores['email']) ? $errores['email'] : '' ) ?></p>
 
         <input type="text" class="form-control" id="name" placeholder="Enter name"   name="name" value="<?= $name ?>" required >
@@ -161,11 +145,27 @@ if ($_POST){
 
     <div class="button" style="margin:3%">
 
-      <button class="center btn-primary btn"  type="submit" style="width:300px;">Send</button>
+      <button class="center btn-primary btn"  type="submit" style="width:300px;">Enviar cambios</button>
     </div>
 
 
   </form>
+</div>
+<div class="">
+  <form method='post' >
+                    <td>Old Password:</td>
+                    <td><input class="form-control" name='oldpw' type='password' required='required'/></td>
+                <tr>
+                    <td>New Password:</td>
+                    <td><input class="form-control" name='newpw' type='password' required = 'required' /></td>
+                <tr>
+                    <td>Confirm Password:</td>
+                    <td><input class="form-control" name='conpw' type='password' required = 'required' /></td>
+                    <td>
+                    <input class="center btn-primary btn" type='submit' value='Change Password' />
+                    </td>
+                </tr>
+                 </form>
 </div>
 
   <div class="">

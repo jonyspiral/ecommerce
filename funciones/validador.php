@@ -32,6 +32,15 @@ function validarLogin($datos) {
     return $errores;
 
 }
+function  validarPassword($datos) {
+  $password = $datos['password'];
+
+  if (strlen($password) < 6) {
+    $errores['password'] = 'La contraseña es muy corta (minimo 6 caracteres)';
+  }else if (isset($datos['confirmPassword']) && $datos['confirmPassword'] != $password){
+    $errores ['confirmPassword']='Password y confirmacion no son identicos';
+  }
+}
 /*function validarEmail($email){
 
   if (strlen($email) === 0) {

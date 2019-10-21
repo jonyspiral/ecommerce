@@ -14,15 +14,15 @@ $name ='';
 $lastName='';
 $password= '';
 $confirmPassword = '';
+$errores =[];
+$usuarios =[];
 
-
-
-$errores = [
-  'user' => '',
-    'email' => '',
-    'password' => '',
-    'confirmPassword' => ''
-];
+// //$errores = [
+//   'user' => '',
+//     'email' => '',
+//     'password' => '',
+//     'confirmPassword' => ''
+// ];
 
 
 if ($_POST) {
@@ -30,100 +30,64 @@ if ($_POST) {
     $email = $_POST ['email'];
     $name = $_POST ['name'];
     $lastName =$_POST ['lastName'];
-        $password = $_POST['password'];
-      $confirmPassword = $_POST['confirmPassword'];
-      $nombreArchivo = '';
-      $avatar="";
-    	//verifico si el archivo se subio al temporal de php
+    $password = $_POST['password'];
+    $confirmPassword = $_POST['confirmPassword'];
+    $avatar = 'default.png';
 
-      if ($_FILES['avatar']['error'] === 0) {
-
+  	//verifico si el archivo se subio a temporal de php
+      if ($_FILES['avatar']['error'] == 0) {
         $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-
         if ($ext != 'png' && $ext != 'jpg' && $ext != 'jpeg') {
-          $errorArchivo = 'Formato de archivo invalido';
+          $errores['avatar'] = 'Formato de archivo invalido';
         } else {
-          $nombreArchivo = subirAvatar($_FILES['avatar'], $email);
+          $avatar = subirAvatar($_FILES['avatar'], $email);
+
+          $_SESSION ['avatar']=$avatar;
+
         }
       }
 
-
-      //deberia hacerse solo si no hay errores
-
-      $usuario = [
-        'user'=> $user,
-        'email' => $email,
-        'name'=> $name,
-        'lastName'=>$lastName,
-        'password' => password_hash($password, PASSWORD_DEFAULT),
-        'avatar' => $nombreArchivo,
-            ];
-
-      	//me traigo el archivo entero
-
-      if (!file_exists('database')) {
-        mkdir('database');
-      }
-
-      //creo el archivo usuarios.json
-      if( file_exists("usuarios.json") == true ){
-
-        $archivo = fopen("usuarios.json", "w+b");
-        if( $archivo == false )
-     echo "Error al crear el archivo";
-   else
-     echo "El archivo ha sido creado";
-   fclose($archivo);   // Cerrar el archivo
-    }
-
-//No deberia crear el usuarios.json tambien?
-      //me traigo el archivo entero
-  		$archivo = file_get_contents('database/usuarios.json');
-
-  		$usuarios = json_decode($archivo, true);
-
-
-  		$usuarios[] = $usuario;
-
-  		$usuariosJson = json_encode($usuarios);
-
-  		file_put_contents('database/usuarios.json', $usuariosJson);
+      //armo $usuario
+    $usuario = [
+      'user'=> $user,
+      'email' => $email,
+      'name'=> $name,
+      'lastName'=>$lastName,
+      'password' => password_hash($password, PASSWORD_DEFAULT),
+      'avatar' => $avatar,
+          ];
 
       $errores = validarLogin($_POST);
+      $usuarios=traerUsuariosJson();
 
-/*verifico errores y redirijo a mi perfil*/
-if (!$errores) {
+if (!$usuarios){
+      foreach ($usuarios as $usuario) {
+            if ($usuario['email'] == $email ) {
+              $errores['email']= 'ya existe un usuario con ese email';
+            }
+          }
+        }      /*verifico errores y redirijo a mi perfil*/
+            if (!$errores) {
 
-  $archivo = file_get_contents('database/usuarios.json');
-  $usuarios = json_decode($archivo, true);
+              guardarUsuario($usuario);
+              $_SESSION['email'] = $email;
+              $_SESSION['name'] = $name;
+              $_SESSION['lastName'] = $lastName;
+              $_SESSION['avatar'] =$avatar;
+              $_SESSION['user']= $user;
 
-foreach ($usuarios as $usuario) {
-            if (($usuario['email'] == $email )&& password_verify($password, $usuario['password'])) {
-                //aqui es donde encontré al usuario y lo logeo
-                $_SESSION['email'] = $email;
-                $_SESSION['name'] = $name;
-                $_SESSION['lastName'] = $lastName;
-                $_SESSION['avatar'] = $usuario['avatar'];
-                $_SESSION['user']= $usuario['user'];
-                //si checkaron el recuerdame
-                if (isset($_POST['mantener'])) {
+              if (isset($_POST['mantener'])) {
+                destruirRecuerdame();
                     //guardo la cookie del email
-
-                  setearCookie($email);
-                    //setcookie('mantener', $email, time() + 60*60*24*7 );
-                    //setcookie('avatar',  $usuario['avatar'], time() + 60*60*24*7 );
-                }
+                  setearCookie($email, time() + 60*60*24*7);
+              }
                 //luego redirijo a miPerfil
-                      //var_dump($_SESSION['avatar']);"<br>";
           header('location:miPerfil.php');
             }
           }
-//deberia de buscar al usuario en la base de datos
-    //y si no esta lanzar un error
-    $errores['email'] = 'Usuario o clave incorrectos';
-    }
-	}
-
+// //deberia de buscar al usuario en la base de datos
+//     //y si nos esta lanzar un error
+//     $errores['email'] = 'Usuario o clave incorrectos';
  ?>
 
  <!DOCTYPE html>
@@ -200,7 +164,7 @@ foreach ($usuarios as $usuario) {
       </div>
       <div class="">
 
-        <button class="center btn-primary btn"  type="submit" style="width:300px;">Send</button>
+        <button class="center btn-primary btn"  type="submit" ;>Send</button>
       </div>
 
 </form>

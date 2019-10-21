@@ -27,7 +27,7 @@ session_start();
      }
  }
  function destruirRecuerdame() {
-     setcookie('recuerdame', '', time() - 1);
+     setcookie('mantener', '', time() - 1);
  }
 
 
@@ -37,7 +37,7 @@ session_start();
  }
 function setearCookie($email){
    $_SESSION['avatar'] = $avatar;
-   var_dump($avatar);
+
   setcookie('mantener', $email, time() + 60*60*24*7 );
   setcookie('avatar',  $avatar, time() + 60*60*24*7 );
 }

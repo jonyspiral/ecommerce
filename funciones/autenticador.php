@@ -36,7 +36,7 @@ session_start();
      destruirRecuerdame();
  }
 function setearCookie($email){
-   $_SESSION['avatar'] = $avatar;
+   //$_SESSION['avatar'] = $avatar;
 
   setcookie('mantener', $email, time() + 60*60*24*7 );
   setcookie('avatar',  $avatar, time() + 60*60*24*7 );

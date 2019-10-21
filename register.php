@@ -16,6 +16,7 @@ $password= '';
 $confirmPassword = '';
 $errores =[];
 $usuarios =[];
+$avatar='';
 
 // //$errores = [
 //   'user' => '',
@@ -75,13 +76,14 @@ if (!$usuarios){
               $_SESSION['lastName'] = $lastName;
               $_SESSION['avatar'] =$avatar;
               $_SESSION['user']= $user;
-
+  //var_dump($_SESSION);exit;
               if (isset($_POST['mantener'])) {
                 destruirRecuerdame();
                     //guardo la cookie del email
                   setearCookie($email, time() + 60*60*24*7);
               }
                 //luego redirijo a miPerfil
+                var_dump($_SESSION);exit;
           header('location:miPerfil.php');
             }
           }

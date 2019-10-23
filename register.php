@@ -17,15 +17,6 @@ $confirmPassword = '';
 $errores =[];
 $usuarios =[];
 $avatar='';
-
-// //$errores = [
-//   'user' => '',
-//     'email' => '',
-//     'password' => '',
-//     'confirmPassword' => ''
-// ];
-
-
 if ($_POST) {
     $user = $_POST ['user'];
     $email = $_POST ['email'];
@@ -34,20 +25,18 @@ if ($_POST) {
     $password = $_POST['password'];
     $confirmPassword = $_POST['confirmPassword'];
     $avatar = 'default.png';
-
   	//verifico si el archivo se subio a temporal de php
+
       if ($_FILES['avatar']['error'] == 0) {
+
         $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
         if ($ext != 'png' && $ext != 'jpg' && $ext != 'jpeg') {
           $errores['avatar'] = 'Formato de archivo invalido';
         } else {
           $avatar = subirAvatar($_FILES['avatar'], $email);
-
-          $_SESSION ['avatar']=$avatar;
-
-        }
+        //$avatar=$_FILES['avatar']['tmp_name']; // no se como hacer una preview de la imagen
       }
-
+      }
       //armo $usuario
     $usuario = [
       'user'=> $user,
@@ -57,10 +46,8 @@ if ($_POST) {
       'password' => password_hash($password, PASSWORD_DEFAULT),
       'avatar' => $avatar,
           ];
-
       $errores = validarLogin($_POST);
       $usuarios=traerUsuariosJson();
-
 if (!$usuarios){
       foreach ($usuarios as $usuario) {
             if ($usuario['email'] == $email ) {
@@ -71,27 +58,22 @@ if (!$usuarios){
             if (!$errores) {
 
               guardarUsuario($usuario);
-              $_SESSION['email'] = $email;
-              $_SESSION['name'] = $name;
-              $_SESSION['lastName'] = $lastName;
-              $_SESSION['avatar'] =$avatar;
-              $_SESSION['user']= $user;
-  //var_dump($_SESSION);exit;
               if (isset($_POST['mantener'])) {
                 destruirRecuerdame();
                     //guardo la cookie del email
-                  setearCookie($email, time() + 60*60*24*7);
+                  setearCookie($email,$avatar);
               }
                 //luego redirijo a miPerfil
-                var_dump($_SESSION);exit;
           header('location:miPerfil.php');
             }
           }
-// //deberia de buscar al usuario en la base de datos
-//     //y si nos esta lanzar un error
-//     $errores['email'] = 'Usuario o clave incorrectos';
- ?>
+          $_SESSION['email'] = $email;
+          $_SESSION['name'] = $name;
+          $_SESSION['lastName'] = $lastName;
+          $_SESSION['avatar'] =$avatar;
+          $_SESSION['user']= $user;
 
+?>
  <!DOCTYPE html>
  <html lang="en" dir="ltr">
    <head>

@@ -35,9 +35,7 @@ session_start();
      session_destroy();
      destruirRecuerdame();
  }
-function setearCookie($email){
-   //$_SESSION['avatar'] = $avatar;
-
-  setcookie('mantener', $email, time() + 60*60*24*7 );
+function setearCookie($email,$avatar){
+     setcookie('mantener', $email, time() + 60*60*24*7 );
   setcookie('avatar',  $avatar, time() + 60*60*24*7 );
 }

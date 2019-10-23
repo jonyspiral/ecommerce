@@ -11,10 +11,9 @@ if(!estaElUsuarioLogeado()){
     $nombreArchivo = '';
     $errores=[];
     $resultado='';
-      
-    $avatar =  $_SESSION['avatar'];
+
+    $avatar = $_SESSION['avatar'];
     $newPass= '';
-  //var_dump($_SESSION);exit;
 
 if ($_POST){
   if (isset($_POST['user'])){
@@ -32,9 +31,7 @@ if ($_POST){
   }else{
   $lastName=$_SESSION['lastName'];
   }
-
   $password='';
-
   if (isset($_POST['newPass'])){
     $newPass= $_POST['newPass'];
   }else{
@@ -50,12 +47,12 @@ if (isset($_FILES['avatar'])){
                   $errores['avatar']= 'Formato de archivo invalido';
                   } else {
                   $avatar = subirAvatar($_FILES['avatar'], $email);
-                  $_SESSION['avatar']=$avatar;
+
                 }
               }
-              }else{
-              $avatar= $_SESSION['avatar'];//creo que esta al pedo.
-              }
+            }//else{
+              //$avatar= $_SESSION['avatar'];//creo que esta al pedo.
+              //}
               //validaciones
               if (strlen($user) === 0) {
              $errores['user'] = 'Escribe un usuario';

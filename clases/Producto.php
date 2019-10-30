@@ -1,18 +1,30 @@
 <?php
 class Producto {
-    /** @var string */
-    private $nombre;
     /** @var int */
-    private $id;
+    protected $id;
+    /** @var string */
+    protected $nombre;
     /** @var float */
-    private $precio;
+    protected $precio;
+    /** @var Colores **/
+    protected $color;
     /** @var Categoria **/
-    private $categoria;
+    protected $categoria;
+    /** @var Rangotalle **/
+    protected $rangoTalle;
+    /** @var Stock **///pueedo pedir stock aca?
 
-    public function __construct (string $nombre, float $prize = 0)
+    protected $Stock;
+
+    public function __construct (string $nombre, float $prize = 0,Color $color,Rangotalle $rangoTalle )
     {
+
         $this->setNombre($nombre);
         $this->precio = $prize;
+        $this->setColor($color);// como validar con el id del color
+        $this->setCategoria($categoria);
+        $this->setRangoTalle($rangoTalle);
+
     }
 
     public function getNombre(): ?string
@@ -49,8 +61,35 @@ class Producto {
     {
         $this->categoria = $categoria;
     }
+    public function getRangoTalle(): Rangotalle
+    {
+        return $this->Rangotalle;
+    }
 
-    public function dameElNombreDeLaCategoria(): string
+    public function setRangotalle(Rangotalle $Rangotalle)
+    {
+        $this->Rangotalle = $Rangotalle;
+    }
+    public function getStock(): Stock
+    {
+        return $this->Stock;
+    }
+
+    public function setStock(Rangotalle $Stock)
+    {
+        $this->Stock = $Stock;
+    }
+  }
+
+
+
+
+
+
+
+
+
+    /*public function dameElNombreDeLaCategoria(): string
     {
         return 'La categoria es: ' . $this->getCategoria()->getNombre();
     }

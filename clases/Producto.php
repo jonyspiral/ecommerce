@@ -9,10 +9,13 @@ class Producto {
     /** @var Categoria **/
     private $categoria;
 
-    public function __construct (string $nombre, float $prize = 0)
+    public function __construct (string $nombre, float $prize = 0,string $categoria,string $descripcion)
     {
         $this->setNombre($nombre);
         $this->precio = $prize;
+        $this->setCategoria($categoria);
+        $this->setDescripcion($descripcion);
+
     }
 
     public function getNombre(): ?string
@@ -49,11 +52,20 @@ class Producto {
     {
         $this->categoria = $categoria;
     }
+    public function getDescripcion(): Descripcion
+    {
+        return $this->descripcion;
+    }
 
-    public function dameElNombreDeLaCategoria(): string
+    public function setDescripcion(Descripcion $descripcion)
+    {
+        $this->Descripcion = $descripcion;
+    }
+
+    /*public function dameElNombreDeLaCategoria(): string
     {
         return 'La categoria es: ' . $this->getCategoria()->getNombre();
-    }
+    }*/
 
 
     public function guardar(BaseDatos $bd)

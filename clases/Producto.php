@@ -1,20 +1,38 @@
 <?php
 class Producto {
-    /** @var string */
-    private $nombre;
     /** @var int */
-    private $id;
+    protected $id;
+    /** @var string */
+    protected $nombre;
     /** @var float */
-    private $precio;
+    protected $precio;
+    /** @var Colores **/
+    protected $color;
     /** @var Categoria **/
-    private $categoria;
+    protected $categoria;
+    /** @var Rangotalle **/
+    protected $rangoTalle;
+    /** @var Stock **///pueedo pedir stock aca?
 
+    protected $Stock;
+
+<<<<<<< HEAD
     public function __construct (string $nombre, float $prize = 0,string $categoria,string $descripcion)
+=======
+    public function __construct (string $nombre, float $prize = 0,Color $color,Rangotalle $rangoTalle )
+>>>>>>> b422862df811bdf03189aec27299f251abb2c550
     {
+
         $this->setNombre($nombre);
         $this->precio = $prize;
+<<<<<<< HEAD
         $this->setCategoria($categoria);
         $this->setDescripcion($descripcion);
+=======
+        $this->setColor($color);// como validar con el id del color
+        $this->setCategoria($categoria);
+        $this->setRangoTalle($rangoTalle);
+>>>>>>> b422862df811bdf03189aec27299f251abb2c550
 
     }
 
@@ -52,12 +70,44 @@ class Producto {
     {
         $this->categoria = $categoria;
     }
+<<<<<<< HEAD
     public function getDescripcion(): Descripcion
     {
         return $this->descripcion;
     }
 
     public function setDescripcion(Descripcion $descripcion)
+=======
+    public function getRangoTalle(): Rangotalle
+    {
+        return $this->Rangotalle;
+    }
+
+    public function setRangotalle(Rangotalle $Rangotalle)
+    {
+        $this->Rangotalle = $Rangotalle;
+    }
+    public function getStock(): Stock
+    {
+        return $this->Stock;
+    }
+
+    public function setStock(Rangotalle $Stock)
+    {
+        $this->Stock = $Stock;
+    }
+  }
+
+
+
+
+
+
+
+
+
+    /*public function dameElNombreDeLaCategoria(): string
+>>>>>>> b422862df811bdf03189aec27299f251abb2c550
     {
         $this->Descripcion = $descripcion;
     }

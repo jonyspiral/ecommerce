@@ -1,4 +1,5 @@
 <?php
+require_once('funciones/conexion.php');
 
 /*function buscarUsuarioEmail($email) {
 
@@ -38,6 +39,7 @@ fclose($archivo);   // Cerrar el archivo
 return $usuarios;
 }
 
+
 function guardarUsuarioPorEmail($email,$usuarioPost) {
   $usuarios=traerUsuariosJson();
   foreach ($usuarios as $key => $usuario){
@@ -56,16 +58,43 @@ file_put_contents('database/usuarios.json', $usuariosJson);
 
 
 function buscarUsuarioEmail(string $email) {
-$usuarios = traerUsuariosJson();
+  $dsn='mysql:host=127.0.0.1;dbname=navshop;port=3306';
+  $user ='root';
+  $pass='root';
+  $conex='';
+  //esto muestra los errores con nombres de tablas y campos
+  $opt= [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+  //esto codifica para que no tenga errores de acentos
+          PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"];
+  try {
+      $conex = new PDO($dsn, $user, $pass, $opt);
+  var_dump($conex);
+  } catch (PDOException $e) {
+      echo $e->getMessage();
+  }
+  $sql = "SELECT * FROM usuarios WHERE email = :email";
+ $sentencia = $conex->prepare($sql);
+ $sentencia->bindValue(':email', $_POST['email']);
+ $sentencia->execute();
 
-    foreach ($usuarios as $usuario) {
-        if ($usuario['email'] == $email) {
-            return $usuario;
+   $usuario = $sentencia->fetch(PDO::FETCH_ASSOC);
+   var_dump($usuario);
+   if ($usuario['email'] == $email) {
+               return $usuario;
+            }
+
         }
-    }
 
-    return [];
-}
+// $usuarios = traerUsuariosJson();
+//
+//     foreach ($usuarios as $usuario) {
+//         if ($usuario['email'] == $email) {
+//             return $usuario;
+//         }
+//     }
+//
+//     return [];
+
 
 function subirUsuarioEmail(string $email) {
 $usuarioSubir =buscarUsuarioEmail( $email);

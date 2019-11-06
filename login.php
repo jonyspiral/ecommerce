@@ -22,7 +22,7 @@ if ($_POST) {
     $email = trim($_POST['email']);
     $password = $_POST['password'];
     $errores = validarLogin($_POST);
-
+    buscarUsuarioEmail($email);
     if (!$errores) {
 
           $archivo = file_get_contents('database/usuarios.json');
@@ -92,7 +92,7 @@ if ($_POST) {
           <form class="" action="login.php" method="post" >
 
           <!--<label class="containerDentro"for="email">Email address</label>-->
-          <input type="text" class="formControl" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email" value="<?= $email ?>">
+          <input type="text" class="formControl" id="email" aria-describedby="emailHelp" placeholder="email" name="email" value="<?= $email ?>">
           <p> <?= (isset($errores['email']) ? $errores['email'] : '') ?></p>
           <!--<label class="containerDentro" for="contraseña">Contraseña</label>-->
           <input class="formControl" placeholder="Enter password" type="password" name="password" value="">

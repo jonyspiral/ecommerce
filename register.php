@@ -15,7 +15,6 @@ $lastName='';
 $password= '';
 $confirmPassword = '';
 $errores =[];
-$usuarios =[];
 $avatar='default.png';
 if ($_POST) {
 

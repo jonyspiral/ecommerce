@@ -6,21 +6,10 @@ $conex='';
 //esto muestra los errores con nombres de tablas y campos
 $opt= [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
 //esto codifica para que no tenga errores de acentos
-        PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"];
+      PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"];
 try {
-    $conex = new PDO($dsn, $user, $pass, $opt);
-    // $sql = "SELECT * FROM genres WHERE id = :id";
-    // $sentencia = $conex->prepare($sql);
-    // $sentencia->bindValue(':id', $_GET['id']);
-    // $sentencia->execute();
-    //
-    // $resultado = $sentencia->fetch(PDO::FETCH_ASSOC);
-var_dump($conex);
+  $conex = new PDO($dsn, $user, $pass, $opt);
+
 } catch (PDOException $e) {
-    echo $e->getMessage();
+  echo $e->getMessage();
 }
-// function abrirBaseDeDatos($dsn, $user, $pass) {
-// $db=new PDO ($dsn, $user, $pass);
-//   return $db;
-//
-// }

@@ -18,15 +18,25 @@
         'email' => '',
         'password' => ''
     ];
+    $query='';
 if ($_POST) {
     $email = trim($_POST['email']);
     $password = $_POST['password'];
     $errores = validarLogin($_POST);
-    $usuario=buscarUsuarioEmail($email);
+    //$usuario=buscarUsuarioEmail($email);
+    $sql = "SELECT password FROM usuarios WHERE email = :email";
+    $query=$conex->prepare($sql);
+    $query->bindValue(':email', $_POST['email']);
+
+
+    $query->execute();
+
+    $passBd=$query->fetch(PDO::FETCH_ASSOC);
+var_dump($passBd[password]);exit;
+     //$pass=new PDO->$usuario->password;
+     //var_dump($pass);
     if (!$errores) {
-        //  $archivo = file_get_contents('database/usuarios.json');
-          //$usuarios = json_decode($archivo, true);
-//  foreach ($usuarios as $usuario) {
+
                 if (($usuario['email'] == $email )&& password_verify($password, $usuario['password'])) {
                     //aqui es donde encontré al usuario y lo logeo
                     $_SESSION['email'] = $email;
@@ -92,7 +102,7 @@ if ($_POST) {
           <input type="text" class="formControl" id="email" aria-describedby="emailHelp" placeholder="email" name="email" value="<?= $email ?>">
           <p> <?= (isset($errores['email']) ? $errores['email'] : '') ?></p>
           <!--<label class="containerDentro" for="contraseña">Contraseña</label>-->
-          <input class="formControl" placeholder="Enter password" type="password" name="password" value="">
+          <input class="formControl" placeholder="email" type="password" name="password" value="">
 
           <p><?= (isset($errores['password']) ? $errores['password'] : '') ?></p>
 

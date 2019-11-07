@@ -22,14 +22,11 @@ if ($_POST) {
     $email = trim($_POST['email']);
     $password = $_POST['password'];
     $errores = validarLogin($_POST);
-    buscarUsuarioEmail($email);
+    $usuario=buscarUsuarioEmail($email);
     if (!$errores) {
-
-          $archivo = file_get_contents('database/usuarios.json');
-
-          $usuarios = json_decode($archivo, true);
-
-    foreach ($usuarios as $usuario) {
+        //  $archivo = file_get_contents('database/usuarios.json');
+          //$usuarios = json_decode($archivo, true);
+//  foreach ($usuarios as $usuario) {
                 if (($usuario['email'] == $email )&& password_verify($password, $usuario['password'])) {
                     //aqui es donde encontré al usuario y lo logeo
                     $_SESSION['email'] = $email;
@@ -48,7 +45,7 @@ if ($_POST) {
 
                     header('location:miPerfil.php');
                 }
-              }
+            //  }
     //deberia de buscar al usuario en la base de datos
         //y si no esta lanzar un error
         $errores['email'] = 'Usuario o clave incorrectos';

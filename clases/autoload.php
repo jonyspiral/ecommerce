@@ -1,6 +1,6 @@
 <?php
-require_once('Categoria.php');
-require_once('Producto.php');
+session_start();
+require_once('Validador.php');
 require_once('BaseDatos.php');
-
-$bd = new BaseDatos;
+require_once('Usuario.php');
+require_once('Autenticador.php');

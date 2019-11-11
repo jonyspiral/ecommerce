@@ -10,29 +10,29 @@ class Producto {
     protected $color;
     /** @var Categoria **/
     protected $categoria;
-    /** @var Rangotalle **/
-    protected $rangoTalle;
+    /** @var Talle **/
+    protected $Talle;
     /** @var Stock **///pueedo pedir stock aca?
-
     protected $Stock;
 
-<<<<<<< HEAD
-    public function __construct (string $nombre, float $prize = 0,string $categoria,string $descripcion)
-=======
-    public function __construct (string $nombre, float $prize = 0,Color $color,Rangotalle $rangoTalle )
->>>>>>> b422862df811bdf03189aec27299f251abb2c550
+    protected $descripcion;
+
+
+
+    public function __construct (string $nombre, float $prize = 0,Color $color,talle $Talle )
+
     {
 
         $this->setNombre($nombre);
         $this->precio = $prize;
-<<<<<<< HEAD
+
         $this->setCategoria($categoria);
         $this->setDescripcion($descripcion);
-=======
+
         $this->setColor($color);// como validar con el id del color
         $this->setCategoria($categoria);
-        $this->setRangoTalle($rangoTalle);
->>>>>>> b422862df811bdf03189aec27299f251abb2c550
+        $this->setTalle($Talle);
+        $this->setDescripcion($descripcion);
 
     }
 
@@ -70,29 +70,29 @@ class Producto {
     {
         $this->categoria = $categoria;
     }
-<<<<<<< HEAD
     public function getDescripcion(): Descripcion
     {
         return $this->descripcion;
     }
 
     public function setDescripcion(Descripcion $descripcion)
-=======
-    public function getRangoTalle(): Rangotalle
+
+    public function getTalle(): talle
     {
-        return $this->Rangotalle;
+        return $this->talle;
     }
 
-    public function setRangotalle(Rangotalle $Rangotalle)
+    public function setTalle(talle $talle)
     {
-        $this->Rangotalle = $Rangotalle;
+        $this->talle = $talle;
     }
     public function getStock(): Stock
     {
         return $this->Stock;
     }
 
-    public function setStock(Rangotalle $Stock)
+    public function setStock(Stock $Stock)
+
     {
         $this->Stock = $Stock;
     }

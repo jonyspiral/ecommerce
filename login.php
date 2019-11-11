@@ -19,15 +19,12 @@
         'password' => ''
     ];
 if ($_POST) {
-    $email = trim($_POST['email']);
-    $password = $_POST['password'];
-    $errores = validarLogin($_POST);
-
+  $email = ($_POST['email']);
+  $password = $_POST['password'];
+  $validador=New Validador;
+  $errores = $validador->validarLogin($email,$password);
+  //determino errores con la clase Validador
     if (!$errores) {
-
-          $archivo = file_get_contents('database/usuarios.json');
-
-          $usuarios = json_decode($archivo, true);
 
     foreach ($usuarios as $usuario) {
                 if (($usuario['email'] == $email )&& password_verify($password, $usuario['password'])) {

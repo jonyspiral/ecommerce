@@ -18,15 +18,25 @@
         'email' => '',
         'password' => ''
     ];
+    $query='';
 if ($_POST) {
-  $email = ($_POST['email']);
-  $password = $_POST['password'];
-  $validador=New Validador;
-  $errores = $validador->validarLogin($email,$password);
-  //determino errores con la clase Validador
+    $email = trim($_POST['email']);
+    $password = $_POST['password'];
+    $errores = validarLogin($_POST);
+    //$usuario=buscarUsuarioEmail($email);
+    $sql = "SELECT password FROM usuarios WHERE email = :email";
+    $query=$conex->prepare($sql);
+    $query->bindValue(':email', $_POST['email']);
+
+
+    $query->execute();
+
+    $passBd=$query->fetch(PDO::FETCH_ASSOC);
+var_dump($passBd[password]);exit;
+     //$pass=new PDO->$usuario->password;
+     //var_dump($pass);
     if (!$errores) {
 
-    foreach ($usuarios as $usuario) {
                 if (($usuario['email'] == $email )&& password_verify($password, $usuario['password'])) {
                     //aqui es donde encontré al usuario y lo logeo
                     $_SESSION['email'] = $email;
@@ -45,7 +55,7 @@ if ($_POST) {
 
                     header('location:miPerfil.php');
                 }
-              }
+            //  }
     //deberia de buscar al usuario en la base de datos
         //y si no esta lanzar un error
         $errores['email'] = 'Usuario o clave incorrectos';
@@ -89,10 +99,10 @@ if ($_POST) {
           <form class="" action="login.php" method="post" >
 
           <!--<label class="containerDentro"for="email">Email address</label>-->
-          <input type="text" class="formControl" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email" value="<?= $email ?>">
+          <input type="text" class="formControl" id="email" aria-describedby="emailHelp" placeholder="email" name="email" value="<?= $email ?>">
           <p> <?= (isset($errores['email']) ? $errores['email'] : '') ?></p>
           <!--<label class="containerDentro" for="contraseña">Contraseña</label>-->
-          <input class="formControl" placeholder="Enter password" type="password" name="password" value="">
+          <input class="formControl" placeholder="email" type="password" name="password" value="">
 
           <p><?= (isset($errores['password']) ? $errores['password'] : '') ?></p>
 

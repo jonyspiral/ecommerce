@@ -15,16 +15,9 @@ $lastName='';
 $password= '';
 $confirmPassword = '';
 $errores =[];
-$usuarios =[];
-$avatar='';
+$avatar='default.png';
 if ($_POST) {
-    $user = $_POST ['user'];
-    $email = $_POST ['email'];
-    $name = $_POST ['name'];
-    $lastName =$_POST ['lastName'];
-    $password = $_POST['password'];
-    $confirmPassword = $_POST['confirmPassword'];
-    $avatar = 'default.png';
+
   	//verifico si el archivo se subio a temporal de php
 
       if ($_FILES['avatar']['error'] == 0) {
@@ -33,28 +26,27 @@ if ($_POST) {
         if ($ext != 'png' && $ext != 'jpg' && $ext != 'jpeg') {
           $errores['avatar'] = 'Formato de archivo invalido';
         } else {
-          $avatar = subirAvatar($_FILES['avatar'], $email);
+          $avatar = subirAvatar($_FILES['avatar'], $_POST ['email']);
         //$avatar=$_FILES['avatar']['tmp_name']; // no se como hacer una preview de la imagen
-      }
+            }
       }
       //armo $usuario
+     $confirmPassword = $_POST['confirmPassword'];
     $usuario = [
-      'user'=> $user,
-      'email' => $email,
-      'name'=> $name,
-      'lastName'=>$lastName,
-      'password' => password_hash($password, PASSWORD_DEFAULT),
+      'user'=> $_POST ['user'],
+      'email' => $_POST ['email'],
+      'name'=> $_POST ['name'],
+      'lastName'=>$_POST ['lastName'],
+      'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
       'avatar' => $avatar,
           ];
-      $errores = validarLogin($_POST);
-      $usuarios=traerUsuariosJson();
-if (!$usuarios){
-      foreach ($usuarios as $usuario) {
-            if ($usuario['email'] == $email ) {
+            $errores = validarLogin($_POST);
+            $usuarioDb=buscarUsuarioEmail($_POST ['email']);
+            if ($usuarioDb['email'] == $_POST ['email'] ) {
               $errores['email']= 'ya existe un usuario con ese email';
             }
-          }
-        }      /*verifico errores y redirijo a mi perfil*/
+
+           /*verifico errores y redirijo a mi perfil*/
             if (!$errores) {
 
               guardarUsuario($usuario);
@@ -65,13 +57,18 @@ if (!$usuarios){
               }
                 //luego redirijo a miPerfil
           header('location:miPerfil.php');
+          $_SESSION=[
+          'user'=> $usuario ['user'],
+          'email' => $usuario ['email'],
+          'name'=> $usuario ['name'],
+          'lastName'=>$usuario ['lastName'],
+          'avatar' => $usuario['avatar']
+                ];
             }
+
           }
-          $_SESSION['email'] = $email;
-          $_SESSION['name'] = $name;
-          $_SESSION['lastName'] = $lastName;
-          $_SESSION['avatar'] =$avatar;
-          $_SESSION['user']= $user;
+
+
 
 ?>
  <!DOCTYPE html>

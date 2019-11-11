@@ -1,6 +1,7 @@
 <?php
 
     require_once('funciones/autoload.php');
+    require_once('clases/autoload.php');
 
     if (isset($_COOKIE['mantener'])) {
         logear($_COOKIE['mantener']);
@@ -14,54 +15,35 @@
 
     $email = '';
     $password = '';
-    $errores = [
-        'email' => '',
-        'password' => ''
-    ];
-    $query='';
+    $errores = [];
+
 if ($_POST) {
-    $email = trim($_POST['email']);
-    $password = $_POST['password'];
-    $errores = validarLogin($_POST);
-    //$usuario=buscarUsuarioEmail($email);
-    $sql = "SELECT password FROM usuarios WHERE email = :email";
-    $query=$conex->prepare($sql);
-    $query->bindValue(':email', $_POST['email']);
-
-
-    $query->execute();
-
-    $passBd=$query->fetch(PDO::FETCH_ASSOC);
-var_dump($passBd[password]);exit;
-     //$pass=new PDO->$usuario->password;
-     //var_dump($pass);
+  $email = ($_POST['email']);
+  $password = $_POST['password'];
+  $bd = new BaseDatos;
+  $validador= New Validador ($bd);
+  $errores = $validador->validarLogin($email,$password);
+  //determino errores con la clase Validador
     if (!$errores) {
+      $usuario = $bd->buscarUsuarioEmail($email);
+  //var_dump($usuario);exit;
+    //iniciar session
+    $auth = new Autenticador;
+    $auth->logear($usuario);
 
-                if (($usuario['email'] == $email )&& password_verify($password, $usuario['password'])) {
-                    //aqui es donde encontré al usuario y lo logeo
-                    $_SESSION['email'] = $email;
-                    $_SESSION['name'] = $usuario['name'];
-                    $_SESSION['lastName'] = $usuario['lastName'];
-                    $_SESSION['avatar'] = $usuario['avatar'];
-                    $_SESSION['user']= $usuario['user'];
-                    //si checkaron el recuerdame
-                    if (isset($_POST['mantener'])) {
-                        //guardo la cookie del email
+        //si checkaron el recuerdame
+          //guardo la cookie del email
+    if (isset($_POST['mantener'])) {
+        setcookie('mantener',  $email, time() + 60*60*24*7 );
+        setcookie('avatar',  $usuario['avatar'], time() + 60*60*24*7 );
+    }
+    //redirijir a mi prefil
+    header('location:miPerfil.php');
+    }
+}else{
+    $errores['email'] = 'Usuario o clave incorrectos';
 
-                        setcookie('mantener',  $email, time() + 60*60*24*7 );
-                        setcookie('avatar',  $usuario['avatar'], time() + 60*60*24*7 );
-                    }
-                    //luego redirijo a miPerfil
-
-                    header('location:miPerfil.php');
-                }
-            //  }
-    //deberia de buscar al usuario en la base de datos
-        //y si no esta lanzar un error
-        $errores['email'] = 'Usuario o clave incorrectos';
-
-        }
-  }
+    }
 ?>
 
 <!DOCTYPE html>

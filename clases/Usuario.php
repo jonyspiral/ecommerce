@@ -9,7 +9,7 @@ class Usuario {
     private $password;
     private $avatar;
 
-    public function __construct($id,string $user,string $email, string $password, string $avatar)
+    public function __construct(  $id,string $user,string $name,string $lastName,string $email, string $password, string $avatar)
       {
         $this->setId($id);
         $this->setUser($user);
@@ -19,6 +19,11 @@ class Usuario {
         $this->setPassword($password);
         $this->setAvatar($avatar);
     }
+    public function setId(string $id)
+    {
+        $this->id = $id;
+    }
+
     public function setUser(string $user)
     {
         $this->user = $user;
@@ -43,7 +48,13 @@ class Usuario {
     public function setAvatar(string $avatar)
     {
         $this->avatar = $avatar;
+
     }
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
     public function getId(): integer
     {
         return $this->id;

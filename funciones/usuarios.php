@@ -42,7 +42,9 @@ function guardarUsuario($usuario) {
     $sql = "INSERT INTO usuarios ( user, name, lastName, password, email, avatar) values ('$username', '$name','$lastName', '$password', '$email','$avatar')";
    $sentencia = $conex->prepare($sql);
    $sentencia->bindValue(':email', $_POST['email']);
+
    $sentencia->execute();
+
     }
 
 

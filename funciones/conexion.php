@@ -1,4 +1,5 @@
 <?php
+function conectar(){
 $dsn='mysql:host=127.0.0.1;dbname=navshop;port=3306';
 $user ='root';
 $pass='root';
@@ -10,6 +11,8 @@ $opt= [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
 try {
   $conex = new PDO($dsn, $user, $pass, $opt);
 
+
 } catch (PDOException $e) {
   echo $e->getMessage();
+}
 }

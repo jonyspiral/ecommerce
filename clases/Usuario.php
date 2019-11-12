@@ -9,9 +9,9 @@ class Usuario {
     private $password;
     private $avatar;
 
-    public function __construct(  $id,string $user,string $name,string $lastName,string $email, string $password, string $avatar)
+    public function __construct( $id,string $user,string $name,string $lastName,string $email, string $password, string $avatar)
       {
-        $this->setId($id);
+        $this->setId(intval($id));
         $this->setUser($user);
         $this->setName($name);
         $this->setLastName($lastName);
@@ -19,9 +19,9 @@ class Usuario {
         $this->setPassword($password);
         $this->setAvatar($avatar);
     }
-    public function setId(string $id)
+    public function setId( $id)
     {
-        $this->id = $id;
+        $this->id = intval($id);
     }
 
     public function setUser(string $user)
@@ -55,7 +55,7 @@ class Usuario {
         return $this->email;
     }
 
-    public function getId(): integer
+    public function getId()
     {
         return $this->id;
     }

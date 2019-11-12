@@ -1,5 +1,7 @@
 <?php
-require_once 'funciones/autoload.php';
+require_once ('clases/Conexion.php');
+require_once ('funciones/autoload.php');
+require_once ('clases/autoload.php');
 if(!estaElUsuarioLogeado()){
     header('location:login.php');
 }
@@ -16,33 +18,33 @@ if(!estaElUsuarioLogeado()){
     $newPass= '';
 
 if ($_POST){
-  if (isset($_POST['user'])){
-    $user= $_POST['user'];
-  }else{
-  $user=$_SESSION['user'];
+    if (isset($_POST['user'])){
+      $user= $_POST['user'];
+    }else{
+    $user=$_SESSION['user'];
+    }
+    if (isset($_POST['name'])){
+      $name= $_POST['name'];
+    }else{
+    $name= $_SESSION['name'];
+    }
+    if (isset($_POST['lastName'])){
+      $lastName= $_POST['lastName'];
+    }else{
+    $lastName=$_SESSION['lastName'];
+    }
+    $password='';
+    if (isset($_POST['newPass'])){
+      $newPass= $_POST['newPass'];
+    }else{
+    $newPass='';
   }
-  if (isset($_POST['name'])){
-    $name= $_POST['name'];
-  }else{
-  $name= $_SESSION['name'];
-  }
-  if (isset($_POST['lastName'])){
-    $lastName= $_POST['lastName'];
-  }else{
-  $lastName=$_SESSION['lastName'];
-  }
-  $password='';
-  if (isset($_POST['newPass'])){
-    $newPass= $_POST['newPass'];
-  }else{
-  $newPass='';
-  }
-if (isset($_FILES['avatar'])){
+            if (isset($_FILES['avatar'])){
 
-        if ($_FILES['avatar']['error'] === 0) {
+              if ($_FILES['avatar']['error'] === 0) {
             $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
 
-              if ($ext != 'png' && $ext != 'jpg' && $ext != 'jpeg') {
+                  if ($ext != 'png' && $ext != 'jpg' && $ext != 'jpeg') {
 
                   $errores['avatar']= 'Formato de archivo invalido';
                   } else {
@@ -50,19 +52,21 @@ if (isset($_FILES['avatar'])){
 
                 }
               }
-            }//else{
-              //$avatar= $_SESSION['avatar'];//creo que esta al pedo.
-              //}
+            }
               //validaciones
-              if (strlen($user) === 0) {
-             $errores['user'] = 'Escribe un usuario';
-              }
-              if (strlen($name) === 0) {
-             $errores['name'] = 'Escribe un nombre';
-              }
-              if (strlen($lastName) === 0) {
-             $errores['lastname'] = 'Escribe un Apellido';
-              }
+              $bd = new BaseDatos;
+              $validador= New Validador ($bd);
+
+
+             //  if (strlen($user) === 0) {
+             // $errores['user'] = 'Escribe un usuario';
+             //  }
+             //  if (strlen($name) === 0) {
+             // $errores['name'] = 'Escribe un nombre';
+             //  }
+             //  if (strlen($lastName) === 0) {
+             // $errores['lastname'] = 'Escribe un Apellido';
+             //  }
 
               if (isset($_POST['newPass'])){
                 $usuario= buscarUsuarioEmail( $email);
@@ -70,13 +74,7 @@ if (isset($_FILES['avatar'])){
 
               if (password_verify($_POST['password'],$password)){
 
-                $errores=validarPassword($_POST);//validar datos de newPass.
-             //      if ($_POST['newPass']==$_POST['confirmPass']) {
-             //   $errores['password'] = '';
-             //   $newPass= $_POST['newPass'];
-             // }else{
-             //    $errores['password'] = 'Nuevos Passwords difieren';
-             //  } //if end//
+                $errores=validarPassword($_POST);
 
                 }else {
                 $errores['password'] = 'Password equivocado.';

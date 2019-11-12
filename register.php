@@ -1,6 +1,6 @@
 <?php
 require_once('funciones/autoload.php');
-
+  require_once('clases/autoload.php');
 
 if(estaElUsuarioLogeado()){
      header('location:miPerfil.php');
@@ -17,11 +17,8 @@ $confirmPassword = '';
 $errores =[];
 $avatar='default.png';
 if ($_POST) {
-
   	//verifico si el archivo se subio a temporal de php
-
       if ($_FILES['avatar']['error'] == 0) {
-
         $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
         if ($ext != 'png' && $ext != 'jpg' && $ext != 'jpeg') {
           $errores['avatar'] = 'Formato de archivo invalido';
@@ -31,7 +28,13 @@ if ($_POST) {
             }
       }
       //armo $usuario
+     $user = $_POST ['user'];
+     $Email = $_POST['email'];
+     $name = $_POST['name'];
+     $lastName= $_POST['lastName'];
+     $password = $_POST['password'];
      $confirmPassword = $_POST['confirmPassword'];
+
     $usuario = [
       'user'=> $_POST ['user'],
       'email' => $_POST ['email'],
@@ -40,11 +43,16 @@ if ($_POST) {
       'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
       'avatar' => $avatar,
           ];
-            $errores = validarLogin($_POST);
-            $usuarioDb=buscarUsuarioEmail($_POST ['email']);
-            if ($usuarioDb['email'] == $_POST ['email'] ) {
-              $errores['email']= 'ya existe un usuario con ese email';
-            }
+
+          //comienzo a validar
+          $bd = new BaseDatos;
+          $validador= New Validador ($bd);
+          $errores = $validador->validarRegistro($user,$email,$name,$lastName,$password,$confirmPassword,$avatar);
+            //$errores = validarLogin($_POST);
+            // $usuarioDb=buscarUsuarioEmail($_POST ['email']);
+            // if ($usuarioDb['email'] == $_POST ['email'] ) {
+            //   $errores['email']= 'ya existe un usuario con ese email';
+            // }
 
            /*verifico errores y redirijo a mi perfil*/
             if (!$errores) {

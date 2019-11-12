@@ -84,7 +84,7 @@ if ($_POST) {
           <input type="text" class="formControl" id="email" aria-describedby="emailHelp" placeholder="email" name="email" value="<?= $email ?>">
           <p> <?= (isset($errores['email']) ? $errores['email'] : '') ?></p>
           <!--<label class="containerDentro" for="contraseña">Contraseña</label>-->
-          <input class="formControl" placeholder="email" type="password" name="password" value="">
+          <input class="formControl" placeholder="password" type="password" name="password" value="">
 
           <p><?= (isset($errores['password']) ? $errores['password'] : '') ?></p>
 

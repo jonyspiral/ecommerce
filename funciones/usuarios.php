@@ -41,42 +41,14 @@ function guardarUsuario($usuario) {
       //termino sequencia de conexion y ejecuto sql
     $sql = "INSERT INTO usuarios ( user, name, lastName, password, email, avatar) values ('$username', '$name','$lastName', '$password', '$email','$avatar')";
    $sentencia = $conex->prepare($sql);
-   $sentencia->bindValue(':email', $_POST['email']);
+   $sentencia->bindValue(':email',$email);
 
    $sentencia->execute();
 
     }
 
 
-//no funciona, no la uso creo
-function guardarUsuarioPorEmail($email,$usuarioPost) {
-  //$usuarios=traerUsuariosJson();
-  //foreach ($usuarios as $key => $usuario){
-  $dsn='mysql:host=127.0.0.1;dbname=navshop;port=3306';
-  $user ='root';
-  $pass='root';
-  $conex='';
-  //esto muestra los errores con nombres de tablas y campos
-  $opt= [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-  //esto codifica para que no tenga errores de acentos
-          PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"];
-  try {
-      $conex = new PDO($dsn, $user, $pass, $opt);
 
-  } catch (PDOException $e) {
-      echo $e->getMessage();
-  }
-  $sql = "INSERT INTO usuarios ( user, name, lastName, password, email)
-values ('$user', '$name','$lastName', '$email')";
- $sentencia = $conex->prepare($sql);
- $sentencia->bindValue(':email', $_POST['email']);
- $sentencia->execute();
-//termino sequencia de conexion
-    if ($usuario['email'] == $email ){
-    $usuarios[$key]=$usuarioPost;
-    subirArchivoJson($usuarios);
-      }
-    }
 
 function buscarUsuarioEmail(string $email) {
   //abro la conexion
@@ -96,14 +68,14 @@ function buscarUsuarioEmail(string $email) {
   }
   $sql = "SELECT * FROM usuarios WHERE email = :email";
  $sentencia = $conex->prepare($sql);
- $sentencia->bindValue(':email', $_POST['email']);
+ $sentencia->bindValue(':email', $email);
  $sentencia->execute();
 
    $usuario = $sentencia->fetch(PDO::FETCH_ASSOC);
-   //var_dump($usuario);
-   if ($usuario['email'] == $email) {
-               return $usuario;
-            }
+
+
+  return $usuario;
+
 
         }
 // function subirArchivoJson($archivo) {

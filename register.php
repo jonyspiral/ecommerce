@@ -6,8 +6,6 @@ if(estaElUsuarioLogeado()){
      header('location:miPerfil.php');
  }
 
-$errorArchivo = '';
-
 $user ='';
 $email= '';
 $name ='';
@@ -27,37 +25,22 @@ if ($_POST) {
         //$avatar=$_FILES['avatar']['tmp_name']; // no se como hacer una preview de la imagen
             }
       }
-      //armo $usuario
+      //armo $variables
      $user = $_POST ['user'];
-     $Email = $_POST['email'];
+     $email = $_POST['email'];
      $name = $_POST['name'];
      $lastName= $_POST['lastName'];
      $password = $_POST['password'];
      $confirmPassword = $_POST['confirmPassword'];
-
-    $usuario = [
-      'user'=> $_POST ['user'],
-      'email' => $_POST ['email'],
-      'name'=> $_POST ['name'],
-      'lastName'=>$_POST ['lastName'],
-      'password' => password_hash($_POST['password'], PASSWORD_DEFAULT),
-      'avatar' => $avatar,
-          ];
-
-          //comienzo a validar
+            //comienzo a validar
           $bd = new BaseDatos;
           $validador= New Validador ($bd);
           $errores = $validador->validarRegistro($user,$email,$name,$lastName,$password,$confirmPassword,$avatar);
-            //$errores = validarLogin($_POST);
-            // $usuarioDb=buscarUsuarioEmail($_POST ['email']);
-            // if ($usuarioDb['email'] == $_POST ['email'] ) {
-            //   $errores['email']= 'ya existe un usuario con ese email';
-            // }
 
-           /*verifico errores y redirijo a mi perfil*/
+           /*verifico errores , guardo y redirijo a mi perfil*/
             if (!$errores) {
 
-              guardarUsuario($usuario);
+              $bd->guardarUsuario($user,$email,$name,$lastName,$password,$avatar);
               if (isset($_POST['mantener'])) {
                 destruirRecuerdame();
                     //guardo la cookie del email
@@ -66,11 +49,11 @@ if ($_POST) {
                 //luego redirijo a miPerfil
           header('location:miPerfil.php');
           $_SESSION=[
-          'user'=> $usuario ['user'],
-          'email' => $usuario ['email'],
-          'name'=> $usuario ['name'],
-          'lastName'=>$usuario ['lastName'],
-          'avatar' => $usuario['avatar']
+          'user'=> $user,
+          'email' => $email,
+          'name'=> $name,
+          'lastName'=>$lastName ,
+          'avatar' => $avatar
                 ];
             }
 

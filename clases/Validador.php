@@ -8,29 +8,28 @@ class Validador {
         $this->bd = $bd;
     }
 
-    public function validarLogin(string $email, string $password): array {
+public function validarLogin(string $email, string $pass): array {
         $errores = [];
-
         $email = trim($email);
         if ($this->validarEmail($email)) {
             $errores['email'] = 'El email es inválido';
         }
-        if ($this->validarVacio($password)) {
+        if ($this->validarVacio($pass)) {
             $errores['password'] = 'Ingresa la contraseña';
         }
         if (empty($errores)) {
             $usuario = $this->bd->buscarUsuarioEmail($email);
-            if ($usuario === null)&& (password_verify($password, $usuario->getPassword()){
-                $errores['email'] = 'Usuario o clave inválido!!';
-            } else if ) {
-                $errores['email'] = 'Usuario o clave inválido';
+
+            if ($usuario === null) {
+                $errores['email'] = 'Usuario o clave inválido 1';
+            } else if (!password_verify($pass, $usuario->getPassword())) {
+                $errores['email'] = 'Usuario o clave inválido 2';
             }
-
-
-
+        }
+          return $errores;
     }
-    return $errores;
-  }
+
+
     public function validarEmail(string $email): bool {
 
         return !filter_var($email, FILTER_VALIDATE_EMAIL);
@@ -70,11 +69,10 @@ class Validador {
             $usuario = $this->bd->buscarUsuarioEmail($email);
 //var_dump($usuario->getPassword());exit;
 
-            if ($usuario === null) {
+            if (!$usuario === null) {
                 $errores['email'] = 'Usuario o clave inválido (1)';
 
-             }else if ($email === $usuario->getEmail()) {
-           $errores['email']='ya existe un usuario con ese email';
+
         }
 
         return $errores;

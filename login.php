@@ -1,7 +1,7 @@
 <?php
 
     require_once('funciones/autoload.php');
-    require_once('clases/autoload.php');
+    require_once('clases/Autoload.php');
 
     if (isset($_COOKIE['mantener'])) {
         logear($_COOKIE['mantener']);

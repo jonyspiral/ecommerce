@@ -7,7 +7,12 @@ class Validador {
     {
         $this->bd = $bd;
     }
-
+    public function estaElUsuarioLogeado () {
+        if (isset($_SESSION['email'])){
+          return true;
+        }
+        return false;
+    }
 public function validarLogin(string $email, string $pass): array {
         $errores = [];
         $email = trim($email);

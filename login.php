@@ -1,13 +1,21 @@
 <?php
 
-    require_once('funciones/autoload.php');
+    //require_once('funciones/autoload.php');
     require_once('clases/Autoload.php');
 
+    $conexion = new Conexion();
+    $bd = new BaseDatos;
+    $validador= New Validador ($bd);
+    $sql = ("SELECT * from usuarios");
+    $stmt = $conexion->prepare($sql);
+    $stmt->execute();
+    $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    var_dump($resultado);
     if (isset($_COOKIE['mantener'])) {
         logear($_COOKIE['mantener']);
 
     }
-    if(estaElUsuarioLogeado()){
+    if ($validador->estaElUsuarioLogeado()){
         header('location:miPerfil.php');
     }
 
@@ -20,9 +28,9 @@
 if ($_POST) {
   $email = ($_POST['email']);
   $password = $_POST['password'];
-  $bd = new BaseDatos;
-  $validador= New Validador ($bd);
+
   $errores = $validador->validarLogin($email,$password);
+  var_dump($errores);
   //determino errores con la clase Validador
     if (!$errores) {
       $usuario = $bd->buscarUsuarioEmail($email);
@@ -40,8 +48,6 @@ if ($_POST) {
     //redirijir a mi prefil
     header('location:miPerfil.php');
     }
-}else{
-    $errores['email'] = 'Usuario o clave incorrectos';
 
     }
 ?>

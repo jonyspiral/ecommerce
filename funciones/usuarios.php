@@ -1,5 +1,6 @@
 <?php
-require_once('funciones/conexion.php');
+require_once('clases/Autoload.php');
+$conexion= New Conexion;
 
 
 function subirAvatar($archivo, $nombre) {

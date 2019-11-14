@@ -5,7 +5,7 @@ require_once('funciones/autoload.php');
 if(estaElUsuarioLogeado()){
      header('location:miPerfil.php');
  }
-
+$conexion= New Conexion;
 $user ='';
 $email= '';
 $name ='';
@@ -103,17 +103,17 @@ if ($_POST) {
   <div class="containerDentro" >
     <img src="img\avatar\default.png" alt="Me" class="center logo" style="height:150px; " >
 
-      <input type="file" accept="img\avatar\default.png" name="avatar"  class="file-input" id="avatar">
+      <input type="file" accept="img\avatar\default.png" name="avatar" placeholder="avatar"  class="file-input" id="avatar">
       <p> <?= (isset($errores['avatar']) ? $errores['avatar'] : '') ?></p>
   </div>
 
 <div class="">
 
 
-      <input type="text" class="form-control" id="user" placeholder="Enter user"   name="user" value="<?= $user ?>" required >
+      <input type="text" class="form-control" id="user" placeholder="user"   name="user" value="<?= $user ?>" required >
       <p> <?= (isset($errores['user']) ? $errores['user'] : '') ?></p>
 
-      <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" name="email"  value="<?= $email ?>" required>
+      <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="email" name="email"  value="<?= $email ?>" required>
       <p> <?= (isset($errores['email']) ? $errores['email'] : '' ) ?></p>
 
       <input type="text" class="form-control" id="name" placeholder="Enter name"   name="name" value="<?= $name ?>" required >
@@ -122,7 +122,7 @@ if ($_POST) {
       <input type="text" class="form-control" id="lastName" placeholder="Enter lastName"   name="lastName" value="<?= $lastName ?>" required>
       <p></p>
 
-      <input class="form-control" id="password" placeholder="Enter password" name="password" value="" required>
+      <input class="form-control" id="password" placeholder="password" name="password" value="" required>
       <p> <?= (isset($errores['password']) ? $errores['password'] : '') ?></p>
 
       <input type="password" class="form-control" id="confirmPassword" placeholder="Confirm password" name="confirmPassword" value="" required>

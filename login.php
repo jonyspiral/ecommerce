@@ -1,8 +1,10 @@
+
 <?php
 
     //require_once('funciones/autoload.php');
     require_once('clases/Autoload.php');
-
+    $usuario= null;
+    $auth = new Autenticador;
     $conexion = new Conexion();
     $bd = new BaseDatos;
     $validador= New Validador ($bd);
@@ -10,9 +12,9 @@
     $stmt = $conexion->prepare($sql);
     $stmt->execute();
     $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    var_dump($resultado);
+
     if (isset($_COOKIE['mantener'])) {
-        logear($_COOKIE['mantener']);
+        logear($_COOKIE['email']);
 
     }
     if ($validador->estaElUsuarioLogeado()){
@@ -24,19 +26,22 @@
     $email = '';
     $password = '';
     $errores = [];
-
+//por aca esta el
 if ($_POST) {
   $email = ($_POST['email']);
   $password = $_POST['password'];
 
   $errores = $validador->validarLogin($email,$password);
-  var_dump($errores);
-  //determino errores con la clase Validador
-    if (!$errores) {
-      $usuario = $bd->buscarUsuarioEmail($email);
-  //var_dump($usuario);exit;
+var_dump($errores);exit;
+  //determino errores con lavar clase Validador
+    if (empty($errores)) {
+
+      echo ('aca estoy');
     //iniciar session
-    $auth = new Autenticador;
+
+
+    $usuario =$bd->buscarUsuarioEmail($email);
+    var_dump($usuario);exit;
     $auth->logear($usuario);
 
         //si checkaron el recuerdame

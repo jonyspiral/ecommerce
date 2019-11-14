@@ -75,7 +75,7 @@ public function validarLogin(string $email, string $pass): array {
 //var_dump($usuario->getPassword());exit;
 
             if (!$usuario === null) {
-                $errores['email'] = 'Usuario o clave inválido (1)';
+                $errores['email'] = 'Usuario o clave inválido';
 
 
         }

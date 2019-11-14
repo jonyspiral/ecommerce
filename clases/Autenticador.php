@@ -9,7 +9,7 @@ class Autenticador {
     $_SESSION['lastName'] = $usuario->getLastName();
     $_SESSION['avatar'] = $usuario->getAvatar();
     $_SESSION['user']= $usuario->getUser();
-    $_SESSION['id']= $usuario->getId();  
+    $_SESSION['id']= $usuario->getId();
     }
 
     public function deslogear(Usuario $usuario)

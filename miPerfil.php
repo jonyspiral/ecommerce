@@ -1,23 +1,30 @@
 <?php
 
-require_once ('funciones/autoload.php');
+//require_once ('funciones/autoload.php');
 require_once ('clases/Autoload.php');
-if(!estaElUsuarioLogeado()){
-    header('location:login.php');
-}
+$auth= new Autenticador;
+$conexion = new Conexion;
+$bd = new BaseDatos;
+$validador= New Validador ($bd);
 
-    $name= $_SESSION['name'];
-    $lastName= $_SESSION['lastName'];
+if (!$validador->estaElUsuarioLogeado()){
+    header('location:login.php');
+ }
     $user= $_SESSION['user'];
     $email = $_SESSION['email'];
+    $name= $_SESSION['name'];
+    $lastName= $_SESSION['lastName'];
+    $password='';
+    $avatar = $_SESSION['avatar'];
+    $newPass= '';
+
     $nombreArchivo = '';
     $errores=[];
     $resultado='';
 
-    $avatar = $_SESSION['avatar'];
-    $newPass= '';
 
 if ($_POST){
+
     if (isset($_POST['user'])){
       $user= $_POST['user'];
     }else{
@@ -33,13 +40,13 @@ if ($_POST){
     }else{
     $lastName=$_SESSION['lastName'];
     }
-    $password='';
+
     if (isset($_POST['newPass'])){
       $newPass= $_POST['newPass'];
     }else{
     $newPass='';
   }
-            if (isset($_FILES['avatar'])){
+          if (isset($_FILES['avatar'])){
 
               if ($_FILES['avatar']['error'] === 0) {
             $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
@@ -48,62 +55,52 @@ if ($_POST){
 
                   $errores['avatar']= 'Formato de archivo invalido';
                   } else {
-                  $avatar = subirAvatar($_FILES['avatar'], $email);
+
+                  $avatar = $bd->subirAvatar($_FILES['avatar'], $email);
 
                 }
               }
             }
-              //validaciones
-              $bd = new BaseDatos;
-              $validador= New Validador ($bd);
+              //validaciones extras
 
-
-             //  if (strlen($user) === 0) {
-             // $errores['user'] = 'Escribe un usuario';
-             //  }
-             //  if (strlen($name) === 0) {
-             // $errores['name'] = 'Escribe un nombre';
-             //  }
-             //  if (strlen($lastName) === 0) {
-             // $errores['lastname'] = 'Escribe un Apellido';
-             //  }
 
               if (isset($_POST['newPass'])){
-                $usuario= buscarUsuarioEmail( $email);
-                $password = $usuario['password'];
 
-              if (password_verify($_POST['password'],$password)){
 
-                $errores=validarPassword($_POST);
+                      $errores=$validador->validarRegistro($user,$email,$name,$lastName,$password,$avatar);
+                    if (!$errores) {
+                      $bd->editarUsuario(user,$email,$name,$lastName,$password,$avatar);
+                      $resultado ="los cambios estan ok";
+                      }
+                      var_dump($resultado);
 
-                }else {
-                $errores['password'] = 'Password equivocado.';
-              }
-            }else{
-              $newPass='';
-            }
+                }  else{
+          $bd->editarUsuario($user,$email,$name,$lastName,$password,$avatar);
+          $resultado ="los cambios estan ok";
+          }
+}
 
-            if (!$errores) {
-              $usuarioPost=  buscarUsuarioEmail( $email);//aca trae el usuario
 
-                $usuarioPost ['user']= $user;
-                $usuarioPost ['name']= $name;
-                $usuarioPost ['lastName']= $lastName;
-                $usuarioPost ['avatar']=$avatar;
-                $usuarioPost['password']=password_hash($newPass, PASSWORD_DEFAULT);
-//var_dump($_POST);exit;
-                guardarUsuarioPorEmail($email,$usuarioPost);// aca lo guarda
-                //y defino las nuevas $_SESSION
-                 $_SESSION['name']=   $name;
-                 $_SESSION['lastName']= $lastName;
-                 $_SESSION['user']=  $user;
-                 $_SESSION['avatar'] = $avatar ;
-
-                $resultado ="los cambios estan ok";
-                }//aca termina si hay errores
-          }// termina el if de $_POST
-
-// WARNING: probar!!!!
+//               $usuarioPost=  buscarUsuarioEmail( $email);//aca trae el usuario
+//
+//                 $usuarioPost ['user']= $user;
+//                 $usuarioPost ['name']= $name;
+//                 $usuarioPost ['lastName']= $lastName;
+//                 $usuarioPost ['avatar']=$avatar;
+//                 $usuarioPost['password']=password_hash($newPass, PASSWORD_DEFAULT);
+// //var_dump($_POST);exit;
+//                 guardarUsuarioPorEmail($email,$usuarioPost);// aca lo guarda
+//                 //y defino las nuevas $_SESSION
+//                  $_SESSION['name']=   $name;
+//                  $_SESSION['lastName']= $lastName;
+//                  $_SESSION['user']=  $user;
+//                  $_SESSION['avatar'] = $avatar ;
+//
+//                 $resultado ="los cambios estan ok";
+//                 }//aca termina si hay errores
+//           }// termina el if de $_POST
+//
+// // WARNING: probar!!!!
 
 
  ?>

@@ -1,10 +1,13 @@
 <?php
-require_once('funciones/autoload.php');
+//require_once('funciones/autoload.php');
   require_once('clases/Autoload.php');
+$conexion= new Conexion;
+$bd = new BaseDatos;
+$validador= New Validador ($bd);
 
-if(estaElUsuarioLogeado()){
-     header('location:miPerfil.php');
- }
+  if ($validador->estaElUsuarioLogeado()){
+      header('location:miPerfil.php');
+  }
 
 $user ='';
 $email= '';
@@ -33,28 +36,15 @@ if ($_POST) {
      $password = $_POST['password'];
      $confirmPassword = $_POST['confirmPassword'];
             //comienzo a validar
-          $bd = new BaseDatos;
-          $validador= New Validador ($bd);
-          $errores = $validador->validarRegistro($user,$email,$name,$lastName,$password,$confirmPassword,$avatar);
+
+          $errores = $validador->validarRegistro($_POST);//$user,$email,$name,$lastName,$password,$confirmPassword,$avatar
 
            /*verifico errores , guardo y redirijo a mi perfil*/
             if (!$errores) {
-
               $bd->guardarUsuario($user,$email,$name,$lastName,$password,$avatar);
-              if (isset($_POST['mantener'])) {
-                destruirRecuerdame();
-                    //guardo la cookie del email
-                  setearCookie($email,$avatar);
-              }
-                //luego redirijo a miPerfil
-          header('location:miPerfil.php');
-          $_SESSION=[
-          'user'=> $user,
-          'email' => $email,
-          'name'=> $name,
-          'lastName'=>$lastName ,
-          'avatar' => $avatar
-                ];
+              $usuario= $bd->buscarUsuarioEmail($email);
+              $auth = new Autenticador;
+              $auth->loguear($usuario);
             }
 
           }

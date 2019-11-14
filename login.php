@@ -1,18 +1,18 @@
 <?php
 
-    //require_once('funciones/autoload.php');
+
     require_once('clases/Autoload.php');
 
     $conexion = new Conexion();
     $bd = new BaseDatos;
     $validador= New Validador ($bd);
-    $sql = ("SELECT * from usuarios");
-    $stmt = $conexion->prepare($sql);
-    $stmt->execute();
-    $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
-    var_dump($resultado);
+    // $sql = ("SELECT * from usuarios");
+    // $stmt = $conexion->prepare($sql);
+    // $stmt->execute();
+    // $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // var_dump($resultado);
     if (isset($_COOKIE['mantener'])) {
-        logear($_COOKIE['mantener']);
+        loguear($_COOKIE['mantener']);
 
     }
     if ($validador->estaElUsuarioLogeado()){
@@ -30,23 +30,19 @@ if ($_POST) {
   $password = $_POST['password'];
 
   $errores = $validador->validarLogin($email,$password);
-  var_dump($errores);
+
   //determino errores con la clase Validador
     if (!$errores) {
       $usuario = $bd->buscarUsuarioEmail($email);
   //var_dump($usuario);exit;
     //iniciar session
     $auth = new Autenticador;
-    $auth->logear($usuario);
+    $auth->loguear($usuario);
 
-        //si checkaron el recuerdame
-          //guardo la cookie del email
-    if (isset($_POST['mantener'])) {
-        setcookie('mantener',  $email, time() + 60*60*24*7 );
-        setcookie('avatar',  $usuario['avatar'], time() + 60*60*24*7 );
-    }
-    //redirijir a mi prefil
-    header('location:miPerfil.php');
+    
+
+
+
     }
 
     }
@@ -84,7 +80,7 @@ if ($_POST) {
             </a>
           </div>
           <div class="flexCenterH ">
-          <form class="" action="login.php" method="post" >
+          <form class="" action= "login.php" method="post" >
 
           <!--<label class="containerDentro"for="email">Email address</label>-->
           <input type="text" class="formControl" id="email" aria-describedby="emailHelp" placeholder="email" name="email" value="<?= $email ?>">

@@ -1,23 +1,28 @@
 <?php
 
-require_once ('funciones/autoload.php');
 require_once ('clases/Autoload.php');
-if(!estaElUsuarioLogeado()){
-    header('location:login.php');
-}
+$auth= new Autenticador;
+$conexion = new Conexion;
+$bd = new BaseDatos;
+$validador= New Validador ($bd);
 
-    $name= $_SESSION['name'];
-    $lastName= $_SESSION['lastName'];
+if (!$validador->estaElUsuarioLogeado()){
+    header('location:login.php');
+ }
     $user= $_SESSION['user'];
     $email = $_SESSION['email'];
-    $nombreArchivo = '';
+    $name= $_SESSION['name'];
+    $lastName= $_SESSION['lastName'];
+    $avatar = $_SESSION['avatar'];
+    $newPass= '';
+    $password='';
+    $confirmPassword='';
     $errores=[];
     $resultado='';
 
-    $avatar = $_SESSION['avatar'];
-    $newPass= '';
 
 if ($_POST){
+
     if (isset($_POST['user'])){
       $user= $_POST['user'];
     }else{
@@ -33,13 +38,16 @@ if ($_POST){
     }else{
     $lastName=$_SESSION['lastName'];
     }
-    $password='';
+
     if (isset($_POST['newPass'])){
       $newPass= $_POST['newPass'];
     }else{
     $newPass='';
   }
-            if (isset($_FILES['avatar'])){
+
+
+
+          if (isset($_FILES['avatar'])){
 
               if ($_FILES['avatar']['error'] === 0) {
             $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
@@ -48,63 +56,34 @@ if ($_POST){
 
                   $errores['avatar']= 'Formato de archivo invalido';
                   } else {
-                  $avatar = subirAvatar($_FILES['avatar'], $email);
+
+                  $avatar = $bd->subirAvatar($_FILES['avatar'], $email);
 
                 }
               }
             }
-              //validaciones
-              $bd = new BaseDatos;
-              $validador= New Validador ($bd);
-
-
-             //  if (strlen($user) === 0) {
-             // $errores['user'] = 'Escribe un usuario';
-             //  }
-             //  if (strlen($name) === 0) {
-             // $errores['name'] = 'Escribe un nombre';
-             //  }
-             //  if (strlen($lastName) === 0) {
-             // $errores['lastname'] = 'Escribe un Apellido';
-             //  }
+              //validaciones extras
 
               if (isset($_POST['newPass'])){
-                $usuario= buscarUsuarioEmail( $email);
-                $password = $usuario['password'];
+                //echo "entra por el post de abajo";
+              $_POST['email']=$email;
+                $errores=$validador->validarPassword( $_POST) ;
+                      if (!$errores) {
+                      $bd->editarUsuario($user,$email,$name,$lastName,$newPass,$avatar);
+                      $resultado ="los cambios estan ok";
+                      }
+                      //var_dump($resultado);
 
-              if (password_verify($_POST['password'],$password)){
+                }  else{
+                  //echo "entra por el post de arriba";
+            $errores=$validador->validarUser($user);
 
-                $errores=validarPassword($_POST);
-
-                }else {
-                $errores['password'] = 'Password equivocado.';
+              if (!$errores) {
+                        $bd->editarUsuario($user,$email,$name,$lastName,$password,$avatar);
+                        $resultado ="los cambios estan ok";
+                        }
+                    }
               }
-            }else{
-              $newPass='';
-            }
-
-            if (!$errores) {
-              $usuarioPost=  buscarUsuarioEmail( $email);//aca trae el usuario
-
-                $usuarioPost ['user']= $user;
-                $usuarioPost ['name']= $name;
-                $usuarioPost ['lastName']= $lastName;
-                $usuarioPost ['avatar']=$avatar;
-                $usuarioPost['password']=password_hash($newPass, PASSWORD_DEFAULT);
-//var_dump($_POST);exit;
-                guardarUsuarioPorEmail($email,$usuarioPost);// aca lo guarda
-                //y defino las nuevas $_SESSION
-                 $_SESSION['name']=   $name;
-                 $_SESSION['lastName']= $lastName;
-                 $_SESSION['user']=  $user;
-                 $_SESSION['avatar'] = $avatar ;
-
-                $resultado ="los cambios estan ok";
-                }//aca termina si hay errores
-          }// termina el if de $_POST
-
-// WARNING: probar!!!!
-
 
  ?>
  <!DOCTYPE html>
@@ -159,7 +138,7 @@ if ($_POST){
         <label  class="center" name="email"  ><strong> <?= $email ?></strong> </label>
         <p> <?= (isset($errores['email']) ? $errores['email'] : '' ) ?></p>
 
-        <input type="text" class="form-control" id="name" placeholder="Enter name"   name="name" value="<?= $name ?>" required >
+        <input type="text" class="form-control" id="name" placeholder="Enter name"   name="name" value="<?= $name ?>"  >
         <p></p>
 
         <input type="text" class="form-control" id="lastName" placeholder="Enter lastName"   name="lastName" value="<?= $lastName ?>" required>

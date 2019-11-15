@@ -1,27 +1,23 @@
 
 <?php
-
-    //require_once('funciones/autoload.php');
     require_once('clases/Autoload.php');
     $usuario= null;
     $auth = new Autenticador;
     $conexion = new Conexion();
     $bd = new BaseDatos;
     $validador= New Validador ($bd);
-    $sql = ("SELECT * from usuarios");
-    $stmt = $conexion->prepare($sql);
-    $stmt->execute();
-    $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
+    $auth = new Autenticador;
+    // $sql = ("SELECT * from usuarios");
+    // $stmt = $conexion->prepare($sql);
+    // $stmt->execute();
+    // $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    // var_dump($resultado);
     if (isset($_COOKIE['mantener'])) {
-        logear($_COOKIE['email']);
-
+        $auth->loguear($_COOKIE['mantener']);//arreglar // WARNING:
     }
     if ($validador->estaElUsuarioLogeado()){
         header('location:miPerfil.php');
     }
-
-    //VALIDO el correo.
 
     $email = '';
     $password = '';
@@ -30,28 +26,14 @@
 if ($_POST) {
   $email = ($_POST['email']);
   $password = $_POST['password'];
-
   $errores = $validador->validarLogin($email,$password);
-var_dump($errores);exit;
-  //determino errores con lavar clase Validador
-    if (empty($errores)) {
-
-      echo ('aca estoy');
+  //determino errores con la clase Validador
+    if (!$errores) {
+      $usuario = $bd->buscarUsuarioEmail($email);
+  //var_dump($usuario);exit;
     //iniciar session
+      $auth->loguear($usuario);
 
-
-    $usuario =$bd->buscarUsuarioEmail($email);
-    var_dump($usuario);exit;
-    $auth->logear($usuario);
-
-        //si checkaron el recuerdame
-          //guardo la cookie del email
-    if (isset($_POST['mantener'])) {
-        setcookie('mantener',  $email, time() + 60*60*24*7 );
-        setcookie('avatar',  $usuario['avatar'], time() + 60*60*24*7 );
-    }
-    //redirijir a mi prefil
-    header('location:miPerfil.php');
     }
 
     }
@@ -89,7 +71,7 @@ var_dump($errores);exit;
             </a>
           </div>
           <div class="flexCenterH ">
-          <form class="" action="login.php" method="post" >
+          <form class="" action= "login.php" method="post" >
 
           <!--<label class="containerDentro"for="email">Email address</label>-->
           <input type="text" class="formControl" id="email" aria-describedby="emailHelp" placeholder="email" name="email" value="<?= $email ?>">

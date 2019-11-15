@@ -9,7 +9,7 @@ class Usuario {
     private $password;
     private $avatar;
 
-    public function __construct( $id,string $user,string $name,string $lastName,string $email, string $password, string $avatar)
+    public function __construct( $id,string $user,?string $name,?string $lastName,string $email, string $password, ?string $avatar)
       {
         $this->setId(intval($id));
         $this->setUser($user);
@@ -45,7 +45,7 @@ class Usuario {
     {
         $this->password = $pass;
     }
-    public function setAvatar(string $avatar)
+    public function setAvatar(?string $avatar)
     {
         $this->avatar = $avatar;
 

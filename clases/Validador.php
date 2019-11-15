@@ -13,7 +13,7 @@ class Validador {
         }
         return false;
     }
-public function validarLogin(string $email, string $pass): array {
+    public function validarLogin(string $email, string $pass): array {
         $errores = [];
         $email = trim($email);
         if ($this->validarEmail($email)) {
@@ -24,9 +24,8 @@ public function validarLogin(string $email, string $pass): array {
         }
         if (empty($errores)) {
             $usuario = $this->bd->buscarUsuarioEmail($email);
-
             if ($usuario === null) {
-                $errores['email'] = 'Usuario o clave inválido 1';
+                $errores['email'] = 'Usuario o clave inválido ';
             } else if (!password_verify($pass, $usuario->getPassword())) {
                 $errores['email'] = 'Usuario o clave inválido 2';
             }
@@ -34,11 +33,48 @@ public function validarLogin(string $email, string $pass): array {
           return $errores;
     }
 
+    public function  validarPassword( array $datos) {
+    $errores = [];
+      $password = $datos['password'];
+
+
+      if (!isset($datos['newPass'])){
+        //echo "camino sin newPass";
+               if (strlen($password) < 6) {
+              $errores['password'] = 'La contraseña es muy corta (minimo 6 caracteres)';
+            }else if (isset($datos['confirmPassword']) && $datos['confirmPassword'] != $password){
+              $errores ['confirmPassword']='Password y confirmacion no son identicos';
+            }
+    }else{
+        //echo "camino con newPass";
+            if (strlen($datos['newPass']) < 6) {
+
+              $errores['newPass'] = 'La contraseña es muy corta (minimo 6 caracteres)';
+            }else if (isset($datos['confirmPassword']) && $datos['confirmPassword'] != $datos['newPass']){
+              $errores ['confirmPassword']=' Nuevo Password y confirmacion no son identicos';
+            }
+    }
+    if (empty($errores)) {
+          $usuario = $this->bd->buscarUsuarioEmail($datos['email']);
+        if ($usuario === null) {
+            $errores['email'] = 'debe insertar el anterior password.';
+     }
+   }
+    return $errores;
+    }
+
 
     public function validarEmail(string $email): bool {
 
         return !filter_var($email, FILTER_VALIDATE_EMAIL);
 
+    }
+    public function validarUser(string $user): array {
+      $errores = [];
+      if ($this->validarVacio($user)|| $this->bd->buscarUsuarioUser($user) != null) {
+          $errores['user'] = 'Campo Usuario vacio o ya existente. ingresa o cambia. ';
+      }
+        return $errores;
     }
 
     /**
@@ -49,11 +85,11 @@ public function validarLogin(string $email, string $pass): array {
         return strlen(trim($valor)) === 0;
     }
 
-    public function validarRegistro(string $user, string $email,string $name, string $lastName,string $password,string $confirmPassword,string $avatar): array
+    public function validarRegistro($user ,$email,$name= null,$lastName= null,$password= null,$confirmPassword= null,$avatar): array
     {
         $errores = [];
-        if ($this->validarVacio($user)) {
-            $errores['user'] = 'Ingresa un nombre de usuario';
+        if ($this->validarVacio($user)|| $this->bd->buscarUsuarioUser($user) != null) {
+            $errores['user'] = 'Campo Usuario vacio o ya existente. ingresa o cambia. ';
         }
         $email = trim($email);
         if ($this->validarEmail($email)) {
@@ -66,21 +102,15 @@ public function validarLogin(string $email, string $pass): array {
             }else{  $errores['password'] = 'La contraseña es muy corta (minimo 6 caracteres)';
         }
 
-        }else if (isset($confirmPassword) && $confirmPassword != $password){
-          $errores ['confirmPassword']='Password y confirmacion no son identicos';
         }
 
         if (empty($errores)) {
             $usuario = $this->bd->buscarUsuarioEmail($email);
-//var_dump($usuario->getPassword());exit;
-
             if (!$usuario === null) {
-                $errores['email'] = 'Usuario o clave inválido';
+                $errores['email'] = 'Usuario o clave inválido (1)';
+              }
 
-
-        }
-
-        return $errores;
-    }
+          }
+            return $errores;
   }
 }

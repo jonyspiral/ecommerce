@@ -3,7 +3,6 @@ class Autenticador {
 
     public function loguear(Usuario $usuario)
     {//aqui es donde encontré al usuario y lo logeo
-session_start();
 if ($usuario) {
     $_SESSION['email'] = $usuario->getEmail();
     $_SESSION['name'] = $usuario->getName();

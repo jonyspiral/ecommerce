@@ -1,11 +1,11 @@
 <?php
 
 require_once ('clases/Autoload.php');
-$auth= new Autenticador;
-$conexion = new Conexion;
+
+//$conexion = new Conexion;
 $bd = new BaseDatos;
 $validador= New Validador ($bd);
-
+$auth= new Autenticador;
 if (!$validador->estaElUsuarioLogeado()){
     header('location:login.php');
  }

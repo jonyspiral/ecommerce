@@ -7,17 +7,24 @@
     $bd = new BaseDatos;
     $validador= New Validador ($bd);
     $auth = new Autenticador;
+    
     // $sql = ("SELECT * from usuarios");
     // $stmt = $conexion->prepare($sql);
     // $stmt->execute();
     // $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
     // var_dump($resultado);
-    if (isset($_COOKIE['mantener'])) {
-        $auth->loguear($_COOKIE['mantener']);//arreglar // WARNING:
-    }
+
     if ($validador->estaElUsuarioLogeado()){
         header('location:miPerfil.php');
+      }else{
+        if (isset($_COOKIE['mantener'])) {
+  $usuario= $validador->buscarUsuarioEmail($_COOKIE['mantener']);
+          $auth->loguear($usuario);
+          header('location:miPerfil.php');
+      }
     }
+
+
 
     $email = '';
     $password = '';

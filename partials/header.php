@@ -1,8 +1,9 @@
 <?php
-require_once 'funciones/autoload.php';
+require_once('clases/Autoload.php');
 
-
-if(estaElUsuarioLogeado()){
+$bd = new BaseDatos;
+$validador= New Validador ($bd);
+if ($validador->estaElUsuarioLogeado()){
   $log= 'logout.php';
   $logTittle='Log out';
   }else{

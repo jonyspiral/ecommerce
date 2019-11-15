@@ -1,8 +1,11 @@
 <?php
-  require_once('funciones/autoload.php');
-  if (isset($_COOKIE['mantener'])) {
-      logear($_COOKIE['mantener']);
 
+  require_once('clases/Autoload.php');
+  $bd = new BaseDatos;
+  $auth = new Autenticador;
+  if (isset($_COOKIE['mantener'])) {
+     $usuario= $bd->buscarUsuarioEmail($_COOKIE['mantener']);
+      $auth->loguear($usuario);
   }
 
   ?>

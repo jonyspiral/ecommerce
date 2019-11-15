@@ -5,7 +5,10 @@ $auth= new Autenticador;
 $conexion = new Conexion;
 $bd = new BaseDatos;
 $validador= New Validador ($bd);
-
+// if (isset($_COOKIE['mantener'])) {
+//    $usuario= $bd->buscarUsuarioEmail($_COOKIE['mantener']);
+//     $auth->loguear($usuario);
+// }
 if (!$validador->estaElUsuarioLogeado()){
     header('location:login.php');
  }

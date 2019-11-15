@@ -7,22 +7,21 @@
     $bd = new BaseDatos;
     $validador= New Validador ($bd);
     $auth = new Autenticador;
+    $email = '';
+    $password = '';
+    $errores = [];
     // $sql = ("SELECT * from usuarios");
     // $stmt = $conexion->prepare($sql);
     // $stmt->execute();
     // $resultado = $stmt->fetchAll(PDO::FETCH_ASSOC);
     // var_dump($resultado);
-    if (isset($_COOKIE['mantener'])) {
-        $auth->loguear($_COOKIE['mantener']);//arreglar // WARNING:
-    }
+    // if (isset($_COOKIE['mantener'])) {
+    //    $usuario= $bd->buscarUsuarioEmail($_COOKIE['mantener']);
+    //     $auth->loguear($usuario);
+    // }
     if ($validador->estaElUsuarioLogeado()){
         header('location:miPerfil.php');
     }
-
-    $email = '';
-    $password = '';
-    $errores = [];
-//por aca esta el
 if ($_POST) {
   $email = ($_POST['email']);
   $password = $_POST['password'];
@@ -30,7 +29,6 @@ if ($_POST) {
   //determino errores con la clase Validador
     if (!$errores) {
       $usuario = $bd->buscarUsuarioEmail($email);
-  //var_dump($usuario);exit;
     //iniciar session
       $auth->loguear($usuario);
 

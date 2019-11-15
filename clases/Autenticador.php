@@ -1,9 +1,10 @@
 <?php
 class Autenticador {
 
-    public function loguear(Usuario $usuario)
-    {//aqui es donde encontré al usuario y lo logeo
-session_start();
+public function loguear( $usuario)
+
+    {//aqui es donde encontré al usuario y lo logeo.
+
 if ($usuario) {
     $_SESSION['email'] = $usuario->getEmail();
     $_SESSION['name'] = $usuario->getName();
@@ -11,31 +12,38 @@ if ($usuario) {
     $_SESSION['avatar'] = $usuario->getAvatar();
     $_SESSION['user']= $usuario->getUser();
     $_SESSION['id']= $usuario->getId();
-
     if (isset($_POST['mantener'])) {
         //guardo la cookie del email y avatar
-        setcookie('mantener', $email, time() + 60*60*24*7 );
-        setcookie('mantener',  $usuario['avatar'], time() + 60*60*24*7 );
+    $this->guardarCookie($usuario->getEmail(),$usuario->getAvatar());
+      header('location:miPerfil.php');
         }
         //redirijir a mi prefil
-        header('location:miPerfil.php');
-    } else {
-        destruirRecuerdame();
-        //sino lo redirijo a login
-        header('location:login.php');
-    }
 
+      } else {
 
-}
+        $this->destruirRecuerdame();
+        //sino lo redirijo a login.
+      //  header('location:login.php');
+      }
+  }
 
-    public function deslogear(Usuario $usuario)
+public function destruirRecuerdame()
+  {
+    setcookie('mantener', $email, time() -1 );
+  setcookie('mantener',  $avatar, time() -1 );
+  }
+
+  public function deslogear(Usuario $usuario)
     {
-        session_destroy();
+    session_destroy();
     }
 
-    public function guardarCookie()
-    {
+  public function guardarCookie($email,$avatar)
 
+
+      {echo "llega a la function guiardar cokkie";;
+
+        setcookie('mantener', $email, time() + 60*60*24*7 );
+    setcookie('mantener av',  $avatar, time() + 60*60*24*7 );
     }
-
-}
+    }

@@ -7,7 +7,9 @@
     $bd = new BaseDatos;
     $validador= New Validador ($bd);
     $auth = new Autenticador;
-    
+    $email = '';
+    $password = '';
+    $errores = [];
     // $sql = ("SELECT * from usuarios");
     // $stmt = $conexion->prepare($sql);
     // $stmt->execute();
@@ -23,13 +25,6 @@
           header('location:miPerfil.php');
       }
     }
-
-
-
-    $email = '';
-    $password = '';
-    $errores = [];
-//por aca esta el
 if ($_POST) {
   $email = ($_POST['email']);
   $password = $_POST['password'];
@@ -37,7 +32,6 @@ if ($_POST) {
   //determino errores con la clase Validador
     if (!$errores) {
       $usuario = $bd->buscarUsuarioEmail($email);
-  //var_dump($usuario);exit;
     //iniciar session
       $auth->loguear($usuario);
 

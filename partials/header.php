@@ -6,9 +6,11 @@ $validador= New Validador ($bd);
 if ($validador->estaElUsuarioLogeado()){
   $log= 'logout.php';
   $logTittle='Log out';
+  $avatar=$_SESSION['avatar'];
   }else{
   $log= 'login.php';
   $logTittle='Log in';
+  $avatar='default.png';
 }
 
 
@@ -23,7 +25,7 @@ if ($validador->estaElUsuarioLogeado()){
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
 
     <a  href="index.php">
-        <img src="img\logo.png" alt="" class="navbar-brand" style="width:50px; border-radius:15% padding: 2%;"   >
+        <img src="img\logo.png" alt="" class="navbar-brand" style="width:50px; border-radius:15%; padding: 2%;"   >
     </a>
     <a  href="cart.php">
           <img src="img\icons8-shopaholic-50.png" alt="" class="navbar-brand" style="width:50px; border-radius:15%"  >
@@ -43,8 +45,22 @@ if ($validador->estaElUsuarioLogeado()){
       <a class="nav-link" href="notebooks.php" >Notebooks</a>
     </li>
   </ul>
-  <a class="navbar-brand" style="width: 100px; "  target="_blank" href="<?=$log?>"><?=$logTittle ?></a>
+  <div class=""style="width: 211px;
+    padding: 3px;
+    border-radius: 7%;
+    border-width: thin;
+    border-color: white;
+    border-style: solid;
+    display: flex;
+    /* flex-flow: row; */
+    overflow: hidden;
+">
 
+  <a class="navbar-brand" style="width: 60px; text-align:center;"  target="_blank" href="<?=$log?>"><?=$logTittle ?></a>
+  <div id="containerLogo" >
+    <img class="" style="width:50px;border-radius:15%"src="img\avatar\<?=$avatar?>" alt="Yo"style=" ">
+  </div>
+  </div>
   <form class="center  form-inline my-2 my-lg-0" style="">
     <input class="form-control mr-sm-2" type="search" placeholder="Search">
     <button class="  btn-primary btn" type="submit"style=" width:100px">Search</button>

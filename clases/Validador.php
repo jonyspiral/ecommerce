@@ -9,6 +9,7 @@ class Validador {
     }
     public function estaElUsuarioLogeado () {
         if (isset($_SESSION['email'])){
+          
           return true;
         }
         return false;
@@ -36,8 +37,6 @@ class Validador {
     public function  validarPassword( array $datos) {
     $errores = [];
       $password = $datos['password'];
-
-
       if (!isset($datos['newPass'])){
         //echo "camino sin newPass";
                if (strlen($password) < 6) {
@@ -65,9 +64,7 @@ class Validador {
 
 
     public function validarEmail(string $email): bool {
-
         return !filter_var($email, FILTER_VALIDATE_EMAIL);
-
     }
     public function validarUser(string $user): array {
       $errores = [];
@@ -100,10 +97,8 @@ class Validador {
             if ($this->validarVacio($password)) {
               $errores['password'] = 'Ingresa la contraseña';
             }else{  $errores['password'] = 'La contraseña es muy corta (minimo 6 caracteres)';
+                }
         }
-
-        }
-
         if (empty($errores)) {
             $usuario = $this->bd->buscarUsuarioEmail($email);
             if (!$usuario === null) {

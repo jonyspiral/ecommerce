@@ -17,15 +17,17 @@ $errores =[];
 $avatar='default.png';
 if ($_POST) {
   	//verifico si el archivo se subio a temporal de php
-      if ($_FILES['avatar']['error'] == 0) {
-        $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
-        if ($ext != 'png' && $ext != 'jpg' && $ext != 'jpeg') {
-          $errores['avatar'] = 'Formato de archivo invalido';
-        } else {
-          $avatar = subirAvatar($_FILES['avatar'], $_POST ['email']);
-        //$avatar=$_FILES['avatar']['tmp_name']; // no se como hacer una preview de la imagen
+    if (isset($_FILES['avatar'])){
+        if ($_FILES['avatar']['error'] === 0) {
+      $ext = pathinfo($_FILES['avatar']['name'], PATHINFO_EXTENSION);
+            if ($ext != 'png' && $ext != 'jpg' && $ext != 'jpeg') {
+            $errores['avatar']= 'Formato de archivo invalido';
+            } else {
+            $avatar = $bd->subirAvatar($_FILES['avatar'], $email);
+      //$avatar=$_FILES['avatar']['tmp_name']; // no se como hacer una preview de la imagen
             }
-      }
+        }
+    }
       //armo $variables
      $user = $_POST ['user'];
      $email = $_POST['email'];

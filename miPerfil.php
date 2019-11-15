@@ -7,8 +7,14 @@ $bd = new BaseDatos;
 $validador= New Validador ($bd);
 $auth= new Autenticador;
 if (!$validador->estaElUsuarioLogeado()){
+      if (isset($_COOKIE['mantener'])) {
+$usuario= $validador->buscarUsuarioEmail($_COOKIE['mantener']);
+      $auth->loguear($usuario);
+      }else{
     header('location:login.php');
- }
+  }
+}
+
     $user= $_SESSION['user'];
     $email = $_SESSION['email'];
     $name= $_SESSION['name'];

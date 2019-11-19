@@ -9,7 +9,7 @@ class Validador {
     }
     public function estaElUsuarioLogeado () {
         if (isset($_SESSION['email'])){
-          
+
           return true;
         }
         return false;
@@ -20,6 +20,7 @@ class Validador {
         if ($this->validarEmail($email)) {
             $errores['email'] = 'El email es inválido';
         }
+
         if ($this->validarVacio($pass)) {
             $errores['password'] = 'Ingresa la contraseña';
         }
@@ -66,12 +67,17 @@ class Validador {
     public function validarEmail(string $email): bool {
         return !filter_var($email, FILTER_VALIDATE_EMAIL);
     }
-    public function validarUser(string $user): array {
-      $errores = [];
-      if ($this->validarVacio($user)|| $this->bd->buscarUsuarioUser($user) != null) {
-          $errores['user'] = 'Campo Usuario vacio o ya existente. ingresa o cambia. ';
+
+    public function validarUser(string $user): bool {
+
+
+      if /*($this->validarVacio($user)||*/($this->bd->buscarUsuarioUser($user)) {
+        return true;
+
+      }else{
+        return false;
       }
-        return $errores;
+
     }
 
     /**
@@ -83,11 +89,13 @@ class Validador {
     }
 
     public function validarRegistro($user ,$email,$name= null,$lastName= null,$password= null,$confirmPassword= null,$avatar): array
-    {
+    {//var_dump($user);exit;
         $errores = [];
-        if ($this->validarVacio($user)|| $this->bd->buscarUsuarioUser($user) != null) {
-            $errores['user'] = 'Campo Usuario vacio o ya existente. ingresa o cambia. ';
+        //var_dump($user);exit;
+        if ($this->validarUser($user)) {
+            $errores['user'] = 'El usuario es vacio o ya existe';
         }
+
         $email = trim($email);
         if ($this->validarEmail($email)) {
             $errores['email'] = 'El email es inválido';
@@ -102,7 +110,7 @@ class Validador {
         if (empty($errores)) {
             $usuario = $this->bd->buscarUsuarioEmail($email);
             if (!$usuario === null) {
-                $errores['email'] = 'Usuario o clave inválido (1)';
+                $errores['user'] = 'Usuario o clave inválido (1)';
               }
 
           }

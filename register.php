@@ -45,6 +45,7 @@ if ($_POST) {
               $usuario= $bd->buscarUsuarioEmail($email);
               $auth = new Autenticador;
               $auth->loguear($usuario);
+              header('location:miPerfil.php');
             }
 
           }
@@ -100,7 +101,7 @@ if ($_POST) {
 <div class="">
 
 
-      <input type="text" class="form-control" id="user" placeholder="user"   name="user" value="<?= $user ?>" required >
+      <input type="text" class="form-control" id="user" placeholder="user"   name="user" value="<?= $user ?>"  >
       <p> <?= (isset($errores['user']) ? $errores['user'] : '') ?></p>
 
       <input type="text" class="form-control" id="email" aria-describedby="emailHelp" placeholder="email" name="email"  value="<?= $email ?>" required>

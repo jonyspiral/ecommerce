@@ -6,13 +6,20 @@ class BaseDatos  {
   public function buscarUsuarioEmail(string $email): ?Usuario  {
 
   $usuario=null;
+  $usuarioDb='';
   $conexion= New Conexion;
   //termino sequencia de conexion y ejecuto sql
   $sql = "SELECT  id , user, name, lastName, password, email, avatar from usuarios
-  where  email= '$email'";//where  email= '$email'
-  $query = $conexion->query($sql);
-  $usuarioDb = $query->fetchAll(PDO::FETCH_ASSOC);
-  //var_dump($usuarioDb);
+  where  email= :email";
+  //preparo la cosulta
+  $sentencia = $conexion->prepare($sql);
+   //blindeo las variables;
+  $sentencia->bindValue(':email',$email);
+//ejecuto
+  $sentencia->execute();
+  // $query = $conexion->query($sql);
+  $usuarioDb = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+  //var_dump($usuarioDb);exit;
   if (!empty($usuarioDb)){
   $usuario = new Usuario(intval($usuarioDb[0]['id']),
   $usuarioDb[0]['user'],
@@ -29,12 +36,23 @@ class BaseDatos  {
   public function buscarUsuarioUser(string $user): ?Usuario  {
   $conexion= New Conexion;
   $usuario=null;
+  $usuarioDb=null;
+
   //termino sequencia de conexion y ejecuto sql
-  $sql = "SELECT  id , user, name, lastName, password, email, avatar from usuarios
-  where  user= '$user'";//where  email= '$email'
-  $query = $conexion->prepare($sql);
-  $usuarioDb = $query->fetchAll(PDO::FETCH_ASSOC);
-  //var_dump($usuarioDb);
+  $sql= "SELECT * from usuarios where  user= :user";//where  email= '$email'
+  // $query = $conexion->prepare($sql);
+  // $usuarioDb = $query->fetchAll(PDO::FETCH_ASSOC);
+
+  $sentencia = $conexion->prepare($sql);
+  //blindeo las variables;
+  $sentencia->bindValue(':user',$user);
+  //var_dump($sentencia);exit;
+//ejecuto
+  $sentencia->execute();
+$usuarioDb=$sentencia->fetchAll(PDO::FETCH_ASSOC);
+
+//var_dump($usuarioDb);exit;
+
   if (!empty($usuarioDb)){
   $usuario = new Usuario(intval($usuarioDb[0]['id']),
   $usuarioDb[0]['user'],
@@ -53,6 +71,7 @@ class BaseDatos  {
   $password=password_hash($password,PASSWORD_DEFAULT);
   $sql = "INSERT INTO usuarios ( user, name, lastName, password, email, avatar) values ('$user', '$name','$lastName', '$password', '$email','$avatar')";
   $sentencia =  $conexion->query($sql);
+
       }
 
    public function editarUsuario($user,$email,$name=null,$lastName=null,$password=null,$avatar=null) {

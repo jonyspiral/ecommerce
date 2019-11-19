@@ -10,21 +10,23 @@ if ($usuario) {
     $_SESSION['avatar'] = $usuario->getAvatar();
     $_SESSION['user']= $usuario->getUser();
     $_SESSION['id']= $usuario->getId();
+    //var_dump($_SESSION);exit;
     if (isset($_POST['mantener'])) {
         //guardo la cookie del email y avatar
     $this->guardarCookie();
       }
       } else {
         $this->destruirRecuerdame();
-        //sino lo redirijo a login.
-      //  header('location:login.php');
+
+
       }
   }
 
 public function destruirRecuerdame()
-  {
+  {$email='';
+  $avatar='';
     setcookie('mantener', $email, time() -1 );
-  setcookie('mantener',  $avatar, time() -1 );
+  setcookie('mantenerAv',  $avatar, time() -1 );
   }
 
   public function deslogear(Usuario $usuario)

@@ -34,6 +34,7 @@ if ($_POST) {
       $usuario = $bd->buscarUsuarioEmail($email);
     //iniciar session
       $auth->loguear($usuario);
+      header('location:miPerfil.php');
 
     }
 

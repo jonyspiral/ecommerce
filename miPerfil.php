@@ -128,7 +128,7 @@ if ($_POST){
 
           <div id="containerLogo">
 
-            <img class=""src="img\avatar\<?=$avatar?>" alt="Yo"style=" ">
+            <img class=""src="img\avatar\<?=$avatar?>" alt="Yo"style=" display: -webkit-flex; ">
           </div>
 <div class="">
 

@@ -1,6 +1,6 @@
 #containerLogo{
   display: flex;
-    border-radius: 15px;
+    border-radius: 15%;
     width: 200px;
     overflow: hidden;
     margin-right: auto;
@@ -102,7 +102,7 @@ p {
    display: inline-block;
    padding-top: .3125rem;
    padding-bottom: .3125rem;
-   margin-right: 0;
+   margin-right: 1rem;
    font-size: 1.25rem;
    line-height: inherit;
    white-space: nowrap;

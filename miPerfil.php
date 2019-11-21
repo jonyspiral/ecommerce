@@ -118,17 +118,12 @@ if ($_POST){
     <div id="main" class=" styleLogin padd2" style="  margin: 2%;" >
 
 
-      <div class="containerExt" style="
-    justify-content: center;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-">
+      <div class="containerExt" style=" justify-content: center; display: flex; flex-direction: column;align-items: center;">
   <h1 class="styleTitle center" >Bienvenido!</br> <?=($name.' '.$lastName) ?></h1>
 
           <div id="containerLogo">
 
-            <img class=""src="img\avatar\<?=$avatar?>" alt="Yo"style=" display: -webkit-flex; ">
+            <img class=""src="img\avatar\<?=$avatar?>" alt="Yo"style="  ">
           </div>
 <div class="">
 

@@ -4,34 +4,31 @@ class Producto {
     protected $id;
     /** @var string */
     protected $nombre;
+    /** @var string */
+    protected $imagen;
     /** @var float */
     protected $precio;
-    /** @var Colores **/
-    protected $color;
-    /** @var Categoria **/
+
     protected $categoria;
-    /** @var Talle **/
-    protected $Talle;
-    /** @var Stock **///pueedo pedir stock aca?
+
     protected $Stock;
 
     protected $descripcion;
 
 
 
-    public function __construct (string $nombre, float $prize = 0,Color $color,talle $Talle )
-
+    public function __construct ($id, string $nombre, float $precio = 0,Color $imagen,int $categoria, int $stock,string $description)
     {
 
-        $this->setNombre($nombre);
-        $this->precio = $prize;
+        $this->setNombre($precio);
+        $this->precio = $precio;
 
         $this->setCategoria($categoria);
         $this->setDescripcion($descripcion);
 
         $this->setColor($color);// como validar con el id del color
         $this->setCategoria($categoria);
-        $this->setTalle($Talle);
+
         $this->setDescripcion($descripcion);
 
     }

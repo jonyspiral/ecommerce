@@ -39,18 +39,15 @@ class BaseDatos  {
   $usuarioDb=null;
 
   //termino sequencia de conexion y ejecuto sql
-  $sql= "SELECT * from usuarios where  user= :user";//where  email= '$email'
-  // $query = $conexion->prepare($sql);
-  // $usuarioDb = $query->fetchAll(PDO::FETCH_ASSOC);
+  $sql= "SELECT * from usuarios where  user= :user";
 
   $sentencia = $conexion->prepare($sql);
   //blindeo las variables;
   $sentencia->bindValue(':user',$user);
-  //var_dump($sentencia);exit;
+
 //ejecuto
   $sentencia->execute();
 $usuarioDb=$sentencia->fetchAll(PDO::FETCH_ASSOC);
-
 //var_dump($usuarioDb);exit;
 
   if (!empty($usuarioDb)){
@@ -70,7 +67,7 @@ $usuarioDb=$sentencia->fetchAll(PDO::FETCH_ASSOC);
   $conexion= New Conexion;
   $password=password_hash($password,PASSWORD_DEFAULT);
   $sql = "INSERT INTO usuarios ( user, name, lastName, password, email, avatar) values (:user, :name, :lastName, :password, :email, :avatar)";
-  //$sentencia =  $conexion->query($sql);
+
   //preparo la cosulta
   $sentencia = $conexion->prepare($sql);
    //blindeo las variables;
@@ -84,7 +81,7 @@ $usuarioDb=$sentencia->fetchAll(PDO::FETCH_ASSOC);
   $sentencia->execute();
   // $query = $conexion->query($sql);
   //$usuarioDb = $sentencia->fetchAll(PDO::FETCH_ASSOC);
-  //var_dump($usuarioDb);exit;
+
 
       }
 
@@ -92,33 +89,35 @@ $usuarioDb=$sentencia->fetchAll(PDO::FETCH_ASSOC);
    $password = ($password) ? password_hash($password,PASSWORD_DEFAULT) : null ;;
    $conexion= New Conexion;
    $bd = new BaseDatos;
-   $sql = "UPDATE usuarios SET user ='$user'";
-   $sql=$sql.(($name) ? ",name ='$name'" : "" );
-   $sql=$sql.(($lastName) ? ",lastName ='$lastName'" : "" );
-   $sql=$sql.(($password) ? ",password ='$password'" : "" );
-   $sql=$sql.(($avatar) ? ",avatar ='$avatar'" : "" );
-   $sql=$sql." where  email= '$email'";
-  //var_dump($sql);exit;
-   $query = $conexion->query($sql);
+  //  $sql = "UPDATE usuarios SET user ='$user'";
+  //  $sql=$sql.(($name) ? ",name ='$name'" : "" );
+  //  $sql=$sql.(($lastName) ? ",lastName ='$lastName'" : "" );
+  //  $sql=$sql.(($password) ? ",password ='$password'" : "" );
+  //  $sql=$sql.(($avatar) ? ",avatar ='$avatar'" : "" );
+  //  $sql=$sql." where  email= '$email'";
+  // //var_dump($sql);exit;
+  //  $query = $conexion->query($sql);
 
-   // $sql = "UPDATE usuarios SET user =:user";
-   // $sql=$sql.(($name) ? ",name =:name" : "" );
-   // $sql=$sql.(($lastName) ? ",lastName =:lastName" : "" );
-   // $sql=$sql.(($password) ? ",password =:password" : "" );
-   // $sql=$sql.(($avatar) ? ",avatar =:avatar" : "" );
-   // $sql=$sql." where  email= :email";
-   // $sentencia = $conexion->prepare($sql);
-   //
-   //  //blindeo las variables;
-   // $sentencia->bindValue(':user',$user);
-   // $sentencia->bindValue(':name',$name);
-   // $sentencia->bindValue(':lastName',$lastName);
-   // $sentencia->bindValue(':password',$password);
-   // $sentencia->bindValue(':email',$email);
-   // $sentencia->bindValue(':avatar',$avatar);
-   // var_dump($sentencia);exit;
-   // //ejecuto
-   // $sentencia->execute();
+   $sql = "UPDATE usuarios SET user =:user";
+   $sql=$sql.(($name) ? ", name =:name" : "" );
+   $sql=$sql.(($lastName) ? ", lastName =:lastName" : "" );
+   $sql=$sql.(($password) ? ", password =:password" : "" );
+   $sql=$sql.(($avatar) ? ", avatar =:avatar" : "" );
+   $sql=$sql." where  email= :email";
+
+   $sentencia = $conexion->prepare($sql);
+
+    //bindeo las variables;
+   $sentencia->bindValue(':user',$user);
+   $sentencia->bindValue(':name',$name);
+   $sentencia->bindValue(':lastName',$lastName);
+   $sentencia->bindValue(':password',$password);
+   $sentencia->bindValue(':email',$email);
+   $sentencia->bindValue(':avatar',$avatar);
+   //var_dump($sql);exit;
+   var_dump($sentencia);exit;
+   //ejecuto
+   $sentencia->execute();
 
 
    $usuario= $bd->buscarUsuarioEmail($email);

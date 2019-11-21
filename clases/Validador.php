@@ -69,8 +69,6 @@ class Validador {
     }
 
     public function validarUser(string $user): bool {
-
-
       if /*($this->validarVacio($user)||*/($this->bd->buscarUsuarioUser($user)) {
         return true;
 

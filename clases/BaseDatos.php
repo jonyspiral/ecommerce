@@ -69,8 +69,22 @@ $usuarioDb=$sentencia->fetchAll(PDO::FETCH_ASSOC);
   public function guardarUsuario($user,$email,$name,$lastName,$password,$avatar) {
   $conexion= New Conexion;
   $password=password_hash($password,PASSWORD_DEFAULT);
-  $sql = "INSERT INTO usuarios ( user, name, lastName, password, email, avatar) values ('$user', '$name','$lastName', '$password', '$email','$avatar')";
-  $sentencia =  $conexion->query($sql);
+  $sql = "INSERT INTO usuarios ( user, name, lastName, password, email, avatar) values (:user, :name, :lastName, :password, :email, :avatar)";
+  //$sentencia =  $conexion->query($sql);
+  //preparo la cosulta
+  $sentencia = $conexion->prepare($sql);
+   //blindeo las variables;
+  $sentencia->bindValue(':user',$user);
+  $sentencia->bindValue(':name',$name);
+  $sentencia->bindValue(':lastName',$lastName);
+  $sentencia->bindValue(':password',$password);
+  $sentencia->bindValue(':email',$email);
+  $sentencia->bindValue(':avatar',$avatar);
+//ejecuto
+  $sentencia->execute();
+  // $query = $conexion->query($sql);
+  //$usuarioDb = $sentencia->fetchAll(PDO::FETCH_ASSOC);
+  //var_dump($usuarioDb);exit;
 
       }
 
@@ -86,6 +100,27 @@ $usuarioDb=$sentencia->fetchAll(PDO::FETCH_ASSOC);
    $sql=$sql." where  email= '$email'";
   //var_dump($sql);exit;
    $query = $conexion->query($sql);
+
+   // $sql = "UPDATE usuarios SET user =:user";
+   // $sql=$sql.(($name) ? ",name =:name" : "" );
+   // $sql=$sql.(($lastName) ? ",lastName =:lastName" : "" );
+   // $sql=$sql.(($password) ? ",password =:password" : "" );
+   // $sql=$sql.(($avatar) ? ",avatar =:avatar" : "" );
+   // $sql=$sql." where  email= :email";
+   // $sentencia = $conexion->prepare($sql);
+   //
+   //  //blindeo las variables;
+   // $sentencia->bindValue(':user',$user);
+   // $sentencia->bindValue(':name',$name);
+   // $sentencia->bindValue(':lastName',$lastName);
+   // $sentencia->bindValue(':password',$password);
+   // $sentencia->bindValue(':email',$email);
+   // $sentencia->bindValue(':avatar',$avatar);
+   // var_dump($sentencia);exit;
+   // //ejecuto
+   // $sentencia->execute();
+
+
    $usuario= $bd->buscarUsuarioEmail($email);
    $_SESSION['email'] = $usuario->getEmail();
    $_SESSION['name'] = $usuario->getName();
@@ -93,9 +128,11 @@ $usuarioDb=$sentencia->fetchAll(PDO::FETCH_ASSOC);
    $_SESSION['avatar'] = $usuario->getAvatar();
    $_SESSION['user']= $usuario->getUser();
    $_SESSION['id']= $usuario->getId();
+
       }
 
     public function subirAvatar($archivo, $nombre) {
+
         if (!file_exists('img/avatar')) {
             mkdir('img/avatar');
         }
@@ -103,7 +140,9 @@ $usuarioDb=$sentencia->fetchAll(PDO::FETCH_ASSOC);
         $avatar = $nombre . '.' . $ext;
         //la muevo a mi carpeta avatars
         move_uploaded_file($archivo['tmp_name'], 'img/avatar/' . $avatar);
+
         return $avatar;
+
     }
 
 

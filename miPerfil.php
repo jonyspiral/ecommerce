@@ -81,8 +81,8 @@ if ($_POST){
                       //var_dump($resultado);
 
                 }  else{
-                  //echo "entra por el post de arriba";
-            $errores=$validador->validarUser($user);
+                  echo "entra por el post de arriba";echo "</br>";
+            //$errores=$validador->validarUser($user);esto no funciona preguntar_ // WARNING: 
 
               if (!$errores) {
                         $bd->editarUsuario($user,$email,$name,$lastName,$password,$avatar);

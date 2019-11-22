@@ -102,7 +102,7 @@ $usuarioDb=$sentencia->fetchAll(PDO::FETCH_ASSOC);
    $sql=$sql.(($name) ? ", name =:name" : "" );
    $sql=$sql.(($lastName) ? ", lastName =:lastName" : "" );
    $sql=$sql.(($password) ? ", password =:password" : "" );
-   $sql=$sql.(($avatar) ? ", avatar =:avatar" : "" );
+   $sql=$sql.(($avatar) ? ", avatar = :avatar" : "" );
    $sql=$sql." where  email= :email";
 
    $sentencia = $conexion->prepare($sql);
@@ -115,7 +115,7 @@ $usuarioDb=$sentencia->fetchAll(PDO::FETCH_ASSOC);
    $sentencia->bindValue(':email',$email);
    $sentencia->bindValue(':avatar',$avatar);
    //var_dump($sql);exit;
-   var_dump($sentencia);exit;
+   //var_dump($sentencia);exit;
    //ejecuto
    $sentencia->execute();
 

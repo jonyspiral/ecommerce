@@ -57,9 +57,9 @@ if ($validador->estaElUsuarioLogeado()){
 ">
 
   <a class="navbar-brand" style="width: 60px; text-align:center; "  target="_blank" href="<?=$log?>"><?=$logTittle ?></a>
-  <div id="containerLogo" style="width:auto;display: -webkit-flex;">
-    <img class="" style="width:50px;border-radius:15%;"src="img\avatar\<?=$avatar?>" alt="Yo"style=" ">
-  </div>
+  <a href="miPerfil.php" id="containerLogo" style="width:auto;display: -webkit-flex;">
+    <img href="miPerfil.php"; class=""  style="width:50px;border-radius:15%;"src="img\avatar\<?=$avatar?>" alt="Yo"style=" ">
+  </a>
   </div>
   <form class="center  form-inline my-2 my-lg-0" style="width:auto;">
     <input class="form-control mr-sm-2" type="search" placeholder="Search">

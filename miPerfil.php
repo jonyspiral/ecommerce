@@ -82,7 +82,7 @@ if ($_POST){
 
                 }  else{
                   echo "entra por el post de arriba";echo "</br>";
-            //$errores=$validador->validarUser($user);esto no funciona preguntar_ // WARNING: 
+            //$errores=$validador->validarUser($user);esto no funciona preguntar_ // WARNING:
 
               if (!$errores) {
                         $bd->editarUsuario($user,$email,$name,$lastName,$password,$avatar);

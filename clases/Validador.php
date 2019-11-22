@@ -35,7 +35,8 @@ class Validador {
           return $errores;
     }
 
-    public function  validarPassword( array $datos) {
+    public function  validarPassword( array $datos)
+     {
     $errores = [];
       $password = $datos['password'];
       if (!isset($datos['newPass'])){
@@ -86,7 +87,7 @@ class Validador {
         return strlen(trim($valor)) === 0;
     }
 
-    public function validarRegistro($user ,$email,$name= null,$lastName= null,$password= null,$confirmPassword= null,$avatar): array
+    public function validarRegistro($user ,$email,$name= null,$lastName= null,$password= null,$confirmPassword= null,$avatar): ?array
     {//var_dump($user);exit;
         $errores = [];
         //var_dump($user);exit;

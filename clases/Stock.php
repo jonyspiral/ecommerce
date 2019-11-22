@@ -1,40 +1,54 @@
 <?php
 class Stock {
-  Protected $idProducto;
-  Protected $idColor;
-  Protected $talle1;
-  Protected $cant1;
-  Protected $talle2;
-  Protected $cant2;
-  Protected $talle3;
-  Protected $cant3;
-  Protected $talle4;
-  Protected $cant4;
-  Protected $talle5;
-  Protected $cant5;
-  Protected $talle6;
-  Protected $cant6;
-  Protected $talle7;
-  Protected $cant7;
-  Protected $talle8;
-  Protected $cant8;
+  Protected $productoId;
+  Protected $quantify;
+    Protected $dateUpdate;
 
-  Public function __construct ($Producto){
-    $stock =[]
-    $Rangotalle=$producto[rangoTalle];
-    $this->$idProducto=$idProducto[id]
-    $this->$idProducto=$idProducto[color]
-    $this->talle1=$Rangotalle[talle1];
-    $this->cant1=// de donde lo saco
+  Public function __construct ($productoId,$cant){
 
+
+    $this->setId($id);
+    $this->setCant($quantify);
+    $this->setDateupdate($dateUpdate);
 
 
   }
-  public function getStock(){
-
-
+  public function setId( $id)
+  {
+      $this->id = $id;
   }
 
+  public function setCant(string $quantify)
+  {
+      $this->quantify = $quantify;
+  }
+  public function setDateUpdate()
+  {
+      $this->ateUpdate = date();
+  }
 
+  public function getId()
+  {
+      return $this->id;
+  }
+  public function getCantidad()
+  {
+      return $this->$quantify;
+  }
+  public function getDateUpdate()
+  {
+      return $this->Dateupdate;
+  }
+  public function aumentarStock(Producto $producto,integer $quantify )
+// falta la parte que buscaria al id del producto
+  {$NewQuantify=$this->quantify+ $quantify
+      return $NewQuantify;
+  }
+  public function disminuirStock()
+
+
+  {$NewQuantify=$this->quantify- $quantify
+      return $NewQuantify;
+  }
 
 }

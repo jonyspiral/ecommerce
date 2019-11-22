@@ -7,8 +7,8 @@ class Producto {
     /** @var string */
     protected $imagen;
     /** @var float */
-    protected $precio;
-
+    protected $salePrice;
+    protected $costPrice;
     protected $categoria;
 
     protected $Stock;
@@ -73,59 +73,13 @@ class Producto {
     }
 
     public function setDescripcion(Descripcion $descripcion)
-
-    public function getTalle(): talle
-    {
-        return $this->talle;
-    }
-
-    public function setTalle(talle $talle)
-    {
-        $this->talle = $talle;
-    }
-    public function getStock(): Stock
-    {
-        return $this->Stock;
-    }
-
-    public function setStock(Stock $Stock)
-
-    {
-        $this->Stock = $Stock;
-    }
-  }
-
-
-
-
-
-
-
-
-
-    /*public function dameElNombreDeLaCategoria(): string
->>>>>>> b422862df811bdf03189aec27299f251abb2c550
-    {
-        $this->Descripcion = $descripcion;
-    }
-
-    /*public function dameElNombreDeLaCategoria(): string
-    {
-        return 'La categoria es: ' . $this->getCategoria()->getNombre();
-    }*/
-
-
-    public function guardar(BaseDatos $bd)
-    {
-        if (!$this->id) {
-            echo 'me voy a insertar';
-            $bd->guardarProducto($this);
-        } else {
-            echo 'voy a actualizarme';
-            $bd->actualizarProducto($this);
-        }
+    $this->categoria = $descripcion;
 
     }
+
+
+
+
 
 
 

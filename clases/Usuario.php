@@ -9,7 +9,7 @@ class Usuario {
     private $password;
     private $avatar;
 
-    public function __construct( $id,string $user,?string $name,?string $lastName,string $email, string $password, ?string $avatar)
+    public function __construct( $id,string $user,?string $name,?string $lastName,string $email, ?string $password, ?string $avatar)
       {
         $this->setId(intval($id));
         $this->setUser($user);
@@ -63,10 +63,10 @@ class Usuario {
       {
           return $this->user;
       }
-      public function getName(): string
-        {
-            return $this->name;
-        }
+    public function getName(): string
+      {
+          return $this->name;
+      }
 
     public function getLastName(): string
     {
